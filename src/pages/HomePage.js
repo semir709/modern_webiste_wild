@@ -7,6 +7,9 @@ const Home = () => {
       <section>
         <MainSection />
       </section>
+      <section>
+        <div className="p-5 bg-red-300">asd</div>
+      </section>
     </>
   );
 };
