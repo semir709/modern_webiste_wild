@@ -1,50 +1,67 @@
 import React, { useEffect, useRef, useState } from "react";
-import { mainVideo } from "../assets/videos";
+import { mainVideo, sideVideo } from "../assets/videos";
 import { motion } from "framer-motion";
+// Base styles for media player and provider (~400B).
+import "@vidstack/react/player/styles/base.css";
+import { MediaPlayer, MediaProvider } from "@vidstack/react";
 
 const MainSection = () => {
   const cursor = useRef(null);
+  const [changeVideo, setChangeVideo] = useState(false);
 
   const mouseMovment = (e) => {
     const target = cursor.current;
 
-    target.style.top = `${e.clientY}px`;
-    target.style.left = `${e.clientX}px`;
+    if (target) {
+      target.style.top = `${e.clientY}px`;
+      target.style.left = `${e.clientX}px`;
+    }
   };
   return (
     <main>
       <div
         className="w-full h-screen overflow-hidden relative cursor-none"
         onMouseMove={mouseMovment}
+        onClick={() => setChangeVideo((prev) => !prev)}
       >
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 "></div>
-        <video
-          className="w-full h-full object-cover"
-          preload="auto"
-          autoPlay
-          loop
-          muted
-        >
-          <source src={mainVideo} type="video/mp4" />
-          Your browser does not support HTML5 video.
-        </video>
-
-        <div
-          ref={cursor}
-          className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
-        >
-          <div className="bg-white rounded-full w-[100px] h-[100px] flex items-center justify-center">
-            <span className="uppercase text-center font-semibold leading-4">
-              Watch <br /> reel
-            </span>
+        {changeVideo ? (
+          <div>
+            <MediaPlayer title="Sprite Fight" src={sideVideo} autoplay>
+              <MediaProvider />
+            </MediaPlayer>
           </div>
+        ) : (
+          <div>
+            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 "></div>
+            <video
+              className="w-full h-full object-cover"
+              preload="auto"
+              autoPlay
+              loop
+              muted
+            >
+              <source src={mainVideo} type="video/mp4" />
+              Your browser does not support HTML5 video.
+            </video>
 
-          <div className="text-white text-center uppercase font-semibold leading-4 mt-3">
-            <span>Basic/Dept &#174;</span>
-            <br />
-            <span>2010-&#8734;</span>
+            <div
+              ref={cursor}
+              className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+            >
+              <div className="bg-white rounded-full w-[100px] h-[100px] flex items-center justify-center">
+                <span className="uppercase text-center font-semibold leading-4">
+                  Watch <br /> reel
+                </span>
+              </div>
+
+              <div className="text-white text-center uppercase font-semibold leading-4 mt-3">
+                <span>Basic/Dept &#174;</span>
+                <br />
+                <span>2010-&#8734;</span>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </main>
   );
