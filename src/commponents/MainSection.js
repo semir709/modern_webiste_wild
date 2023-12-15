@@ -18,6 +18,7 @@ const MainSection = () => {
   const [changeVideo, setChangeVideo] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [maxTime, setMaxTime] = useState(0);
+  const [timeLength, setTimeLength] = useState(0);
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -32,8 +33,14 @@ const MainSection = () => {
     const video = videoRef.current;
 
     const handleTimeUpdate = () => {
-      setMaxTime(convertSecondsToMMSS(video.duration));
-      setCurrentTime(convertSecondsToMMSS(video.currentTime));
+      const maxTime = convertSecondsToMMSS(video.duration);
+      const currentTime = convertSecondsToMMSS(video.currentTime);
+      setMaxTime(maxTime);
+      setCurrentTime(currentTime);
+
+      const currentLength = (video.currentTime / video.duration) * 100;
+
+      setTimeLength(parseInt(currentLength));
     };
 
     video.addEventListener("timeupdate", handleTimeUpdate);
@@ -56,17 +63,21 @@ const MainSection = () => {
         className="w-full h-screen overflow-hidden relative"
         onClick={() => setChangeVideo((prev) => !prev)}
       >
-        <div className={`${changeVideo ? "block" : "hidden"}`}>
+        <div className={`${changeVideo ? "block" : "hidden"} w-full h-full`}>
           <video
-            className="w-full h-[30px]"
+            className="w-full h-full object-cover"
             ref={videoRef}
             autoPlay
+            loop
             src={sideVideo}
           />
 
-          <div className="p-5 m-5 w-[100px] h-[100px] bg-white">
-            <div>
-              <span>
+          <div className="absolute bottom-5 left-0 w-full ">
+            <div
+              style={{ transform: `translateX(${timeLength}%)` }}
+              className="hover:cursor-grab "
+            >
+              <span className="text-white">
                 {currentTime}/{maxTime}
               </span>
             </div>
