@@ -10,5 +10,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@vidstack/react/tailwind.cjs")],
 };
