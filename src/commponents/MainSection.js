@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 // Base styles for media player and provider (~400B).
 import "@vidstack/react/player/styles/base.css";
 import { MediaPlayer, MediaProvider } from "@vidstack/react";
+import Draggable from "react-draggable";
 
 function convertSecondsToMMSS(currentTime) {
   const minutes = Math.floor(currentTime / 60);
@@ -20,6 +21,7 @@ const MainSection = () => {
   const [maxTime, setMaxTime] = useState(0);
   const [timeLength, setTimeLength] = useState(0);
   const videoRef = useRef(null);
+  const refDraggableElem = useRef(null);
 
   useEffect(() => {
     const target = cursor.current;
@@ -40,7 +42,7 @@ const MainSection = () => {
 
       const currentLength = (video.currentTime / video.duration) * 100;
 
-      setTimeLength(parseInt(currentLength));
+      setTimeLength(currentLength);
     };
 
     video.addEventListener("timeupdate", handleTimeUpdate);
@@ -57,12 +59,49 @@ const MainSection = () => {
     target.style.left = `${e.clientX}px`;
   };
 
+  useEffect(() => {
+    const target = refDraggableElem.current;
+    const video = videoRef.current;
+
+    target.addEventListener("mousedown", (e) => {
+      let isDragging = true;
+      let initialMouseX = e.clientX;
+      let initialDivX = target.getBoundingClientRect().x;
+
+      function handleDrag(e) {
+        if (isDragging) {
+          const newDivX = initialDivX + e.clientX - initialMouseX;
+
+          const newPositionPercentage =
+            (newDivX / target.parentElement.offsetWidth) * 100;
+
+          const newTime = (newPositionPercentage / 100) * video.duration;
+
+          setTimeLength(newPositionPercentage);
+          target.style.transitionDuration = null;
+
+          video.currentTime = newTime;
+        }
+      }
+
+      document.addEventListener("mousemove", handleDrag);
+      document.addEventListener("mouseup", handleDragEnd);
+
+      function handleDragEnd() {
+        const target = refDraggableElem.current;
+        isDragging = false;
+
+        target.style.transitionDuration = "700ms";
+
+        document.removeEventListener("mousemove", handleDrag);
+        document.removeEventListener("mouseup", handleDragEnd);
+      }
+    });
+  }, [refDraggableElem.current]);
+
   return (
     <main>
-      <div
-        className="w-full h-screen overflow-hidden relative"
-        onClick={() => setChangeVideo((prev) => !prev)}
-      >
+      <div className="w-full h-screen overflow-hidden relative">
         <div className={`${changeVideo ? "block" : "hidden"} w-full h-full`}>
           <video
             className="w-full h-full object-cover"
@@ -70,14 +109,19 @@ const MainSection = () => {
             autoPlay
             loop
             src={sideVideo}
+            onClick={() => setChangeVideo(false)}
           />
 
-          <div className="absolute bottom-5 left-0 w-full ">
+          <div className="absolute bottom-5 left-0 w-full mix-blend-difference">
             <div
-              style={{ transform: `translateX(${timeLength}%)` }}
-              className="hover:cursor-grab "
+              style={{
+                transform: `translateX(${timeLength}%)`,
+                transitionDuration: "700ms",
+              }}
+              className={`hover:cursor-grab`}
+              ref={refDraggableElem}
             >
-              <span className="text-white">
+              <span className="text-white text-lg select-none">
                 {currentTime}/{maxTime}
               </span>
             </div>
@@ -89,6 +133,7 @@ const MainSection = () => {
             changeVideo ? "hidden" : "block"
           }`}
           onMouseMove={mouseMovment}
+          onClick={() => setChangeVideo(true)}
         >
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 "></div>
           <video
@@ -106,8 +151,8 @@ const MainSection = () => {
             ref={cursor}
             className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
           >
-            <div className="bg-white rounded-full w-[100px] h-[100px] flex items-center justify-center">
-              <span className="uppercase text-center font-semibold leading-4">
+            <div className="bg-white rounded-full w-[100px] h-[100px] flex items-center justify-center ">
+              <span className="uppercase text-center font-semibold leading-4 ">
                 Watch <br /> reel
               </span>
             </div>
