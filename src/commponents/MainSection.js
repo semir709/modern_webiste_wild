@@ -17,11 +17,12 @@ function convertSecondsToMMSS(currentTime) {
 const MainSection = () => {
   const cursor = useRef(null);
   const [changeVideo, setChangeVideo] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [maxTime, setMaxTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState("00");
+  const [maxTime, setMaxTime] = useState("00");
   const [timeLength, setTimeLength] = useState(0);
   const videoRef = useRef(null);
   const refDraggableElem = useRef(null);
+  const timerElRef = useRef(null);
 
   useEffect(() => {
     const target = cursor.current;
@@ -33,6 +34,8 @@ const MainSection = () => {
 
   useEffect(() => {
     const video = videoRef.current;
+    const draggEl = refDraggableElem.current;
+    // const timerRef = timerElRef.current;
 
     const handleTimeUpdate = () => {
       const maxTime = convertSecondsToMMSS(video.duration);
@@ -41,6 +44,8 @@ const MainSection = () => {
       setCurrentTime(currentTime);
 
       const currentLength = (video.currentTime / video.duration) * 100;
+
+      // console.log(timerRef);
 
       setTimeLength(currentLength);
     };
@@ -67,6 +72,7 @@ const MainSection = () => {
       let isDragging = true;
       let initialMouseX = e.clientX;
       let initialDivX = target.getBoundingClientRect().x;
+      let timer;
 
       function handleDrag(e) {
         if (isDragging) {
@@ -78,6 +84,13 @@ const MainSection = () => {
           const newTime = (newPositionPercentage / 100) * video.duration;
 
           setTimeLength(newPositionPercentage);
+
+          clearTimeout(timer);
+
+          timer = setTimeout(() => {
+            target.style.transitionDuration = "500ms";
+          }, 100);
+
           target.style.transitionDuration = null;
 
           video.currentTime = newTime;
@@ -85,13 +98,14 @@ const MainSection = () => {
       }
 
       document.addEventListener("mousemove", handleDrag);
+
       document.addEventListener("mouseup", handleDragEnd);
 
       function handleDragEnd() {
         const target = refDraggableElem.current;
         isDragging = false;
 
-        target.style.transitionDuration = "700ms";
+        target.style.transitionDuration = "500ms";
 
         document.removeEventListener("mousemove", handleDrag);
         document.removeEventListener("mouseup", handleDragEnd);
@@ -106,9 +120,8 @@ const MainSection = () => {
           <video
             className="w-full h-full object-cover"
             ref={videoRef}
-            autoPlay
-            loop
             src={sideVideo}
+            autoPlay
             onClick={() => setChangeVideo(false)}
           />
 
@@ -116,12 +129,12 @@ const MainSection = () => {
             <div
               style={{
                 transform: `translateX(${timeLength}%)`,
-                transitionDuration: "700ms",
+                transitionDuration: "500ms",
               }}
               className={`hover:cursor-grab`}
               ref={refDraggableElem}
             >
-              <span className="text-white text-lg select-none">
+              <span ref={timerElRef} className="text-white text-lg select-none">
                 {currentTime}/{maxTime}
               </span>
             </div>
