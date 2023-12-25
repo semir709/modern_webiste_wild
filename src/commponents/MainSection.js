@@ -17,8 +17,8 @@ function convertSecondsToMMSS(currentTime) {
 const MainSection = () => {
   const cursor = useRef(null);
   const [changeVideo, setChangeVideo] = useState(false);
-  const [currentTime, setCurrentTime] = useState("00");
-  const [maxTime, setMaxTime] = useState("00");
+  const [currentTime, setCurrentTime] = useState("00/00");
+  // const [maxTime, setMaxTime] = useState("00");
   const [timeLength, setTimeLength] = useState(0);
   const videoRef = useRef(null);
   const refDraggableElem = useRef(null);
@@ -35,17 +35,17 @@ const MainSection = () => {
   useEffect(() => {
     const video = videoRef.current;
     const draggEl = refDraggableElem.current;
-    // const timerRef = timerElRef.current;
+    const timerRef = timerElRef.current;
 
     const handleTimeUpdate = () => {
       const maxTime = convertSecondsToMMSS(video.duration);
       const currentTime = convertSecondsToMMSS(video.currentTime);
-      setMaxTime(maxTime);
-      setCurrentTime(currentTime);
+      // setMaxTime(maxTime);
+      setCurrentTime(`${currentTime}/${maxTime} `);
 
       const currentLength = (video.currentTime / video.duration) * 100;
 
-      // console.log(timerRef);
+      // console.log(timerRef.width);
 
       setTimeLength(currentLength);
     };
@@ -115,7 +115,7 @@ const MainSection = () => {
 
   return (
     <main>
-      <div className="w-full h-screen overflow-hidden relative">
+      <div className="w-full h-screen  relative overflow-hidden">
         <div className={`${changeVideo ? "block" : "hidden"} w-full h-full`}>
           <video
             className="w-full h-full object-cover"
@@ -131,11 +131,11 @@ const MainSection = () => {
                 transform: `translateX(${timeLength}%)`,
                 transitionDuration: "500ms",
               }}
-              className={`hover:cursor-grab`}
+              className={`hover:cursor-grab w-full`}
               ref={refDraggableElem}
             >
-              <span ref={timerElRef} className="text-white text-lg select-none">
-                {currentTime}/{maxTime}
+              <span className="text-white text-lg select-none block -translate-x-1/2 w-fit">
+                {currentTime}
               </span>
             </div>
           </div>
