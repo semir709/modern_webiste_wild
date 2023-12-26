@@ -17,7 +17,7 @@ function convertSecondsToMMSS(currentTime) {
 const MainSection = () => {
   const cursor = useRef(null);
   const [changeVideo, setChangeVideo] = useState(false);
-  const [currentTime, setCurrentTime] = useState("00/00");
+  const [currentTime, setCurrentTime] = useState(`00/00`);
   // const [maxTime, setMaxTime] = useState("00");
   const [timeLength, setTimeLength] = useState(0);
   const videoRef = useRef(null);
@@ -98,7 +98,6 @@ const MainSection = () => {
       }
 
       document.addEventListener("mousemove", handleDrag);
-
       document.addEventListener("mouseup", handleDragEnd);
 
       function handleDragEnd() {
@@ -113,6 +112,19 @@ const MainSection = () => {
     });
   }, [refDraggableElem.current]);
 
+  useEffect(() => {
+    const target = videoRef.current;
+    console.log(target.duration);
+    console.log(target.currentTime);
+    if (changeVideo) {
+      target.play();
+    } else if (!changeVideo && target.duration === target.currentTime) {
+      target.currentTime = 0;
+    } else {
+      target.pause();
+    }
+  }, [changeVideo]);
+
   return (
     <main>
       <div className="w-full h-screen  relative overflow-hidden">
@@ -121,7 +133,6 @@ const MainSection = () => {
             className="w-full h-full object-cover"
             ref={videoRef}
             src={sideVideo}
-            autoPlay
             onClick={() => setChangeVideo(false)}
           />
 
@@ -134,7 +145,7 @@ const MainSection = () => {
               className={`hover:cursor-grab w-full`}
               ref={refDraggableElem}
             >
-              <span className="text-white text-lg select-none block -translate-x-1/2 w-fit">
+              <span className="text-white text-lg select-none block -translate-x-1/2 w-fit font-semibold">
                 {currentTime}
               </span>
             </div>
