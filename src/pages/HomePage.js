@@ -1,6 +1,5 @@
 import React from "react";
-import { MainSection } from "../commponents";
-
+import { MainSection } from "../container/sections/index";
 const Home = () => {
   return (
     <>
