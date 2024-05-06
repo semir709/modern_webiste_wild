@@ -14,12 +14,9 @@ const MainVideo = ({ changeVideo, setChangeVideo }) => {
   const [timeLength, setTimeLength] = useState(0);
   const videoRef = useRef(null);
   const refDraggableElem = useRef(null);
-  const timerElRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
-    const draggEl = refDraggableElem.current;
-    const timerRef = timerElRef.current;
 
     const handleTimeUpdate = () => {
       const maxTime = convertSecondsToMMSS(video.duration);
@@ -37,7 +34,7 @@ const MainVideo = ({ changeVideo, setChangeVideo }) => {
     };
   }, [videoRef.current]);
 
-  useEffect(() => {
+  const moveTimeLap = () => {
     const target = refDraggableElem.current;
     const video = videoRef.current;
 
@@ -83,7 +80,7 @@ const MainVideo = ({ changeVideo, setChangeVideo }) => {
         document.removeEventListener("mouseup", handleDragEnd);
       }
     });
-  }, [refDraggableElem.current]);
+  };
 
   useEffect(() => {
     const target = videoRef.current;
@@ -97,7 +94,7 @@ const MainVideo = ({ changeVideo, setChangeVideo }) => {
   }, [changeVideo]);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-screen">
       <video
         className="w-full h-full object-cover"
         ref={videoRef}
@@ -114,7 +111,10 @@ const MainVideo = ({ changeVideo, setChangeVideo }) => {
           className={`hover:cursor-grab w-full`}
           ref={refDraggableElem}
         >
-          <span className="text-white text-lg select-none block -translate-x-1/2 w-fit font-semibold">
+          <span
+            className="text-white text-lg select-none block -translate-x-1/2 w-fit font-semibold"
+            onMouseDown={moveTimeLap}
+          >
             {currentTime}
           </span>
         </div>

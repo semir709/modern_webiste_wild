@@ -22,7 +22,7 @@ const BgVideo = ({ setChangeVideo }) => {
 
   return (
     <div
-      className={`cursor-none w-full h-full`}
+      className={`cursor-none w-full h-screen`}
       onMouseMove={mouseMovment}
       onClick={() => setChangeVideo(true)}
     >
