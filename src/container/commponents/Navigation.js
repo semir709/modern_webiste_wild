@@ -32,15 +32,27 @@ const Navigation = () => {
   }, []);
   return (
     <motion.div
-      className="w-full fixed top-0 left z-50 overflow-hidden bg-green-300"
+      className="w-full fixed top-0 left z-50 overflow-hidden "
       variants={variantScroll}
       animate={scrollDown ? "down" : "up"}
     >
-      <div className="w-full h-full py-[50px] px-[100px] flex justify-between items-center text-white uppercase font-semibold text-sm">
-        <div className="text-2xl font-bold">Beautiful/wild </div>
-        <div>Nav</div>
-        <div>dots</div>
-      </div>
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="w-full h-full py-[50px] px-[100px] flex justify-between items-center text-white uppercase font-semibold text-sm"
+      >
+        <a className="text-2xl font-bold cursor-pointer">Beautiful/wild </a>
+        <nav className="w-1/2">
+          <ul className="flex justify-around ">
+            <li className="cursor-pointer bottomLineAnimation">Explore</li>
+            <li className="cursor-pointer bottomLineAnimation">About</li>
+            <li className="cursor-pointer bottomLineAnimation">News</li>
+            <li className="cursor-pointer bottomLineAnimation">Contact</li>
+          </ul>
+        </nav>
+        <button>dots</button>
+      </motion.div>
     </motion.div>
   );
 };
