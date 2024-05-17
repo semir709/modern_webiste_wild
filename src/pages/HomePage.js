@@ -30,14 +30,14 @@ const Home = () => {
     <>
       <div>
         <motion.div
-          className="absolute w-full h-full top-0 left-0 z-50  "
+          className="absolute w-full h-full top-0 left-0 z-50"
           variants={variantsParanet}
           initial="start"
           animate="end"
         >
           <TvNoiseBg>
             <div className="w-full h-full flex items-center justify-center ">
-              <div className="h-[200px] text-[100px] leading-none uppercase text-center font-extrabold text-customBlack">
+              <div className="h-[200px] sm:text-[100px] text-4xl leading-none uppercase text-center font-extrabold text-customBlack">
                 <motion.div
                   className="overflow-hidden"
                   variants={variantsChildren}
