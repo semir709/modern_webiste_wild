@@ -32,7 +32,7 @@ const Navigation = () => {
   }, []);
   return (
     <motion.div
-      className="w-full fixed top-0 left z-50 overflow-hidden "
+      className="w-full fixed top-0 left z-50 overflow-hidden  min-h-[180px] "
       variants={variantScroll}
       animate={scrollDown ? "down" : "up"}
     >

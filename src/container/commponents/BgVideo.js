@@ -7,9 +7,17 @@ const BgVideo = ({ setChangeVideo }) => {
 
   const mouseMovment = (e) => {
     const target = cursor.current;
-
+    target.style.transition = "none";
     target.style.top = `${e.clientY}px`;
     target.style.left = `${e.clientX}px`;
+  };
+
+  const mouseOut = () => {
+    const target = cursor.current;
+
+    target.style.transition = "top 0.5s ease, left 0.5s ease";
+    target.style.top = `50%`;
+    target.style.left = `50%`;
   };
 
   useEffect(() => {
@@ -24,6 +32,7 @@ const BgVideo = ({ setChangeVideo }) => {
     <div
       className={`cursor-none w-full h-screen`}
       onMouseMove={mouseMovment}
+      onMouseOut={mouseOut}
       onClick={() => setChangeVideo(true)}
     >
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 "></div>
@@ -40,7 +49,7 @@ const BgVideo = ({ setChangeVideo }) => {
 
       <div
         ref={cursor}
-        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2  "
       >
         <div className="bg-white rounded-full w-[100px] h-[100px] flex items-center justify-center ">
           <span className="uppercase text-center font-semibold leading-4 ">
