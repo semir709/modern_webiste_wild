@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
+import { Ellipse } from "../../assets/svg/index";
 const variantScroll = {
   up: {
     height: "fit-content",
@@ -51,7 +51,19 @@ const Navigation = () => {
             <li className="cursor-pointer bottomLineAnimation">Contact</li>
           </ul>
         </nav>
-        <button>dots</button>
+        <button className="w-[50px]">
+          <div className="flex justify-center items-center group">
+            <div className="me-[1px] group-hover:me-1 transition-[margin]">
+              <Ellipse />
+            </div>
+            <div className="me-[1px] group-hover:me-1 transition-[margin]">
+              <Ellipse />
+            </div>
+            <div className="me-[1px] group-hover:me-1 transition-[margin]">
+              <Ellipse />
+            </div>
+          </div>
+        </button>
       </motion.div>
     </motion.div>
   );
