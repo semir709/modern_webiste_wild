@@ -79,7 +79,8 @@ body {
     bottom: 0;
     left: 0;
     content: counter(list-counter, decimal-leading-zero);
-    font-size: 1.2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
     line-height: 2rem;
   }
 
