@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { VscClose } from "react-icons/vsc";
-import { SmoothCard } from "../commponents/index";
+import { CarouselSmoothCard } from "../commponents/index";
 
 const MainModule = ({ setToggler }) => {
   const togglerClose = () => {
@@ -43,15 +43,7 @@ const MainModule = ({ setToggler }) => {
           </div>
           <div className=" w-full flex-1 pt-[50px] pb-5 ">
             <div className="text-customPrimary  w-full h-full overflow-hidden">
-              <motion.ol
-                className="h-full flex "
-                drag="x"
-                dragConstraints={{ right: 110 }}
-              >
-                {[1, 2, 3, 4, 5].map(() => (
-                  <SmoothCard />
-                ))}
-              </motion.ol>
+              <CarouselSmoothCard />
             </div>
           </div>
           <div className="bg-blue-300 h-[50px] md:px-[108px] px-[20px]">

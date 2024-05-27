@@ -60,6 +60,29 @@ body {
     animation: shiftLineRightStart 0.3s ease-out forwards;
   }
 
+  .horizontalLine::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.1rem;
+    height: calc(100% - 3rem);
+    background-color: currentcolor;
+    content: "";
+  }
+
+  .list-counter-class {
+    counter-increment: list-counter;
+  }
+
+  .numberCounter::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: counter(list-counter, decimal-leading-zero);
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+
   @keyframes shiftLineRightEnd {
     0% {
       transform: translateX(0%);

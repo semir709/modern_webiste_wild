@@ -8,7 +8,7 @@ const imageVarinat = {
     height: "35%",
 
     transition: {
-      duration: 0.3,
+      duration: 0.4,
     },
   },
 };
@@ -29,9 +29,9 @@ const textVarinat = {
 
 const SmoothCard = () => {
   return (
-    <li className=" w-[27%] flex-shrink-0 h-full me-5 bg-red-">
+    <li className=" w-[27%] flex-shrink-0 h-full me-5 relative list-counter-class">
       <motion.div
-        className="h-full flex flex-col"
+        className="h-full flex flex-col px-2 horizontalLine numberCounter"
         initial="rest"
         whileHover="hover"
         animate="rest"
