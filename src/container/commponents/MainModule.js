@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { VscClose } from "react-icons/vsc";
 import { CarouselSmoothCard } from "../commponents/index";
+import { useRef } from "react";
 
 const MainModule = ({ setToggler }) => {
   const togglerClose = () => {
     setToggler(false);
     document.body.style.overflow = "auto";
   };
+
   return (
     <motion.div
       className="fixed top-0 left-0 bg-customBlack w-full h-screen "
@@ -16,7 +18,7 @@ const MainModule = ({ setToggler }) => {
     >
       <section className="absolute top-0 left-0 w-full h-full  py-[25px]   ">
         <div className="h-full flex flex-col justify-between flex-1">
-          <div className="w-full flex items-center justify-between text-customPrimary overflow-hidden md:px-[108px] px-[20px]">
+          <div className=" w-full flex items-center justify-between text-customPrimary overflow-hidden md:px-[108px] px-[20px]">
             <div className="flex items-center font-semibold uppercase text-sm">
               <div className="me-[100px] flex items-start leading-4">
                 <div>
@@ -42,9 +44,7 @@ const MainModule = ({ setToggler }) => {
             </div>
           </div>
           <div className=" w-full flex-1 pt-[50px] pb-5 ">
-            <div className="text-customPrimary  w-full h-full overflow-hidden px-[110px]">
-              <CarouselSmoothCard />
-            </div>
+            <CarouselSmoothCard />
           </div>
           <div className="bg-blue-300 h-[50px] md:px-[108px] px-[20px]">
             asd

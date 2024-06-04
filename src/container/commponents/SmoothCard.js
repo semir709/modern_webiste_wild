@@ -28,9 +28,15 @@ const textVarinat = {
   },
 };
 
+const mouseOver = () => {
+  console.log("Mouse over");
+};
 const SmoothCard = () => {
   return (
-    <li className=" w-[27%] flex-shrink-0 h-full me-5 relative list-counter-class">
+    <li
+      className=" w-[27%] flex-shrink-0 h-full  relative list-counter-class"
+      onMouseOver={mouseOver}
+    >
       <motion.div
         className="h-full flex flex-col px-2 horizontalLine numberCounter "
         initial="rest"
