@@ -43,7 +43,7 @@ const MainModule = ({ setToggler }) => {
               </div>
             </div>
           </div>
-          <div className=" w-full flex-1 pt-[50px] pb-5 ">
+          <div className=" w-full flex-1 pt-[50px] pb-5 z-50">
             <CarouselSmoothCard />
           </div>
           <div className="bg-blue-300 h-[50px] md:px-[108px] px-[20px]">

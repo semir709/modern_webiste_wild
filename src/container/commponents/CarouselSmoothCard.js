@@ -46,7 +46,7 @@ const CarouselSmoothCard = () => {
 
   return (
     <div
-      className="text-customPrimary  w-full h-full overflow-x-hidden px-[110px] relative cursor-none"
+      className="text-customPrimary  w-full h-full  px-[110px] relative cursor-none"
       ref={containerCarouselRef}
       onMouseMove={whileMouseMove}
       onMouseDown={whenMouseDown}
@@ -54,7 +54,7 @@ const CarouselSmoothCard = () => {
     >
       <motion.ol
         ref={carouselContainerRef}
-        className="h-full flex relative"
+        className="h-full flex "
         drag="x"
         dragConstraints={{ right: 0, left: -width }}
       >
