@@ -28,15 +28,9 @@ const textVarinat = {
   },
 };
 
-const mouseOver = () => {
-  console.log("Mouse over");
-};
-const SmoothCard = () => {
+const SmoothCard = ({ setTextHover }) => {
   return (
-    <li
-      className=" w-[27%] flex-shrink-0 h-full  relative list-counter-class"
-      onMouseOver={mouseOver}
-    >
+    <li className=" w-[27%] flex-shrink-0 h-full  relative list-counter-class ">
       <motion.div
         className="h-full flex flex-col px-2 horizontalLine numberCounter "
         initial="rest"
@@ -50,7 +44,7 @@ const SmoothCard = () => {
             alt="girl"
           />
         </motion.div>
-        <motion.div className=" h-1/2  bg px-3 pt-3 font-semibold">
+        <motion.div className=" h-1/2  bg px-3 pt-3 font-semibold ">
           <h5 className="relative text-lg uppercase ">
             B/D Jams <span className="absolute right-0">2023</span>
           </h5>
@@ -60,7 +54,11 @@ const SmoothCard = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
               quasi!
             </p>
-            <a className="font-semibold underline underline-offset-4">
+            <a
+              className="font-semibold underline underline-offset-4 cursor-pointer"
+              onMouseOver={() => setTextHover(true)}
+              onMouseOut={() => setTextHover(false)}
+            >
               Visit the Site
             </a>
           </motion.div>

@@ -101,4 +101,21 @@ body {
       transform: translateX(0%);
     }
   }
+
+  .textRoleAnimation {
+    animation: roleText 0.5s ease-out forwards;
+    animation-delay: 1s;
+
+    /* transform: translateY(-80px) !important; */
+  }
+
+  @keyframes roleText {
+    0% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(-65%);
+    }
+  }
 }

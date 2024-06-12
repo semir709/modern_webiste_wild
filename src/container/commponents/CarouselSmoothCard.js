@@ -1,12 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { SmoothCard } from "../commponents/index";
 import { motion } from "framer-motion";
+import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
 const CarouselSmoothCard = () => {
   const carouselContainerRef = useRef();
   const customCursorRef = useRef();
   const containerCarouselRef = useRef();
   const [width, setWidth] = useState(0);
+  const [isMouseHover, setIsMouseHover] = useState(false);
+  const [keyChange, setKeyChange] = useState(1);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [textHover, setTextHover] = useState(false);
 
   useEffect(() => {
     const target = carouselContainerRef.current;
@@ -38,19 +43,38 @@ const CarouselSmoothCard = () => {
     target.style.transition = "top 0.5s ease, left 0.5s ease";
     target.style.top = `50%`;
     target.style.left = `90%`;
+
+    setIsMouseHover(false);
   };
 
-  const whenMouseDown = () => {
-    const target = customCursorRef.current;
+  const whenMouseHover = () => {
+    setIsMouseHover(true);
+  };
+
+  useEffect(() => {
+    setKeyChange((prev) => prev + 1);
+  }, [isMouseHover]);
+
+  const wheMouseDown = () => {
+    console.log("mouse down");
+    setIsMouseDown(true);
+  };
+
+  const whenMouseUp = () => {
+    setIsMouseDown(false);
   };
 
   return (
     <div
-      className="text-customPrimary  w-full h-full  px-[110px] relative cursor-none"
+      className={`text-customPrimary  w-full h-full  px-[110px] relative ${
+        textHover ? "" : " cursor-none"
+      }`}
       ref={containerCarouselRef}
       onMouseMove={whileMouseMove}
-      onMouseDown={whenMouseDown}
       onMouseOut={onMouseOut}
+      onMouseOver={whenMouseHover}
+      onMouseDown={wheMouseDown}
+      onMouseUp={whenMouseUp}
     >
       <motion.ol
         ref={carouselContainerRef}
@@ -59,15 +83,47 @@ const CarouselSmoothCard = () => {
         dragConstraints={{ right: 0, left: -width }}
       >
         {[1, 2, 3, 4, 5].map((el, index) => (
-          <SmoothCard />
+          <SmoothCard setTextHover={setTextHover} />
         ))}
       </motion.ol>
-      <div
+      <motion.div
         ref={customCursorRef}
-        className="absolute  -translate-x-1/2 -translate-y-1/2 z-50 bg-customPrimary w-[125px] h-[125px] rounded-full pointer-events-none flex justify-center items-center "
+        className="absolute  -translate-x-1/2 -translate-y-1/2 z-50  pointer-events-none flex items-center"
       >
-        <p className="uppercase text-customBlack font-bold text-sm">Drag</p>
-      </div>
+        <div className="">{isMouseDown && <IoMdArrowDropleft size={35} />}</div>
+        <motion.div
+          className="bg-customPrimary  rounded-full  flex justify-center items-center mx-2"
+          animate={{
+            width: isMouseDown ? "65px" : "125px",
+            height: isMouseDown ? "65px" : "125px",
+            opacity: textHover ? 0.6 : 1,
+          }}
+          transition={{ opacity: { duration: 0 } }}
+        >
+          <div className=" w-[50px] h-[50px]  overflow-hidden">
+            <motion.div
+              key={keyChange}
+              animate={isMouseHover && { y: "-65%" }}
+              transition={{ duration: 0.1 }}
+              className="relative h-full w-full -translate-y-[65%]"
+            >
+              {!isMouseDown && !textHover && (
+                <div>
+                  <p className=" uppercase text-customBlack font-bold text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    Drag
+                  </p>
+                  <p className="uppercase text-customBlack font-bold text-sm absolute top-[110%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    Drag
+                  </p>
+                </div>
+              )}
+            </motion.div>
+          </div>
+        </motion.div>
+        <div className="">
+          {isMouseDown && <IoMdArrowDropright size={35} />}
+        </div>
+      </motion.div>
     </div>
   );
 };
