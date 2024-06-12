@@ -50,12 +50,12 @@ const SmoothCard = ({ setTextHover }) => {
           </h5>
           <span className="uppercase text-[13px] ">It is fun</span>
           <motion.div variants={textVarinat}>
-            <p className="mb-[50px] mt-[25px] text-[13px] ">
+            <p className=" mt-[25px] text-[13px] ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
               quasi!
             </p>
             <a
-              className="font-semibold underline underline-offset-4 cursor-pointer"
+              className="font-semibold underline underline-offset-4 cursor-pointer pt-[50px] block   w-fit"
               onMouseOver={() => setTextHover(true)}
               onMouseOut={() => setTextHover(false)}
             >

@@ -71,7 +71,7 @@ const CarouselSmoothCard = () => {
       }`}
       ref={containerCarouselRef}
       onMouseMove={whileMouseMove}
-      onMouseOut={onMouseOut}
+      onMouseLeave={onMouseOut}
       onMouseOver={whenMouseHover}
       onMouseDown={wheMouseDown}
       onMouseUp={whenMouseUp}
