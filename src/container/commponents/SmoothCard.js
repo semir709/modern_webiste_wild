@@ -1,4 +1,5 @@
-import { motion, Container } from "framer-motion";
+import { motion } from "framer-motion";
+import { useNavigate, Link } from 'react-router-dom'
 
 const imageVarinat = {
   rest: {
@@ -28,7 +29,14 @@ const textVarinat = {
   },
 };
 
-const SmoothCard = ({ setTextHover }) => {
+
+
+const SmoothCard = ({ setTextHover, url }) => {
+  const navigate = useNavigate()
+
+  const onMouseClicked = (e) => {
+    navigate(url)
+  }
   return (
     <li className=" w-[27%] flex-shrink-0 h-full  relative list-counter-class ">
       <motion.div
@@ -54,13 +62,17 @@ const SmoothCard = ({ setTextHover }) => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
               quasi!
             </p>
-            <a
-              className="font-semibold underline underline-offset-4 cursor-pointer pt-[50px] block   w-fit"
+            <Link
+              className="font-semibold underline underline-offset-4 cursor-pointer pt-[50px] block w-fit "
               onMouseOver={() => setTextHover(true)}
               onMouseOut={() => setTextHover(false)}
+              onMouseUp={onMouseClicked}
             >
-              Visit the Site
-            </a>
+             
+              <p  onMouseDown={(e) => e.preventDefault()}> Visit the Site</p>
+            </Link>
+
+            
           </motion.div>
         </motion.div>
       </motion.div>

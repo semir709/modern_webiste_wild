@@ -1,14 +1,20 @@
 import "./App.css";
 import { HomePage } from "./pages";
 import { Navigation, SmoothScroll } from "./container/commponents/index";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <SmoothScroll>
         <div>
-          <Navigation />
-          <HomePage />
+          
+         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/winter" element={<div className="w-full h-[1200px] bg-red-300"></div>} />
+         </Routes>
+            
+          
           <div className="h-[2000px] w-[40px]"></div>
         </div>
       </SmoothScroll>

@@ -56,8 +56,9 @@ const CarouselSmoothCard = () => {
   }, [isMouseHover]);
 
   const wheMouseDown = () => {
-    console.log("mouse down");
+    
     setIsMouseDown(true);
+    
   };
 
   const whenMouseUp = () => {
@@ -83,7 +84,7 @@ const CarouselSmoothCard = () => {
         dragConstraints={{ right: 0, left: -width }}
       >
         {[1, 2, 3, 4, 5].map((el, index) => (
-          <SmoothCard setTextHover={setTextHover} />
+          <SmoothCard setTextHover={setTextHover} url={"/winter"} />
         ))}
       </motion.ol>
       <motion.div

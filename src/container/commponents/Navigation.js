@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Ellipse } from "../../assets/svg/index";
 import { MainModule } from "./index";
+import { useNavigate } from "react-router-dom";
 const variantScroll = {
   up: {
     height: "fit-content",
@@ -15,6 +16,12 @@ const Navigation = () => {
   const [scrollDown, setScrollDown] = useState(false);
 
   const [toggler, setToggler] = useState(false);
+
+  const url = useNavigate();
+
+  useEffect(() => {
+    setToggler(false);
+  }, [url])
 
   useEffect(() => {
     var lastScrollTop = 0;

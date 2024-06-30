@@ -1,7 +1,7 @@
 import React from "react";
 import { MainSection } from "../container/sections/index";
 import { motion } from "framer-motion";
-import { TvNoiseBg } from "../container/commponents";
+import { Navigation, TvNoiseBg } from "../container/commponents/index";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -28,6 +28,7 @@ const variantsChildren = {
 const Home = () => {
   return (
     <>
+      <Navigation />
       <div>
         <motion.div
           className="absolute w-full h-full top-0 left-0 z-50"
