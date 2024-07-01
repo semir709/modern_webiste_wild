@@ -7,6 +7,7 @@ module.exports = {
         customPrimary: "#f9cdcd",
         customBlack: "#252422",
         customWhite: "#f4f4f4",
+        customGray: "#5e5e5e",
       },
     },
   },

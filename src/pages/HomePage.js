@@ -29,6 +29,7 @@ const Home = () => {
   return (
     <>
       <Navigation />
+
       <div>
         <motion.div
           className="absolute w-full h-full top-0 left-0 z-50"

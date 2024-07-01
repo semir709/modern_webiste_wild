@@ -56,9 +56,7 @@ const CarouselSmoothCard = () => {
   }, [isMouseHover]);
 
   const wheMouseDown = () => {
-    
     setIsMouseDown(true);
-    
   };
 
   const whenMouseUp = () => {
@@ -82,6 +80,8 @@ const CarouselSmoothCard = () => {
         className="h-full flex "
         drag="x"
         dragConstraints={{ right: 0, left: -width }}
+        // dragElastic={0.1}
+        transition={{ duration: 0, ease: "linear" }}
       >
         {[1, 2, 3, 4, 5].map((el, index) => (
           <SmoothCard setTextHover={setTextHover} url={"/winter"} />

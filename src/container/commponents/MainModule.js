@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { VscClose } from "react-icons/vsc";
 import { CarouselSmoothCard } from "../commponents/index";
-import { useRef } from "react";
 
 const MainModule = ({ setToggler }) => {
   const togglerClose = () => {
@@ -46,8 +45,8 @@ const MainModule = ({ setToggler }) => {
           <div className=" w-full flex-1 pt-[50px] pb-5 z-50">
             <CarouselSmoothCard />
           </div>
-          <div className="bg-blue-300 h-[50px] md:px-[108px] px-[20px]">
-            asd
+          <div className=" h-[50px] md:px-[110px] px-20px] uppercase text-customGray text-sm font-semibold">
+            Deep/Ocean
           </div>
         </div>
       </section>
