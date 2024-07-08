@@ -1,15 +1,15 @@
-import { motion } from "framer-motion";
-import { useNavigate, Link } from 'react-router-dom'
+import { motion, useAnimation } from "framer-motion";
+import { useNavigate, Link } from "react-router-dom";
 
 const imageVarinat = {
   rest: {
-    height: "100%",
+    height: "80%",
   },
   hover: {
-    height: "35%",
+    height: "55%",
 
     transition: {
-      duration: 0.4,
+      duration: 0.5,
     },
   },
 };
@@ -23,36 +23,34 @@ const textVarinat = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.8,
       y: { bounce: 0 },
     },
   },
 };
 
-
-
 const SmoothCard = ({ setTextHover, url }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onMouseClicked = (e) => {
-    navigate(url)
-  }
+    navigate(url);
+  };
   return (
-    <li className=" w-[27%] flex-shrink-0 h-full  relative list-counter-class ">
+    <li className=" w-[34%] flex-shrink-0 h-full  relative numberCounter list-counter-class ">
       <motion.div
-        className="h-full flex flex-col px-2 horizontalLine numberCounter "
+        className="h-full px-2 horizontalLine pb-[70px]"
         initial="rest"
         whileHover="hover"
         animate="rest"
       >
-        <motion.div variants={imageVarinat} className=" pointer-events-none">
-          <img
+        <motion.div variants={imageVarinat} className="pointer-events-none">
+          <motion.img
             className="object-cover w-full h-full"
             src="https://images.pexels.com/photos/4256377/pexels-photo-4256377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="girl"
           />
         </motion.div>
-        <motion.div className=" h-1/2  bg px-3 pt-3 font-semibold ">
+        <motion.div className="px-3 pt-3 font-semibold ">
           <h5 className="relative text-lg uppercase ">
             B/D Jams <span className="absolute right-0">2023</span>
           </h5>
@@ -68,11 +66,8 @@ const SmoothCard = ({ setTextHover, url }) => {
               onMouseOut={() => setTextHover(false)}
               onMouseUp={onMouseClicked}
             >
-             
-              <p  onMouseDown={(e) => e.preventDefault()}> Visit the Site</p>
+              <p onMouseDown={(e) => e.preventDefault()}> Visit the Site</p>
             </Link>
-
-            
           </motion.div>
         </motion.div>
       </motion.div>
