@@ -6,7 +6,7 @@ const imageVarinat = {
     height: "80%",
   },
   hover: {
-    height: "55%",
+    height: "45%",
 
     transition: {
       duration: 0.5,

@@ -65,7 +65,7 @@ const CarouselSmoothCard = () => {
 
   return (
     <div
-      className={`text-customPrimary  w-full h-full  px-[110px] relative ${
+      className={`text-customPrimary  w-full h-full relative ${
         textHover ? "" : " cursor-none"
       }`}
       ref={containerCarouselRef}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Ellipse } from "../../assets/svg/index";
 import { MainModule } from "./index";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const variantScroll = {
   up: {
     height: "fit-content",
@@ -21,7 +21,7 @@ const Navigation = () => {
 
   useEffect(() => {
     setToggler(false);
-  }, [url])
+  }, [url]);
 
   useEffect(() => {
     var lastScrollTop = 0;
@@ -57,10 +57,10 @@ const Navigation = () => {
         transition={{ duration: 1, delay: 1 }}
         className="w-full h-full py-[30px] md:px-[100px] px-[20px] flex justify-between items-center text-white uppercase font-semibold text-sm"
       >
-        <a className="sm:text-2xl text-lg font-bold cursor-pointer">
+        <Link className="sm:text-2xl text-lg font-bold cursor-pointer">
           Beautiful/wild
-        </a>
-        <nav className="w-1/2 md:block hidden">
+        </Link>
+        <nav className="w-1/2 min-[1270px]:block hidden">
           <ul className="flex justify-around ">
             <li className="cursor-pointer bottomLineAnimation">Explore</li>
             <li className="cursor-pointer bottomLineAnimation">About</li>
@@ -68,8 +68,8 @@ const Navigation = () => {
             <li className="cursor-pointer bottomLineAnimation">Contact</li>
           </ul>
         </nav>
-        <button className="w-[50px] md:block hidden" onClick={togglerOpen}>
-          <div className="flex justify-center items-center group">
+        <button className="w-[50px] " onClick={togglerOpen}>
+          <div className=" justify-center items-center group min-[1270px]:flex hidden">
             <div className="me-[1px] group-hover:me-1 transition-[margin]">
               <Ellipse />
             </div>
@@ -80,11 +80,14 @@ const Navigation = () => {
               <Ellipse />
             </div>
           </div>
-        </button>
 
-        <div className="md:hidden block">
-          <menu className="">menu</menu>
-        </div>
+          <div className="uppercase text-base min-[1270px]:hidden block">
+            <span>Menu</span>
+          </div>
+          {/* <div className="md:hidden block">
+            <menu className="">menu</menu>
+          </div> */}
+        </button>
       </motion.div>
 
       {toggler && <MainModule setToggler={setToggler} />}

@@ -10,9 +10,11 @@ const MainModule = ({ setToggler }) => {
   };
 
   const [containerAnimation, setContainerAnimation] = useState(false);
+  const [slideAnimationEnd, setSlideAnimationEnd] = useState(false);
 
   let timeId = null;
-  const customEase = [0.1, 0.1, 0.1, 1.0];
+  const customEase = [0.72, 0, 0.28, 1];
+
   return (
     <motion.div
       className="fixed top-0 left-0 bg-customBlack w-full h-screen "
@@ -20,24 +22,24 @@ const MainModule = ({ setToggler }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      // onAnimationComplete={() => setContainerAnimation(true)}
       onAnimationStart={() =>
         (timeId = setTimeout(() => setContainerAnimation(true), 200))
       }
       onAnimationEnd={clearTimeout(timeId)}
     >
-      <section className="absolute top-0 left-0 w-full h-full  py-[25px]   ">
+      <section className="absolute top-0 left-0 w-full h-full  py-[25px] ps-[40px]">
         <motion.div
           initial={{ width: "100%" }}
           animate={containerAnimation && { width: "0" }}
           transition={{ duration: 0.5, ease: customEase }}
+          onAnimationComplete={() => setSlideAnimationEnd(true)}
           className="bg-customBlack  h-[90%] absolute top-0 left-0 z-50"
         ></motion.div>
 
-        <div className="h-full flex flex-col justify-between flex-1">
-          <div className=" w-full flex items-center justify-between text-customPrimary overflow-hidden md:px-[108px] px-[20px]">
-            <div className="flex items-center font-semibold uppercase text-sm">
-              <div className="me-[100px] flex items-start leading-4">
+        <div className="h-full  justify-between ">
+          <div className=" w-full flex items-center justify-between text-customPrimary overflow-hidden ">
+            <div className=" items-center font-semibold uppercase text-sm min-[1270px]:flex hidden">
+              <div className="me-[100px] flex items-start leading-4 ">
                 <div>
                   <span>
                     World wild <br /> Nautre Care
@@ -51,21 +53,53 @@ const MainModule = ({ setToggler }) => {
                 </span>
               </div>
             </div>
+            <div className="min-[1270px]:hidden block">
+              <div>
+                <span className="sm:text-2xl text-lg uppercase font-bold ">
+                  Deep/Ocean
+                </span>
+              </div>
+            </div>
             <div className="p-5">
               <div
                 className="border rounded-full border-white hover:cursor-pointer "
                 onClick={togglerClose}
               >
-                <VscClose size={40} color="white" />
+                <VscClose color="white" className="sm:w-8 sm:h-8  h-5 w-5" />
               </div>
             </div>
           </div>
-          <div className=" w-full flex-1 pt-[50px] pb-5 z-30">
+          <div className=" w-full flex-1 pt-[30px] pb-5 z-30 h-[80%] min-[1270px]:block hidden">
             <CarouselSmoothCard />
           </div>
-          <div className=" h-[50px] md:px-[110px] px-20px] uppercase text-customGray text-sm font-semibold">
-            Deep/Ocean
+          <div className="min-[1270px]:hidden block  ">
+            <nav>
+              <ul className="text-customPrimary uppercase font-semibold my-[70px] sm:text-3xl text-lg">
+                <li className="cursor-pointer mb-4">
+                  <span>Explore</span>
+                </li>
+                <li className="cursor-pointer mb-4">
+                  <span>About</span>
+                </li>
+                <li className="cursor-pointer mb-4">
+                  <span>News</span>
+                </li>
+                <li className="cursor-pointer mb-4">
+                  <span>Contact</span>
+                </li>
+                <li className="cursor-pointer mb-4">
+                  Initiatives <span>&gt;</span>
+                </li>
+              </ul>
+            </nav>
           </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={slideAnimationEnd && { opacity: 1 }}
+            className="uppercase text-customGray text-sm font-semibold absolute bottom-[35px] "
+          >
+            Deep/Ocean
+          </motion.div>
         </div>
       </section>
     </motion.div>
