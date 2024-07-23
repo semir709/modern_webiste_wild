@@ -1,4 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const imageVarinat = {
@@ -29,21 +30,35 @@ const textVarinat = {
   },
 };
 
-const SmoothCard = ({ setTextHover, url }) => {
+const SmoothCard = ({ setTextHover = false, url = false }) => {
   const navigate = useNavigate();
 
   const onMouseClicked = (e) => {
     navigate(url);
   };
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1270);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
-    <li className=" w-[34%] flex-shrink-0 h-full  relative numberCounter list-counter-class ">
+    <li className=" min-[1270px]:w-[34%] w-full flex-shrink-0 h-full  relative numberCounter list-counter-class ">
       <motion.div
         className="h-full px-2 horizontalLine pb-[70px]"
         initial="rest"
         whileHover="hover"
         animate="rest"
       >
-        <motion.div variants={imageVarinat} className="pointer-events-none">
+        <motion.div
+          variants={!isMobile && imageVarinat}
+          className="pointer-events-none"
+        >
           <motion.img
             className="object-cover w-full h-full"
             src="https://images.pexels.com/photos/4256377/pexels-photo-4256377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -55,7 +70,7 @@ const SmoothCard = ({ setTextHover, url }) => {
             B/D Jams <span className="absolute right-0">2023</span>
           </h5>
           <span className="uppercase text-[13px] ">It is fun</span>
-          <motion.div variants={textVarinat}>
+          <motion.div variants={!isMobile && textVarinat}>
             <p className=" mt-[25px] text-[13px] ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
               quasi!

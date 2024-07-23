@@ -63,10 +63,20 @@ const CarouselSmoothCard = () => {
     setIsMouseDown(false);
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1270);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
-      className={`text-customPrimary  w-full h-full relative ${
-        textHover ? "" : " cursor-none"
+      className={`text-customPrimary  w-full h-full relative   ${
+        !isMobile && (textHover ? "" : " cursor-none")
       }`}
       ref={containerCarouselRef}
       onMouseMove={whileMouseMove}
@@ -77,8 +87,8 @@ const CarouselSmoothCard = () => {
     >
       <motion.ol
         ref={carouselContainerRef}
-        className="h-full flex "
-        drag="x"
+        className="h-full min-[1270px]:flex grid grid-cols-2"
+        drag={!isMobile ? "x" : false}
         dragConstraints={{ right: 0, left: -width }}
         // dragElastic={0.1}
         transition={{ duration: 0.3, ease: "linear" }}
@@ -91,7 +101,7 @@ const CarouselSmoothCard = () => {
       </motion.ol>
       <motion.div
         ref={customCursorRef}
-        className="absolute  -translate-x-1/2 -translate-y-1/2 z-50  pointer-events-none flex items-center"
+        className="absolute  -translate-x-1/2 -translate-y-1/2 z-50  pointer-events-none  items-center min-[1270px]:flex hidden"
       >
         <div className="">{isMouseDown && <IoMdArrowDropleft size={35} />}</div>
         <motion.div
@@ -103,7 +113,7 @@ const CarouselSmoothCard = () => {
           }}
           transition={{ opacity: { duration: 0 } }}
         >
-          <div className=" w-[50px] h-[50px]  overflow-hidden">
+          <div className=" w-[50px] h-[50px] overflow-hidden ">
             <motion.div
               key={keyChange}
               animate={isMouseHover && { y: "-65%" }}

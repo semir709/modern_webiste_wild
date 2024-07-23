@@ -84,9 +84,6 @@ const Navigation = () => {
           <div className="uppercase text-base min-[1270px]:hidden block">
             <span>Menu</span>
           </div>
-          {/* <div className="md:hidden block">
-            <menu className="">menu</menu>
-          </div> */}
         </button>
       </motion.div>
 
