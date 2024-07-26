@@ -39,8 +39,8 @@ const MainModule = ({ setToggler }) => {
           className="bg-customBlack  h-[90%] absolute top-0 left-0 z-50"
         ></motion.div>
 
-        <div className="h-full  justify-between ">
-          <div className=" w-full flex items-center justify-between text-customPrimary overflow-hidden">
+        <div className="h-full  justify-between overflow-auto">
+          <div className=" w-full flex items-center justify-between text-customPrimary overflow-hidden ">
             <div className=" items-center font-semibold uppercase text-sm min-[1270px]:flex hidden">
               <div className="me-[100px] flex items-start leading-4 ">
                 <div>
@@ -56,7 +56,7 @@ const MainModule = ({ setToggler }) => {
                 </span>
               </div>
             </div>
-            <div className="min-[1270px]:hidden block">
+            <div className="min-[1270px]:hidden block ">
               <div>
                 <span className="sm:text-2xl text-lg uppercase font-bold ">
                   Deep/Ocean
