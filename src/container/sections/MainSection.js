@@ -8,7 +8,7 @@ const MainSection = () => {
 
   return (
     <main>
-      <div className="w-full h-screen relative overflow-hidden">
+      <div className="relative h-screen w-full overflow-hidden">
         <div className={`${changeVideo ? "block" : "hidden"}`}>
           <MainVideo
             changeVideo={changeVideo}

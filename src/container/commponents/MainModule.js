@@ -20,7 +20,7 @@ const MainModule = ({ setToggler }) => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 bg-customBlack w-full h-screen "
+      className="fixed left-0 top-0 h-screen w-full bg-customBlack"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -30,19 +30,19 @@ const MainModule = ({ setToggler }) => {
       }
       onAnimationEnd={clearTimeout(timeId)}
     >
-      <section className="absolute top-0 left-0 w-full h-full  py-[25px] ps-[40px]">
+      <section className="absolute left-0 top-0 h-full w-full py-[25px] ps-[40px]">
         <motion.div
           initial={{ width: "100%" }}
           animate={containerAnimation && { width: "0" }}
           transition={{ duration: 0.5, ease: customEase }}
           onAnimationComplete={() => setSlideAnimationEnd(true)}
-          className="bg-customBlack  h-[90%] absolute top-0 left-0 z-50"
+          className="absolute left-0 top-0 z-50 h-[90%] bg-customBlack"
         ></motion.div>
 
-        <div className="h-full  justify-between overflow-auto">
-          <div className=" w-full flex items-center justify-between text-customPrimary overflow-hidden ">
-            <div className=" items-center font-semibold uppercase text-sm min-[1270px]:flex hidden">
-              <div className="me-[100px] flex items-start leading-4 ">
+        <div className="h-full justify-between overflow-y-auto">
+          <div className="fixed left-0 top-0 z-50 flex w-full items-center justify-between overflow-hidden border-b-2 border-customPrimary bg-customBlack px-[40px] py-[20px] text-customPrimary">
+            <div className="hidden items-center text-sm font-semibold uppercase min-[1270px]:flex">
+              <div className="me-[100px] flex items-start leading-4">
                 <div>
                   <span>
                     World wild <br /> Nautre Care
@@ -56,44 +56,44 @@ const MainModule = ({ setToggler }) => {
                 </span>
               </div>
             </div>
-            <div className="min-[1270px]:hidden block ">
+            <div className="block min-[1270px]:hidden">
               <div>
-                <span className="sm:text-2xl text-lg uppercase font-bold ">
+                <span className="text-lg font-bold uppercase sm:text-2xl">
                   Deep/Ocean
                 </span>
               </div>
             </div>
             <div className="p-5">
               <div
-                className="border rounded-full border-white hover:cursor-pointer "
+                className="rounded-full border border-white hover:cursor-pointer"
                 onClick={togglerClose}
               >
-                <VscClose color="white" className="sm:w-8 sm:h-8  h-5 w-5" />
+                <VscClose color="white" className="h-5 w-5 sm:h-8 sm:w-8" />
               </div>
             </div>
           </div>
-          <div className=" w-full flex-1 pt-[30px] pb-5 z-30 h-[80%] min-[1270px]:block hidden">
+          <div className="z-30 mt-[70px] hidden h-[80%] w-full flex-1 pb-5 pt-[30px] min-[1270px]:block">
             <CarouselSmoothCard />
           </div>
           {!showIniatives && (
-            <div className="min-[1270px]:hidden block  ">
+            <div className="block min-[1270px]:hidden">
               <nav>
-                <ul className="text-customPrimary uppercase font-semibold my-[70px] sm:text-3xl text-lg">
-                  <li className="cursor-pointer mb-4">
+                <ul className="my-[70px] text-lg font-semibold uppercase text-customPrimary sm:text-3xl">
+                  <li className="mb-4 cursor-pointer">
                     <span>Explore</span>
                   </li>
-                  <li className="cursor-pointer mb-4">
+                  <li className="mb-4 cursor-pointer">
                     <span>About</span>
                   </li>
-                  <li className="cursor-pointer mb-4">
+                  <li className="mb-4 cursor-pointer">
                     <span>News</span>
                   </li>
-                  <li className="cursor-pointer mb-4">
+                  <li className="mb-4 cursor-pointer">
                     <span>Contact</span>
                   </li>
                   <li
                     onClick={() => setShowIniatives(true)}
-                    className="cursor-pointer mb-4"
+                    className="mb-4 cursor-pointer"
                   >
                     Initiatives <span>&gt;</span>
                   </li>
@@ -103,9 +103,9 @@ const MainModule = ({ setToggler }) => {
           )}
 
           {showIniatives && (
-            <div className="min-[1270px]:hidden block">
-              <div className="bg-customPrimary w-full h-[0.5px] absolute left-0"></div>
-              <div className="flex  gap-10 text-customPrimary py-5">
+            <div className="block min-[1270px]:hidden">
+              <div className="absolute left-0 h-[0.5px] w-full bg-customPrimary"></div>
+              <div className="flex gap-10 py-5 text-customPrimary">
                 <div>
                   <span>
                     <button onClick={() => setShowIniatives(false)}>
@@ -117,7 +117,7 @@ const MainModule = ({ setToggler }) => {
                   <div>
                     <GoDotFill />
                   </div>
-                  <div className="uppercase text-xs font-semibold mt-3">
+                  <div className="mt-3 text-xs font-semibold uppercase">
                     <span>Aenean vehicula</span>
                     <br />
                     <span>Quisque quis</span>
@@ -138,7 +138,7 @@ const MainModule = ({ setToggler }) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={slideAnimationEnd && { opacity: 1 }}
-            className="uppercase text-customGray text-sm font-semibold absolute bottom-[35px] "
+            className="absolute bottom-[35px] text-sm font-semibold uppercase text-customGray"
           >
             Deep/Ocean
           </motion.div>

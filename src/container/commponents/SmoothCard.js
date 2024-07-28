@@ -48,9 +48,9 @@ const SmoothCard = ({ setTextHover = false, url = false }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <li className=" min-[1270px]:w-[34%] w-full flex-shrink-0 h-full  relative numberCounter list-counter-class ">
+    <li className="numberCounter list-counter-class relative h-full w-full flex-shrink-0 min-[1270px]:w-[34%]">
       <motion.div
-        className="h-full px-2 horizontalLine pb-[70px]"
+        className="horizontalLine h-full px-2 pb-[70px]"
         initial="rest"
         whileHover="hover"
         animate="rest"
@@ -60,23 +60,23 @@ const SmoothCard = ({ setTextHover = false, url = false }) => {
           className="pointer-events-none"
         >
           <motion.img
-            className="object-cover w-full h-full"
+            className="h-full w-full object-cover"
             src="https://images.pexels.com/photos/4256377/pexels-photo-4256377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="girl"
           />
         </motion.div>
-        <motion.div className="px-3 pt-3 font-semibold ">
-          <h5 className="relative text-lg uppercase ">
+        <motion.div className="px-3 pt-3 font-semibold">
+          <h5 className="relative text-lg uppercase">
             B/D Jams <span className="absolute right-0">2023</span>
           </h5>
-          <span className="uppercase text-[13px] ">It is fun</span>
+          <span className="text-[13px] uppercase">It is fun</span>
           <motion.div variants={!isMobile && textVarinat}>
-            <p className=" mt-[25px] text-[13px] ">
+            <p className="mt-[25px] text-[13px]">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
               quasi!
             </p>
             <Link
-              className="font-semibold underline underline-offset-4 cursor-pointer pt-[50px] block w-fit "
+              className="block w-fit cursor-pointer pt-[50px] font-semibold underline underline-offset-4"
               onMouseOver={() => setTextHover(true)}
               onMouseOut={() => setTextHover(false)}
               onMouseUp={onMouseClicked}

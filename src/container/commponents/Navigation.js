@@ -14,9 +14,7 @@ const variantScroll = {
 
 const Navigation = () => {
   const [scrollDown, setScrollDown] = useState(false);
-
   const [toggler, setToggler] = useState(false);
-
   const url = useNavigate();
 
   useEffect(() => {
@@ -45,9 +43,10 @@ const Navigation = () => {
     setToggler(true);
     document.body.style.overflow = "hidden";
   };
+
   return (
     <motion.div
-      className="w-full fixed top-0 left z-40 overflow-hidden  min-h-[180px] "
+      className="left fixed top-0 z-40 min-h-[180px] w-full overflow-hidden"
       variants={variantScroll}
       animate={scrollDown ? "down" : "up"}
     >
@@ -55,33 +54,33 @@ const Navigation = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="w-full h-full py-[30px] md:px-[100px] px-[20px] flex justify-between items-center text-white uppercase font-semibold text-sm"
+        className="flexBetween navMargPadg text-sm font-semibold uppercase text-white"
       >
-        <Link className="sm:text-2xl text-lg font-bold cursor-pointer">
+        <Link className="cursor-pointer text-lg font-bold sm:text-2xl">
           Beautiful/wild
         </Link>
-        <nav className="w-1/2 min-[1270px]:block hidden">
-          <ul className="flex justify-around ">
-            <li className="cursor-pointer bottomLineAnimation">Explore</li>
-            <li className="cursor-pointer bottomLineAnimation">About</li>
-            <li className="cursor-pointer bottomLineAnimation">News</li>
-            <li className="cursor-pointer bottomLineAnimation">Contact</li>
+        <nav className="hidden w-1/2 min-[1270px]:block">
+          <ul className="flexAround">
+            <li className="bottomLineAnimation">Explore</li>
+            <li className="bottomLineAnimation">About</li>
+            <li className="bottomLineAnimation">News</li>
+            <li className="bottomLineAnimation">Contact</li>
           </ul>
         </nav>
-        <button className="w-[50px] " onClick={togglerOpen}>
-          <div className=" justify-center items-center group min-[1270px]:flex hidden">
-            <div className="me-[1px] group-hover:me-1 transition-[margin]">
+        <button className="w-[50px]" onClick={togglerOpen}>
+          <div className="group hidden items-center justify-center min-[1270px]:flex">
+            <div className="me-[1px] transition-[margin] group-hover:me-1">
               <Ellipse />
             </div>
-            <div className="me-[1px] group-hover:me-1 transition-[margin]">
+            <div className="me-[1px] transition-[margin] group-hover:me-1">
               <Ellipse />
             </div>
-            <div className="me-[1px] group-hover:me-1 transition-[margin]">
+            <div className="me-[1px] transition-[margin] group-hover:me-1">
               <Ellipse />
             </div>
           </div>
 
-          <div className="uppercase text-base min-[1270px]:hidden block">
+          <div className="m-4 block p-5 text-base uppercase min-[1270px]:hidden">
             <span>Menu</span>
           </div>
         </button>

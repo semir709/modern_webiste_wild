@@ -94,9 +94,9 @@ const MainVideo = ({ changeVideo, setChangeVideo }) => {
   }, [changeVideo]);
 
   return (
-    <div className="w-full h-screen">
+    <div className="h-screen w-full">
       <video
-        className="w-full h-full object-cover"
+        className="h-full w-full object-cover"
         ref={videoRef}
         src={sideVideo}
         onClick={() => setChangeVideo(false)}
@@ -108,11 +108,11 @@ const MainVideo = ({ changeVideo, setChangeVideo }) => {
             transform: `translateX(${timeLength}%)`,
             transitionDuration: "500ms",
           }}
-          className={`hover:cursor-grab w-full`}
+          className={`w-full hover:cursor-grab`}
           ref={refDraggableElem}
         >
           <span
-            className="text-white text-lg select-none block -translate-x-1/2 w-fit font-semibold"
+            className="block w-fit -translate-x-1/2 select-none text-lg font-semibold text-white"
             onMouseDown={moveTimeLap}
           >
             {currentTime}

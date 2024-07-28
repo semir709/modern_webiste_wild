@@ -8,10 +8,13 @@ function App() {
     <>
       <SmoothScroll>
         <div>
-         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/winter" element={<div className="w-full h-[1200px] bg-red-300"></div>} />
-         </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/winter"
+              element={<div className="h-[1200px] w-full bg-red-300"></div>}
+            />
+          </Routes>
           <div className="h-[2000px] w-[40px]"></div>
         </div>
       </SmoothScroll>

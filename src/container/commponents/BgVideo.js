@@ -30,14 +30,14 @@ const BgVideo = ({ setChangeVideo }) => {
 
   return (
     <div
-      className={`cursor-none w-full h-screen`}
+      className={`h-screen w-full cursor-none`}
       onMouseMove={mouseMovment}
       onMouseOut={mouseOut}
       onClick={() => setChangeVideo(true)}
     >
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 "></div>
+      <div className="absolute left-0 top-0 h-full w-full bg-black opacity-20"></div>
       <video
-        className="w-full h-full object-cover"
+        className="h-full w-full object-cover"
         preload="auto"
         autoPlay
         loop
@@ -49,15 +49,15 @@ const BgVideo = ({ setChangeVideo }) => {
 
       <div
         ref={cursor}
-        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2  "
+        className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2"
       >
-        <div className="bg-white rounded-full w-[100px] h-[100px] flex items-center justify-center ">
-          <span className="uppercase text-center font-semibold leading-4 ">
+        <div className="flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white">
+          <span className="text-center font-semibold uppercase leading-4">
             Watch <br /> reel
           </span>
         </div>
 
-        <div className="text-white text-center uppercase font-semibold leading-4 mt-3">
+        <div className="mt-3 text-center font-semibold uppercase leading-4 text-white">
           <span>Basic/Dept &#174;</span>
           <br />
           <span>2010-&#8734;</span>

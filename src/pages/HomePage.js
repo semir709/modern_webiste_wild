@@ -32,14 +32,14 @@ const Home = () => {
 
       <div>
         <motion.div
-          className="absolute w-full h-full top-0 left-0 z-50"
+          className="absolute left-0 top-0 z-50 h-full w-full"
           variants={variantsParanet}
           initial="start"
           animate="end"
         >
           <TvNoiseBg>
-            <div className="w-full h-full flex items-center justify-center ">
-              <div className="h-[200px] sm:text-[100px] text-4xl leading-none uppercase text-center font-extrabold text-customBlack">
+            <div className="flex h-full w-full items-center justify-center">
+              <div className="h-[200px] text-center text-4xl font-extrabold uppercase leading-none text-customBlack sm:text-[100px]">
                 <motion.div
                   className="overflow-hidden"
                   variants={variantsChildren}
@@ -55,7 +55,7 @@ const Home = () => {
           <MainSection />
         </section>
         <section>
-          <div className="p-5 bg-red-300">asd</div>
+          <div className="bg-red-300 p-5">asd</div>
         </section>
       </div>
     </>

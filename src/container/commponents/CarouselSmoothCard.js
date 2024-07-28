@@ -75,8 +75,8 @@ const CarouselSmoothCard = () => {
 
   return (
     <div
-      className={`text-customPrimary  w-full h-full relative   ${
-        !isMobile && (textHover ? "" : " cursor-none")
+      className={`relative h-full w-full text-customPrimary ${
+        !isMobile && (textHover ? "" : "cursor-none")
       }`}
       ref={containerCarouselRef}
       onMouseMove={whileMouseMove}
@@ -87,7 +87,7 @@ const CarouselSmoothCard = () => {
     >
       <motion.ol
         ref={carouselContainerRef}
-        className="h-full min-[1270px]:flex grid grid-cols-2"
+        className="grid h-full grid-cols-2 min-[1270px]:flex"
         drag={!isMobile ? "x" : false}
         dragConstraints={{ right: 0, left: -width }}
         // dragElastic={0.1}
@@ -101,11 +101,11 @@ const CarouselSmoothCard = () => {
       </motion.ol>
       <motion.div
         ref={customCursorRef}
-        className="absolute  -translate-x-1/2 -translate-y-1/2 z-50  pointer-events-none  items-center min-[1270px]:flex hidden"
+        className="pointer-events-none absolute z-50 hidden -translate-x-1/2 -translate-y-1/2 items-center min-[1270px]:flex"
       >
         <div className="">{isMouseDown && <IoMdArrowDropleft size={35} />}</div>
         <motion.div
-          className="bg-customPrimary  rounded-full  flex justify-center items-center mx-2"
+          className="mx-2 flex items-center justify-center rounded-full bg-customPrimary"
           animate={{
             width: isMouseDown ? "65px" : "125px",
             height: isMouseDown ? "65px" : "125px",
@@ -113,7 +113,7 @@ const CarouselSmoothCard = () => {
           }}
           transition={{ opacity: { duration: 0 } }}
         >
-          <div className=" w-[50px] h-[50px] overflow-hidden ">
+          <div className="h-[50px] w-[50px] overflow-hidden">
             <motion.div
               key={keyChange}
               animate={isMouseHover && { y: "-65%" }}
@@ -122,10 +122,10 @@ const CarouselSmoothCard = () => {
             >
               {!isMouseDown && !textHover && (
                 <div>
-                  <p className=" uppercase text-customBlack font-bold text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm font-bold uppercase text-customBlack">
                     Drag
                   </p>
-                  <p className="uppercase text-customBlack font-bold text-sm absolute top-[110%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <p className="absolute left-1/2 top-[110%] -translate-x-1/2 -translate-y-1/2 text-sm font-bold uppercase text-customBlack">
                     Drag
                   </p>
                 </div>
