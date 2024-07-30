@@ -28,8 +28,6 @@ const variantsChildren = {
 const Home = () => {
   return (
     <>
-      <Navigation />
-
       <div>
         <motion.div
           className="absolute left-0 top-0 z-50 h-full w-full"

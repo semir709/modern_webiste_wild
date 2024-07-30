@@ -1,6 +1,6 @@
 import "./App.css";
 import { HomePage } from "./pages";
-import { SmoothScroll } from "./container/commponents/index";
+import { Navigation, SmoothScroll } from "./container/commponents/index";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
     <>
       <SmoothScroll>
         <div>
+          <Navigation />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route

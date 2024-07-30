@@ -6,3 +6,4 @@ export { default as SmoothScroll } from "./SmoothScroll";
 export { default as MainModule } from "./MainModule";
 export { default as SmoothCard } from "./SmoothCard";
 export { default as CarouselSmoothCard } from "./CarouselSmoothCard";
+export { default as NavSpaceWrapper } from "./NavSpaceWrapper";

@@ -49,9 +49,10 @@ body {
   }
 
   /*Animation for nav*/
-  /* .bottomLineAnimation {
+  .bottomLineAnimation {
     position: relative;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .bottomLineAnimation::after {
@@ -68,7 +69,7 @@ body {
 
   .bottomLineAnimation:hover::after {
     animation: shiftLineRightStart 0.3s ease-out forwards;
-  } */
+  }
 
   .horizontalLine::before {
     position: absolute;
@@ -94,77 +95,6 @@ body {
     line-height: 2rem;
   }
 
-  /* @keyframes shiftLineRightEnd {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
-  @keyframes shiftLineRightStart {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
-  } */
-
-  .textRoleAnimation {
-    animation: roleText 0.5s ease-out forwards;
-    animation-delay: 1s;
-
-    /* transform: translateY(-80px) !important; */
-  }
-
-  @keyframes roleText {
-    0% {
-      transform: translateY(0%);
-    }
-
-    100% {
-      transform: translateY(-65%);
-    }
-  }
-}
-
-/*Trying to implement better tailwind*/
-
-/*For global styles fundemental styles setting default styles: font-family, removing defaulr margin etc...*/
-@layer base {
-}
-
-/*Style for specific components*/
-@layer components {
-  .navMargPadg {
-    @apply px-[20px] py-[30px] md:px-[100px];
-  }
-
-  /*line sfigt animation*/
-  .bottomLineAnimation {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .bottomLineAnimation::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0.5px;
-    background-color: currentColor;
-    transform: translateX(0%);
-    animation: shiftLineRightEnd 0.3s ease-out forwards;
-  }
-
-  .bottomLineAnimation:hover::after {
-    animation: shiftLineRightStart 0.3s ease-out forwards;
-  }
-
   @keyframes shiftLineRightEnd {
     0% {
       transform: translateX(0%);
@@ -183,15 +113,20 @@ body {
     }
   }
 
-  /**/
-}
+  .textRoleAnimation {
+    animation: roleText 0.5s ease-out forwards;
+    animation-delay: 1s;
 
-/*Small reusable styles: background image, text color etc...*/
-@layer utilities {
-  .flexBetween {
-    @apply flex h-full w-full items-center justify-between;
+    /* transform: translateY(-80px) !important; */
   }
-  /* .flexAround {
-    @apply flex justify-around items-centers;
-  } */
+
+  @keyframes roleText {
+    0% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(-65%);
+    }
+  }
 }

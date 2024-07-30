@@ -9,6 +9,9 @@ module.exports = {
         customWhite: "#f4f4f4",
         customGray: "#5e5e5e",
       },
+      screens: {
+        md: "1270px",
+      },
     },
   },
 };
