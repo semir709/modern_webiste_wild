@@ -1,7 +1,7 @@
 import React from "react";
 import { MainSection } from "../container/sections/index";
 import { motion } from "framer-motion";
-import { Navigation, TvNoiseBg } from "../container/commponents/index";
+import { TvNoiseBg } from "../container/commponents/index";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -28,7 +28,7 @@ const variantsChildren = {
 const Home = () => {
   return (
     <>
-      <div>
+      <section data-scroll-section>
         <motion.div
           className="absolute left-0 top-0 z-50 h-full w-full"
           variants={variantsParanet}
@@ -48,14 +48,26 @@ const Home = () => {
             </div>
           </TvNoiseBg>
         </motion.div>
-
-        <section>
+        <div>
           <MainSection />
-        </section>
-        <section>
-          <div className="bg-red-300 p-5">asd</div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <section data-scroll-section>
+        <div className="h-[400px] bg-red-300 p-5">asd</div>
+      </section>
+      <section data-scroll-section>
+        <div className="h-[400px] bg-green-300 p-5">asd</div>
+      </section>
+      <section data-scroll-section>
+        <div className="h-[400px] bg-blue-300 p-5">asd</div>
+      </section>
+      <section data-scroll-section>
+        <div className="h-[400px] bg-yellow-300 p-5">asd</div>
+      </section>
+      <section data-scroll-section>
+        <div className="h-[400px] bg-pink-300 p-5">asd</div>
+      </section>
     </>
   );
 };

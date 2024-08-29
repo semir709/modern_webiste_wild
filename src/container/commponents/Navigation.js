@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate, motion } from "framer-motion";
 import { Ellipse } from "../../assets/svg/index";
 import { MainModule, NavSpaceWrapper } from "./index";
 import { Link, useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
+import LocomotiveScroll from "locomotive-scroll";
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const variantScroll = {
   up: {
@@ -29,25 +31,35 @@ const Navigation = () => {
   const [scrollDown, setScrollDown] = useState(false);
   const [toggler, setToggler] = useState(false);
   const url = useNavigate();
+  const { scroll } = useLocomotiveScroll();
 
   // nav animation on scroll
   useEffect(() => {
-    var lastScrollTop = 0;
+    let currentPosition = 0;
 
-    const checkScrollDirection = () => {
-      var st = document.documentElement.scrollTop;
-      if (st > lastScrollTop) {
+    const handleScroll = (obj) => {
+      const newPosition = obj.scroll.y;
+
+      if (newPosition > currentPosition) {
         setScrollDown(true);
-      } else if (st < lastScrollTop) {
+      } else {
         setScrollDown(false);
       }
-      lastScrollTop = st <= 0 ? 0 : st;
+
+      currentPosition = newPosition <= 0 ? 0 : newPosition;
     };
 
-    window.addEventListener("scroll", checkScrollDirection, false);
+    if (scroll) {
+      scroll.on("scroll", handleScroll);
+    }
 
-    return () => window.removeEventListener("scroll", checkScrollDirection);
-  }, []);
+    // Cleanup on unmount or when scroll changes
+    return () => {
+      if (scroll) {
+        scroll.off("scroll", handleScroll);
+      }
+    };
+  }, [scroll]);
 
   // When open module or change page
   useEffect(() => {
@@ -61,7 +73,7 @@ const Navigation = () => {
 
   return (
     <motion.div
-      className="fixed top-0 z-40 w-full overflow-hidden"
+      className={"fixed top-0 z-50 w-full overflow-hidden"}
       variants={variantScroll}
       animate={scrollDown ? "down" : "up"}
     >

@@ -1,24 +1,29 @@
 import "./App.css";
 import { HomePage } from "./pages";
-import { Navigation, SmoothScroll } from "./container/commponents/index";
+import { Navigation } from "./container/commponents/index";
 import { Routes, Route } from "react-router-dom";
+import { useRef } from "react";
+import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 
 function App() {
+  const containerRef = useRef(null);
   return (
     <>
-      <SmoothScroll>
-        <div>
+      <LocomotiveScrollProvider
+        options={{
+          smooth: true,
+        }}
+        watch={[]}
+        containerRef={containerRef}
+      >
+        <main data-scroll-container ref={containerRef}>
           <Navigation />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route
-              path="/winter"
-              element={<div className="h-[1200px] w-full bg-red-300"></div>}
-            />
           </Routes>
-          <div className="h-[2000px] w-[40px]"></div>
-        </div>
-      </SmoothScroll>
+        </main>
+      </LocomotiveScrollProvider>
     </>
   );
 }
