@@ -6,3 +6,5 @@ export { default as MainModule } from "./MainModule";
 export { default as SmoothCard } from "./SmoothCard";
 export { default as CarouselSmoothCard } from "./CarouselSmoothCard";
 export { default as NavSpaceWrapper } from "./NavSpaceWrapper";
+export { default as ParticlesComponent } from "./ParticlesComponent";
+export { default as AwardCard } from "./AwardCard";
