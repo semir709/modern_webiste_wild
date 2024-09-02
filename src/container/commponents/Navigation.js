@@ -1,18 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Ellipse } from "../../assets/svg/index";
 import { MainModule, NavSpaceWrapper } from "./index";
 import { Link, useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
-import LocomotiveScroll from "locomotive-scroll";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const variantScroll = {
   up: {
-    height: "fit-content",
+    y: -70,
   },
   down: {
-    height: 0,
+    y: 0,
   },
 };
 const variantNav = {
@@ -26,6 +25,18 @@ const variantNav = {
     transition: { duration: 1, delay: 1 },
   },
 };
+
+// function debounce(func, delay) {
+//   let timeoutId;
+
+//   return function (...args) {
+//     if (timeoutId) clearTimeout(timeoutId);
+
+//     timeoutId = setTimeout(() => {
+//       func.apply(this, args);
+//     }, delay);
+//   };
+// }
 
 const Navigation = () => {
   const [scrollDown, setScrollDown] = useState(false);
@@ -41,9 +52,9 @@ const Navigation = () => {
       const newPosition = obj.scroll.y;
 
       if (newPosition > currentPosition) {
-        setScrollDown(true);
-      } else {
         setScrollDown(false);
+      } else {
+        setScrollDown(true);
       }
 
       currentPosition = newPosition <= 0 ? 0 : newPosition;
@@ -53,7 +64,6 @@ const Navigation = () => {
       scroll.on("scroll", handleScroll);
     }
 
-    // Cleanup on unmount or when scroll changes
     return () => {
       if (scroll) {
         scroll.off("scroll", handleScroll);
@@ -61,7 +71,6 @@ const Navigation = () => {
     };
   }, [scroll]);
 
-  // When open module or change page
   useEffect(() => {
     setToggler(false);
   }, [url]);
@@ -107,7 +116,7 @@ const Navigation = () => {
               ))}
             </div>
 
-            <div className="md-4 block p-5 text-base uppercase md:hidden">
+            <div className="block p-5 text-base uppercase md:hidden">
               <span>Menu</span>
             </div>
           </button>
