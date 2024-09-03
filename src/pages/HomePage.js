@@ -1,8 +1,8 @@
 import React from "react";
 import { MainSection } from "../container/sections/index";
 import { motion } from "framer-motion";
-import { AwardCard, TvNoiseBg } from "../container/commponents/index";
-import { Logo1, Logo2, Logo3 } from "../assets/svg";
+import { AwardCard, RCButton, TvNoiseBg } from "../container/commponents/index";
+import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -55,16 +55,42 @@ const Home = () => {
           </div>
         </section>
 
-        <div className="px-[80px]">
+        <div className="px-[5%]">
           <section data-scroll-section className="py-[230px]">
-            <div className="flex h-[400px] items-center justify-between px-[120px] text-xs font-semibold uppercase text-customBlack">
-              <AwardCard Logo={Logo1} text={"Earth Guardian Award"} />
-              <AwardCard Logo={Logo2} text={"Green Horizon Award"} />
-              <AwardCard Logo={Logo3} text={"Nature's Beacon Award"} />
+            <div className="flex items-center justify-between text-xs font-semibold uppercase text-customBlack md:px-[10%]">
+              <div className="mx-5">
+                <AwardCard Logo={Logo1} text={"Earth Guardian Award"} />
+              </div>
+              <div className="mx-5">
+                <AwardCard Logo={Logo2} text={"Green Horizon Award"} />
+              </div>
+              <div className="mx-5">
+                <AwardCard Logo={Logo3} text={"Nature's Beacon Award"} />
+              </div>
             </div>
           </section>
-          <section data-scroll-section>
-            <div className="h-[400px] p-5">asd</div>
+          <section data-scroll-section className="py-[230px]">
+            <div className="h-[2px] w-full bg-customBlack"></div>
+            <div className="mt-[80px] flex justify-center">
+              <div className="flex-1">
+                <h3 className="text-3xl font-semibold">
+                  <p>
+                    BEAUTIFUL/WILD® labore Lorem nulla officia ullamco qui ea
+                    incididunt eu enim minim ad. Adipisicing consequat
+                    adipisicing quis exercitation nisi veniam nisi elit qui
+                    deserunt enim enim sit.
+                  </p>
+                </h3>
+              </div>
+              <div className="flex-1">
+                <figure className="w-full ps-[100px] text-[200px] font-extrabold text-customBlack">
+                  <MainLogoShort />
+                </figure>
+              </div>
+            </div>
+            <div className="mt-[60px]">
+              <RCButton text={"See the work"} />
+            </div>
           </section>
           <section data-scroll-section>
             <div className="h-[400px] bg-blue-300 p-5">asd</div>

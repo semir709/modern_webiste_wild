@@ -8,3 +8,4 @@ export { default as CarouselSmoothCard } from "./CarouselSmoothCard";
 export { default as NavSpaceWrapper } from "./NavSpaceWrapper";
 export { default as ParticlesComponent } from "./ParticlesComponent";
 export { default as AwardCard } from "./AwardCard";
+export { default as RCButton } from "./RCButton";
