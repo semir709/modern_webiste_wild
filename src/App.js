@@ -1,6 +1,10 @@
 import "./App.css";
 import { HomePage } from "./pages";
-import { Navigation, ParticlesComponent } from "./container/commponents/index";
+import {
+  HorizontalScroll,
+  Navigation,
+  ParticlesComponent,
+} from "./container/commponents/index";
 import { Routes, Route } from "react-router-dom";
 import { useRef } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
@@ -11,6 +15,9 @@ function App() {
 
   return (
     <>
+      {/* <div className="w-[40">
+        <HorizontalScroll />
+      </div> */}
       <div className="fixed left-0 top-0 h-full w-full">
         <ParticlesComponent />
       </div>

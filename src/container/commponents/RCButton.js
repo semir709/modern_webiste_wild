@@ -5,7 +5,7 @@ const RCButton = ({ text }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <p
-      className="relative w-fit overflow-hidden rounded-3xl border border-customBlack px-8 py-1"
+      className="relative w-fit overflow-hidden rounded-3xl border border-customBlack px-8 py-1 hover:cursor-pointer"
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >

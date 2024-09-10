@@ -29,6 +29,8 @@ body {
 } */
 
 @layer components {
+  /* custom scrolling */
+
   .tvNoiseAnimationCustom {
     position: absolute;
     inset: -200%;
