@@ -98,11 +98,11 @@ const Home = () => {
             <RCButton text={"See the work"} />
           </div>
         </section>
-        <section data-scroll-section className="px-[5%] py-[230px]">
-          <div className="w-full pb-8">
+        <section data-scroll-section className="py-[230px] md:px-[5%]">
+          <div className="w-full overflow-auto p-5">
             <ul className="flex w-full gap-5">
               {wild_dest.map(({ type, src, alt }) => (
-                <li className="group h-[650px] flex-1">
+                <li className="group min-w-[45%] md:min-w-0 md:flex-1">
                   <Link>
                     <div className="h-auto overflow-hidden">
                       <div className="h-full scale-105 transition-transform duration-300 group-hover:scale-100">
@@ -123,10 +123,10 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="mt-5 uppercase text-customBlack">
-                      <h5 className="text-2xl font-bold underline-offset-4 group-hover:underline">
+                      <h5 className="text-lg font-bold underline-offset-4 group-hover:underline sm:text-2xl">
                         Patogania
                       </h5>
-                      <p className="mt-4 w-2/3 text-sm font-medium leading-5">
+                      <p className="mt-4 w-2/3 text-xs font-medium leading-5 sm:text-sm">
                         Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit.Curabitur eget aliquet mi, sed malesuada eros.
                       </p>
@@ -134,11 +134,21 @@ const Home = () => {
                   </Link>
                 </li>
               ))}
+              <li className="ps-1"></li>
             </ul>
           </div>
         </section>
-        <section data-scroll-section>
-          <div className="h-[400px] bg-yellow-300 p-5">asd</div>
+        <section data-scroll-section className="px-[5%] py-[230px]">
+          <div className="w-full">
+            <div className="h-[1px] w-full bg-customBlack"></div>
+            <div className="mt-4 items-center justify-between text-sm md:flex">
+              <div className="leading-3 md:w-[40%]">00</div>
+              <div className="flex items-center justify-between md:w-[60%]">
+                <span className="leading-3 md:text-base">/05</span>
+                <span className="leading-3 md:text-2xl">●</span>
+              </div>
+            </div>
+          </div>
         </section>
         <section data-scroll-section>
           <div className="h-[400px] bg-pink-300 p-5">asd</div>
