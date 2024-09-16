@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { MainSection } from "../container/sections/index";
-import { motion } from "framer-motion";
+import { motion, useDragControls } from "framer-motion";
 import {
   AwardCard,
   HorizontalScroll,
@@ -10,6 +10,7 @@ import {
 import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
 import { Link } from "react-router-dom";
 import wild_dest from "../data/wild_dest.json";
+import { useDragScroll } from "../customHooks/useDragScroll";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -138,20 +139,26 @@ const Home = () => {
             </ul>
           </div>
         </section>
-        <section data-scroll-section className="px-[5%] py-[230px]">
+        <section data-scroll-section className="py-[230px]">
           <div className="w-full">
-            <div className="h-[1px] w-full bg-customBlack"></div>
-            <div className="mt-4 items-center justify-between text-sm md:flex">
-              <div className="leading-3 md:w-[40%]">00</div>
-              <div className="flex items-center justify-between md:w-[60%]">
-                <span className="leading-3 md:text-base">/05</span>
-                <span className="leading-3 md:text-2xl">●</span>
+            <div className="px-[5%]">
+              <div className="h-[1px] w-full bg-customBlack"></div>
+              <div className="mt-4 items-center justify-between text-sm md:flex">
+                <div className="leading-3 md:w-[40%]">00</div>
+                <div className="flex items-center justify-between md:w-[60%]">
+                  <span className="leading-3 md:text-base">/05</span>
+                  <span className="leading-3 md:text-2xl">●</span>
+                </div>
               </div>
+              <h2 className="my-20 text-5xl font-bold uppercase text-customBlack">
+                Featured <br></br> Engagements
+              </h2>
             </div>
+            <HorizontalScroll />
           </div>
         </section>
         <section data-scroll-section>
-          <div className="h-[400px] bg-pink-300 p-5">asd</div>
+          <div className="h-[400px] bg-pink-300 p-5"></div>
         </section>
       </main>
     </>
