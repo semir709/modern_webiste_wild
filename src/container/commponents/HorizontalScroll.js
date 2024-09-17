@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useDragScroll } from "../../customHooks/useDragScroll";
+import { Link } from "react-router-dom";
 
-const HorizontalScroll = () => {
+const HorizontalScroll = ({ data }) => {
   const trackRef = useRef();
   const thumbRef = useRef();
   const contentRef = useRef();
@@ -46,15 +47,23 @@ const HorizontalScroll = () => {
   return (
     <div className="relative h-fit overflow-hidden border-gray-300">
       <div
-        className="-mb-5 mr-4 flex h-full overflow-auto px-[3.5%] py-8"
+        className="-mb-5 mr-4 flex h-full gap-x-14 overflow-auto px-[3.5%] py-8"
         ref={contentRef}
         onScroll={handleScrollContent}
       >
-        {Array(5)
-          .fill(0)
-          .map((_, index) => (
-            <div className="m-5 h-[400px] min-w-[400px] bg-green-300"></div>
-          ))}
+        {data.map(({ Image, title, content }, index) => (
+          <div className="bg-green300 m-5 min-w-[360px]">
+            <figure className="mb-5 h-16">{<Image />}</figure>
+            <div className="w-[30px] bg-customBlack p-[0.05rem]"></div>
+            <div className="mt-24">
+              <h5 className="mb-5 text-2xl">{title}</h5>
+              <p>
+                {content}
+                <Link className="underline underline-offset-4">here</Link>
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="absolute bottom-0 left-1/2 h-[.2rem] w-[90%] -translate-x-1/2 bg-gray-300">

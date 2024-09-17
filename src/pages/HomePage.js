@@ -10,6 +10,7 @@ import {
 import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
 import { Link } from "react-router-dom";
 import wild_dest from "../data/wild_dest.json";
+import { eng_data } from "../data/engagements_data";
 import { useDragScroll } from "../customHooks/useDragScroll";
 
 const variantsParanet = {
@@ -154,7 +155,7 @@ const Home = () => {
                 Featured <br></br> Engagements
               </h2>
             </div>
-            <HorizontalScroll />
+            <HorizontalScroll data={eng_data} />
           </div>
         </section>
         <section data-scroll-section>
