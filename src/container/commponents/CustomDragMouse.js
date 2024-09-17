@@ -1,23 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import { SmoothCard } from "../commponents/index";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
-const CarouselSmoothCard = () => {
-  const carouselContainerRef = useRef();
-  const customCursorRef = useRef();
-  const containerCarouselRef = useRef();
-  const [width, setWidth] = useState(0);
-  const [isMouseHover, setIsMouseHover] = useState(false);
+const CustomDragMouse = () => {
   const [keyChange, setKeyChange] = useState(1);
   const [isMouseDown, setIsMouseDown] = useState(false);
+  const customCursorRef = useRef();
   const [textHover, setTextHover] = useState(false);
-
-  useEffect(() => {
-    const target = carouselContainerRef.current;
-
-    setWidth(target.scrollWidth - target.offsetWidth);
-  }, []);
+  const [isMouseHover, setIsMouseHover] = useState(false);
+  const containerCarouselRef = useRef();
+  const [isMobile, setIsMobile] = useState(false);
 
   const whileMouseMove = (e) => {
     const target = customCursorRef.current;
@@ -29,14 +21,13 @@ const CarouselSmoothCard = () => {
     target.style.left = `${e.clientX}px`;
   };
 
-  useEffect(() => {
-    const target = customCursorRef.current;
-    if (target) {
-      target.style.top = `50%`;
-      target.style.left = `90%`;
-    }
-  }, [customCursorRef.current]);
+  const wheMouseDown = () => {
+    setIsMouseDown(true);
+  };
 
+  const whenMouseUp = () => {
+    setIsMouseDown(false);
+  };
   const onMouseOut = () => {
     const target = customCursorRef.current;
 
@@ -45,63 +36,27 @@ const CarouselSmoothCard = () => {
     target.style.left = `90%`;
 
     setIsMouseHover(false);
-  };
-
-  const whenMouseHover = () => {
-    setIsMouseHover(true);
-  };
-
-  useEffect(() => {
-    setKeyChange((prev) => prev + 1);
-  }, [isMouseHover]);
-
-  const wheMouseDown = () => {
-    setIsMouseDown(true);
-  };
-
-  const whenMouseUp = () => {
     setIsMouseDown(false);
   };
-
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1270);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   const whenMouseHover = () => {
+  //     setIsMouseHover(true);
+  //   };
 
   return (
     <div
-      className={`relative h-full w-full text-customPrimary ${
+      className={`absolute left-0 top-0 h-full w-full ${
         !isMobile && (textHover ? "" : "cursor-none")
       }`}
       ref={containerCarouselRef}
       onMouseMove={whileMouseMove}
       onMouseLeave={onMouseOut}
-      onMouseOver={whenMouseHover}
+      //   onMouseOver={whenMouseHover}
       onMouseDown={wheMouseDown}
       onMouseUp={whenMouseUp}
     >
-      <motion.ol
-        ref={carouselContainerRef}
-        className="grid h-full grid-cols-2 min-[1270px]:flex"
-        drag={!isMobile ? "x" : false}
-        dragConstraints={{ right: 0, left: -width }}
-        // dragElastic={0.1}
-        transition={{ duration: 0.3, ease: "linear" }}
-        initial={{ x: "20%" }}
-        animate={{ x: 0 }}
-      >
-        {[1, 2, 3, 4, 5].map((el, index) => (
-          <SmoothCard setTextHover={setTextHover} url={"/winter"} />
-        ))}
-      </motion.ol>
-      {/* <motion.div
+      <motion.div
         ref={customCursorRef}
-        className="pointer-events-none absolute z-50 hidden -translate-x-1/2 -translate-y-1/2 items-center min-[1270px]:flex"
+        className="pointer-events-none absolute z-50 hidden -translate-x-1/2 -translate-y-1/2 select-none items-center min-[1270px]:flex"
       >
         <div className="">{isMouseDown && <IoMdArrowDropleft size={35} />}</div>
         <motion.div
@@ -136,9 +91,9 @@ const CarouselSmoothCard = () => {
         <div className="">
           {isMouseDown && <IoMdArrowDropright size={35} />}
         </div>
-      </motion.div> */}
+      </motion.div>
     </div>
   );
 };
 
-export default CarouselSmoothCard;
+export default CustomDragMouse;

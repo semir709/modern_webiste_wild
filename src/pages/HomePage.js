@@ -3,6 +3,7 @@ import { MainSection } from "../container/sections/index";
 import { motion, useDragControls } from "framer-motion";
 import {
   AwardCard,
+  CustomDragMouse,
   HorizontalScroll,
   RCButton,
   TvNoiseBg,
@@ -155,7 +156,9 @@ const Home = () => {
                 Featured <br></br> Engagements
               </h2>
             </div>
+
             <HorizontalScroll data={eng_data} />
+            {/* <CustomDragMouse /> */}
           </div>
         </section>
         <section data-scroll-section>

@@ -1,15 +1,18 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDragScroll } from "../../customHooks/useDragScroll";
 import { Link } from "react-router-dom";
+import CustomDragMouse from "./CustomDragMouse";
 
 const HorizontalScroll = ({ data }) => {
   const trackRef = useRef();
   const thumbRef = useRef();
   const contentRef = useRef();
+  const [isDragging, setIsDragging] = useState(false);
 
   useDragScroll(contentRef);
 
   const handleScrollContent = () => {
+    // if (!isDragging) return;
     const thumbEle = thumbRef.current;
     const contentEle = contentRef.current;
     const trackEle = trackRef.current;
@@ -50,9 +53,12 @@ const HorizontalScroll = ({ data }) => {
         className="-mb-5 mr-4 flex h-full gap-x-14 overflow-auto px-[3.5%] py-8"
         ref={contentRef}
         onScroll={handleScrollContent}
+        // onMouseDown={() => setIsDragging(true)}
+        // onMouseUp={() => setIsDragging(false)}
+        // onMouseLeave={() => setIsDragging(false)}
       >
         {data.map(({ Image, title, content }, index) => (
-          <div className="bg-green300 m-5 min-w-[360px]">
+          <div className="bg-green300 m-5 min-w-[360px] select-none">
             <figure className="mb-5 h-16">{<Image />}</figure>
             <div className="w-[30px] bg-customBlack p-[0.05rem]"></div>
             <div className="mt-24">
@@ -64,6 +70,7 @@ const HorizontalScroll = ({ data }) => {
             </div>
           </div>
         ))}
+        <CustomDragMouse />
       </div>
 
       <div className="absolute bottom-0 left-1/2 h-[.2rem] w-[90%] -translate-x-1/2 bg-gray-300">

@@ -23,13 +23,22 @@ export const useDragScroll = (contentRef) => {
       };
 
       const handleMouseUp = () => {
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
+        node.removeEventListener("mousemove", handleMouseMove);
+        node.removeEventListener("mouseup", handleMouseUp);
+        node.removeEventListener("mouseleave", handleMouseLeave);
         resetCursor(node);
       };
 
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
+      const handleMouseLeave = () => {
+        node.removeEventListener("mousemove", handleMouseMove);
+        node.removeEventListener("mouseup", handleMouseUp);
+        node.removeEventListener("mouseleave", handleMouseLeave);
+        resetCursor(node);
+      };
+
+      node.addEventListener("mousemove", handleMouseMove);
+      node.addEventListener("mouseup", handleMouseUp);
+      node.addEventListener("mouseleave", handleMouseLeave);
     },
     [contentRef],
   );
@@ -87,6 +96,7 @@ export const useDragScroll = (contentRef) => {
 
     node.addEventListener("mousedown", handleMouseDown);
     node.addEventListener("touchstart", handleTouchStart);
+
     return () => {
       node.removeEventListener("mousedown", handleMouseDown);
       node.removeEventListener("touchstart", handleTouchStart);
