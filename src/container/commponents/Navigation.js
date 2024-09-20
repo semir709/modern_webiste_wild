@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Ellipse } from "../../assets/svg/index";
-import { MainModule, NavSpaceWrapper } from "./index";
+import { MainModule, Nav, NavSpaceWrapper } from "./index";
 import { Link, useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
@@ -96,14 +96,17 @@ const Navigation = () => {
           <Link className="cursor-pointer text-lg font-bold sm:text-2xl">
             Beautiful/wild
           </Link>
-          <nav className="hidden w-1/2 md:block">
+          <div className="hidden w-1/2 md:block">
+            <Nav />
+          </div>
+          {/* <nav className="hidden w-1/2 md:block">
             <ul className="flex justify-around">
               <li className="bottomLineAnimation">Explore</li>
               <li className="bottomLineAnimation">About</li>
               <li className="bottomLineAnimation">News</li>
               <li className="bottomLineAnimation">Contact</li>
             </ul>
-          </nav>
+          </nav> */}
           <button className="w-[50px]" onClick={togglerOpen}>
             <div className="group hidden items-center justify-center md:flex">
               {Array.from({ length: 3 }).map(() => (

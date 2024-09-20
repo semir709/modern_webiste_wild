@@ -11,3 +11,4 @@ export { default as AwardCard } from "./AwardCard";
 export { default as RCButton } from "./RCButton";
 export { default as HorizontalScroll } from "./HorizontalScroll";
 export { default as CustomDragMouse } from "./CustomDragMouse";
+export { default as Nav } from "./Nav";

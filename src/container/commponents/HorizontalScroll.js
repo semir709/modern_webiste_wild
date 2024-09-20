@@ -73,7 +73,7 @@ const HorizontalScroll = ({ data }) => {
         <CustomDragMouse />
       </div>
 
-      <div className="absolute bottom-0 left-1/2 h-[.2rem] w-[90%] -translate-x-1/2 bg-gray-300">
+      <div className="absolute bottom-0 left-1/2 z-50 h-[.2rem] w-[90%] -translate-x-1/2 bg-gray-300">
         <div className="absolute left-0 top-0 h-full w-full" ref={trackRef} />
         <div className="absolute left-0 h-full bg-customBlack" ref={thumbRef} />
       </div>

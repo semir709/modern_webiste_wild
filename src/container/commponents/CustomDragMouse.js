@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
@@ -38,42 +38,51 @@ const CustomDragMouse = () => {
     setIsMouseHover(false);
     setIsMouseDown(false);
   };
-  //   const whenMouseHover = () => {
-  //     setIsMouseHover(true);
-  //   };
+  const whenMouseHover = () => {
+    setIsMouseHover(true);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1270);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (isMobile) return;
 
   return (
     <div
-      className={`absolute left-0 top-0 h-full w-full ${
-        !isMobile && (textHover ? "" : "cursor-none")
-      }`}
+      className={`absolute left-0 top-0 h-full w-full cursor-none`}
       ref={containerCarouselRef}
       onMouseMove={whileMouseMove}
       onMouseLeave={onMouseOut}
-      //   onMouseOver={whenMouseHover}
+      onMouseOver={whenMouseHover}
       onMouseDown={wheMouseDown}
       onMouseUp={whenMouseUp}
     >
       <motion.div
         ref={customCursorRef}
-        className="pointer-events-none absolute z-50 hidden -translate-x-1/2 -translate-y-1/2 select-none items-center min-[1270px]:flex"
+        className="pointer-events-none absolute z-50 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 select-none items-center justify-between rounded-full"
       >
-        <div className="">{isMouseDown && <IoMdArrowDropleft size={35} />}</div>
+        <div>{isMouseDown && <IoMdArrowDropleft size={35} />}</div>
         <motion.div
-          className="mx-2 flex items-center justify-center rounded-full bg-customPrimary"
+          className="flex items-center justify-center rounded-full bg-customPrimary"
           animate={{
-            width: isMouseDown ? "65px" : "125px",
-            height: isMouseDown ? "65px" : "125px",
+            width: isMouseDown ? "40%" : "60%",
+            height: isMouseDown ? "40%" : "60%",
             opacity: textHover ? 0.6 : 1,
           }}
           transition={{ opacity: { duration: 0 } }}
         >
-          <div className="h-[50px] w-[50px] overflow-hidden">
+          <div className="rounde h-[50px] w-[50px] overflow-hidden">
             <motion.div
               key={keyChange}
-              animate={isMouseHover && { y: "-65%" }}
-              transition={{ duration: 0.1 }}
-              className="relative h-full w-full -translate-y-[65%]"
+              animate={isMouseHover ? { y: "-65%" } : { y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative h-full w-full -translate-y-[65%] rounded-full"
             >
               {!isMouseDown && !textHover && (
                 <div>
@@ -88,9 +97,7 @@ const CustomDragMouse = () => {
             </motion.div>
           </div>
         </motion.div>
-        <div className="">
-          {isMouseDown && <IoMdArrowDropright size={35} />}
-        </div>
+        <div>{isMouseDown && <IoMdArrowDropright size={35} />}</div>
       </motion.div>
     </div>
   );

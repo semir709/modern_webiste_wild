@@ -48,7 +48,7 @@ const SmoothCard = ({ setTextHover = false, url = false }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <li className="numberCounter list-counter-class relative h-full w-full flex-shrink-0 min-[1270px]:w-[34%]">
+    <li className="numberCounter list-counter-class relative h-full w-full flex-shrink-0 text-customPrimary min-[1270px]:w-[34%]">
       <motion.div
         className="horizontalLine h-full px-2 pb-[70px]"
         initial="rest"
