@@ -32,12 +32,13 @@ const textVarinat = {
 
 const SmoothCard = ({ setTextHover = false, url = false }) => {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // setTextHover is probablly about making custom mouse convert to transparent
 
   const onMouseClicked = (e) => {
     navigate(url);
   };
-
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,7 +49,7 @@ const SmoothCard = ({ setTextHover = false, url = false }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <li className="numberCounter list-counter-class relative h-full w-full flex-shrink-0 text-customPrimary min-[1270px]:w-[34%]">
+    <li className="numberCounter list-counter-class relative h-full w-full flex-shrink-0 text-customPrimary lg:w-[34%]">
       <motion.div
         className="horizontalLine h-full px-2 pb-[70px]"
         initial="rest"
@@ -71,14 +72,14 @@ const SmoothCard = ({ setTextHover = false, url = false }) => {
           </h5>
           <span className="text-[13px] uppercase">It is fun</span>
           <motion.div variants={!isMobile && textVarinat}>
-            <p className="mt-[25px] text-[13px]">
+            <p className="mt-[25px] w-fit text-[13px]">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
               quasi!
             </p>
             <Link
               className="block w-fit cursor-pointer pt-[50px] font-semibold underline underline-offset-4"
-              onMouseOver={() => setTextHover(true)}
-              onMouseOut={() => setTextHover(false)}
+              // onMouseOver={() => setTextHover(true)}
+              // onMouseOut={() => setTextHover(false)}
               onMouseUp={onMouseClicked}
             >
               <p onMouseDown={(e) => e.preventDefault()}> Visit the Site</p>
