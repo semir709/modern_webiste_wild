@@ -152,7 +152,7 @@ const Home = () => {
                   <span className="leading-3 md:text-2xl">●</span>
                 </div>
               </div>
-              <h2 className="my-20 text-5xl font-bold uppercase text-customBlack">
+              <h2 className="my-20 text-3xl font-bold uppercase text-customBlack sm:text-5xl">
                 Featured <br></br> Engagements
               </h2>
             </div>

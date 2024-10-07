@@ -8,7 +8,7 @@ import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const variantScroll = {
   up: {
-    y: -70,
+    y: -75,
   },
   down: {
     y: 0,
@@ -39,7 +39,7 @@ const variantNav = {
 // }
 
 const Navigation = () => {
-  const [scrollDown, setScrollDown] = useState(false);
+  const [scrollDown, setScrollDown] = useState(true);
   const [toggler, setToggler] = useState(false);
   const url = useNavigate();
   const { scroll } = useLocomotiveScroll();

@@ -32,7 +32,7 @@ const CarouselSmoothCard = () => {
   return (
     <motion.ol
       ref={carouselContainerRef}
-      className="grid h-full sm:grid-cols-2 lg:flex"
+      className="flex h-full"
       drag={!isMobile ? "x" : false}
       dragConstraints={{ right: 0, left: -width }}
       // dragElastic={0.1}
@@ -41,7 +41,9 @@ const CarouselSmoothCard = () => {
       animate={{ x: 0 }}
     >
       {[1, 2, 3, 4, 5].map((el, index) => (
-        <SmoothCard url={"/winter"} />
+        <div className="me-2 min-w-[400px]">
+          <SmoothCard url={"/winter"} number={index + 1} />
+        </div>
       ))}
       {/* <CustomDragMouse /> */}
     </motion.ol>

@@ -77,22 +77,25 @@ const MainModule = ({ setToggler }) => {
                 </div>
               </div>
               <div className="flex flex-[1_1_0%] justify-end">
-                <button className="rounded-full border border-white hover:cursor-pointer">
+                <button
+                  onClick={() => setToggler(false)}
+                  className="rounded-full border border-white hover:cursor-pointer"
+                >
                   <VscClose color="white" className="h-5 w-5 sm:h-8 sm:w-8" />
                 </button>
               </div>
             </div>
           </div>
           <div className="w-full flex-[9_1_0%] pb-14 pt-8 lg:px-24">
-            <div className="hidden lg:block">
+            <div className="hidden h-full lg:block">
               <CarouselSmoothCard />
             </div>
             <div className="block text-customPrimary lg:hidden">
               {showIniatives && (
                 <div>
                   <div className="h-[1px] w-full bg-customPrimary"></div>
-                  <div className="h-screen overflow-y-auto">
-                    <div className="h-full px-8 lg:px-0">
+                  <div className="h-screen overflow-y-auto pb-16">
+                    <div className="px-8 lg:px-0">
                       <div className="my-5 flex">
                         <div>
                           <button onClick={() => setShowIniatives(false)}>
@@ -110,7 +113,13 @@ const MainModule = ({ setToggler }) => {
                           </div>
                         </div>
                       </div>
-                      <CarouselSmoothCard />
+                      <div className="w-full sm:grid sm:grid-cols-2">
+                        {[1, 2, 3, 4, 5].map((el, index) => (
+                          <div className="mb-12 w-full px-2">
+                            <SmoothCard url={"/winter"} number={index + 1} />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
