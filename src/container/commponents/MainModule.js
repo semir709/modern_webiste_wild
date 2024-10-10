@@ -2,21 +2,17 @@ import { motion } from "framer-motion";
 import { VscClose } from "react-icons/vsc";
 import { CarouselSmoothCard, Nav, SmoothCard } from "../commponents/index";
 import { useEffect, useState } from "react";
-import { GoDotFill } from "react-icons/go";
+// import { GoDotFill } from "react-icons/go";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { module_data } from "../../data/main_module_content_data";
-
-const urlObj = {
-  url: "https://images.pexels.com/photos/4256377/pexels-photo-4256377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  alt: "test",
-};
+import { nav_data } from "../../data/nav_data";
 
 const MainModule = ({ setToggler }) => {
-  const togglerClose = () => {
-    setToggler(false);
-    document.body.style.overflow = "auto";
-  };
+  // const togglerClose = () => {
+  //   setToggler(false);
+  //   document.body.style.overflow = "auto";
+  // };
 
   const [containerAnimation, setContainerAnimation] = useState(false);
   const [slideAnimationEnd, setSlideAnimationEnd] = useState(false);
@@ -52,7 +48,7 @@ const MainModule = ({ setToggler }) => {
           initial={{ width: "100%" }}
           animate={containerAnimation && { width: "0" }}
           transition={{ duration: 0.5, ease: customEase }}
-          onAnimationComplete={() => setSlideAnimationEnd(true)}
+          // onAnimationComplete={() => setSlideAnimationEnd(true)}
           className="absolute left-0 top-0 z-50 h-full bg-customBlack"
         ></motion.div>
 
@@ -142,7 +138,7 @@ const MainModule = ({ setToggler }) => {
               )}
               {!showIniatives && (
                 <div className="px-8 lg:px-24">
-                  <Nav />
+                  <Nav data={nav_data} />
                   <button
                     className="flex items-center text-lg font-semibold uppercase"
                     onClick={() => setShowIniatives(true)}

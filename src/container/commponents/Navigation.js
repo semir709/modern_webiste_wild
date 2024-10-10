@@ -5,6 +5,7 @@ import { MainModule, Nav, NavSpaceWrapper } from "./index";
 import { Link, useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
+import { nav_data } from "../../data/nav_data";
 
 const variantScroll = {
   up: {
@@ -97,7 +98,7 @@ const Navigation = () => {
             Beautiful/wild
           </Link>
           <div className="hidden w-1/2 md:block">
-            <Nav />
+            <Nav data={nav_data} />
           </div>
           {/* <nav className="hidden w-1/2 md:block">
             <ul className="flex justify-around">

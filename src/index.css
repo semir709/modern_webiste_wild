@@ -51,7 +51,7 @@ body {
   }
 
   /*Animation for nav*/
-  .bottomLineAnimation {
+  /* .bottomLineAnimation {
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -73,51 +73,6 @@ body {
     animation: shiftLineRightStart 0.3s ease-out forwards;
   }
 
-  /* .horizontalLine {
-    position: relative;
-  }
-  .horizontalLine::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0.1rem;
-    height: 100%;
-    background-color: yellow;
-    content: "";
-  }
-
-  .list-counter-class {
-    counter-increment: list-counter;
-  }
-
-  .numberCounter::after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    content: counter(list-counter, decimal-leading-zero);
-    font-size: 0.8rem;
-    font-weight: 500;
-    line-height: 2rem;
-  } */
-  /* @layer components {
-    .horizontalLine {
-      @apply relative;
-    }
-    .horizontalLine::before {
-      @apply absolute left-0 top-0 h-full w-[0.1rem] bg-current;
-      content: "";
-    }
-
-    .list-counter-class {
-      counter-increment: list-counter;
-    }
-
-    .numberCounter::after {
-      @apply absolute bottom-0 left-0 text-sm font-medium leading-8;
-      content: counter(list-counter, decimal-leading-zero);
-    }
-  } */
-
   @keyframes shiftLineRightEnd {
     0% {
       transform: translateX(0%);
@@ -134,7 +89,7 @@ body {
     100% {
       transform: translateX(0%);
     }
-  }
+  } */
 
   .textRoleAnimation {
     animation: roleText 0.5s ease-out forwards;
