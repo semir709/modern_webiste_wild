@@ -157,8 +157,9 @@ const Home = () => {
               </h2>
             </div>
 
-            <HorizontalScroll data={eng_data} />
-            {/* <CustomDragMouse /> */}
+            <CustomDragMouse>
+              <HorizontalScroll data={eng_data} />
+            </CustomDragMouse>
           </div>
         </section>
         <section data-scroll-section>

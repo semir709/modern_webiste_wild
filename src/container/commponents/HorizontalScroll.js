@@ -70,7 +70,6 @@ const HorizontalScroll = ({ data }) => {
             </div>
           </div>
         ))}
-        <CustomDragMouse />
       </div>
 
       <div className="absolute bottom-0 left-1/2 z-50 h-[.2rem] w-[90%] -translate-x-1/2 bg-gray-300">

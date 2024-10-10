@@ -5,6 +5,12 @@ import { useEffect, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
+import { module_data } from "../../data/main_module_content_data";
+
+const urlObj = {
+  url: "https://images.pexels.com/photos/4256377/pexels-photo-4256377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  alt: "test",
+};
 
 const MainModule = ({ setToggler }) => {
   const togglerClose = () => {
@@ -86,7 +92,7 @@ const MainModule = ({ setToggler }) => {
               </div>
             </div>
           </div>
-          <div className="w-full flex-[9_1_0%] pb-14 pt-8 lg:px-24">
+          <div className="w-full flex-[9_1_0%] pb-14 pt-8">
             <div className="hidden h-full lg:block">
               <CarouselSmoothCard />
             </div>
@@ -114,9 +120,19 @@ const MainModule = ({ setToggler }) => {
                         </div>
                       </div>
                       <div className="w-full sm:grid sm:grid-cols-2">
-                        {[1, 2, 3, 4, 5].map((el, index) => (
+                        {module_data.map((data, index) => (
                           <div className="mb-12 w-full px-2">
-                            <SmoothCard url={"/winter"} number={index + 1} />
+                            <SmoothCard
+                              key={data.id}
+                              imgContent={data.imgContent}
+                              urlRedirect={data.urlRedirect}
+                              title={data.title}
+                              subtext={data.subtext}
+                              rightText={data.rightText}
+                              text={data.text}
+                              urlText={"Visit the Site"}
+                              number={index + 1}
+                            />
                           </div>
                         ))}
                       </div>

@@ -1,52 +1,51 @@
 import { useEffect, useRef, useState } from "react";
 import { CustomDragMouse, SmoothCard } from "../commponents/index";
 import { motion } from "framer-motion";
-import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
+import { module_data } from "../../data/main_module_content_data";
 
 const CarouselSmoothCard = () => {
   const carouselContainerRef = useRef();
-  // const customCursorRef = useRef();
-  // const containerCarouselRef = useRef();
   const [width, setWidth] = useState(0);
-  // const [isMouseHover, setIsMouseHover] = useState(false);
-  // const [keyChange, setKeyChange] = useState(1);
-  // const [isMouseDown, setIsMouseDown] = useState(false);
-  // const [textHover, setTextHover] = useState(false);
+  const [isHovered, setIsHoverd] = useState(false);
 
   useEffect(() => {
     const target = carouselContainerRef.current;
 
     setWidth(target.scrollWidth - target.offsetWidth);
-  }, []);
+  }, [carouselContainerRef]);
 
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1270);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const whenMouseHover = () => setIsHoverd(true);
+  const whenMouseOut = () => setIsHoverd(false);
 
   return (
-    <motion.ol
-      ref={carouselContainerRef}
-      className="flex h-full"
-      drag={!isMobile ? "x" : false}
-      dragConstraints={{ right: 0, left: -width }}
-      // dragElastic={0.1}
-      transition={{ duration: 0.3, ease: "linear" }}
-      initial={{ x: "20%" }}
-      animate={{ x: 0 }}
-    >
-      {[1, 2, 3, 4, 5].map((el, index) => (
-        <div className="me-2 min-w-[400px]">
-          <SmoothCard url={"/winter"} number={index + 1} />
-        </div>
-      ))}
-      {/* <CustomDragMouse /> */}
-    </motion.ol>
+    <CustomDragMouse Isfocused={isHovered}>
+      <motion.ol
+        ref={carouselContainerRef}
+        className="flex h-full px-24"
+        drag={"x"}
+        dragConstraints={{ right: 0, left: -width }}
+        transition={{ duration: 0.3, ease: "linear" }}
+        initial={{ x: "20%" }}
+        animate={{ x: 0 }}
+      >
+        {module_data.map((data, index) => (
+          <div key={data.id} className="me-2 min-w-[400px]">
+            <SmoothCard
+              imgContent={data.imgContent}
+              urlRedirect={data.urlRedirect}
+              title={data.title}
+              subtext={data.subtext}
+              rightText={data.rightText}
+              text={data.text}
+              urlText={"Visit the Site"}
+              number={index + 1}
+              whenMouseHover={whenMouseHover}
+              whenMouseOut={whenMouseOut}
+            />
+          </div>
+        ))}
+      </motion.ol>
+    </CustomDragMouse>
   );
 };
 
