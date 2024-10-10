@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { mainVideo, sideVideo } from "../../assets/videos";
 import { motion } from "framer-motion";
-import { BgVideo, MainVideo } from "../commponents/index";
+import { BgVideo, MainVideo } from "../components/index";
 
 const MainSection = () => {
   const [changeVideo, setChangeVideo] = useState(false);

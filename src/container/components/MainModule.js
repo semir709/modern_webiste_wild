@@ -1,24 +1,17 @@
 import { motion } from "framer-motion";
 import { VscClose } from "react-icons/vsc";
-import { CarouselSmoothCard, Nav, SmoothCard } from "../commponents/index";
+import { CarouselSmoothCard, Nav, SmoothCard } from "./index";
 import { useEffect, useState } from "react";
-// import { GoDotFill } from "react-icons/go";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { module_data } from "../../data/main_module_content_data";
 import { nav_data } from "../../data/nav_data";
 
 const MainModule = ({ setToggler }) => {
-  // const togglerClose = () => {
-  //   setToggler(false);
-  //   document.body.style.overflow = "auto";
-  // };
-
   const [containerAnimation, setContainerAnimation] = useState(false);
-  const [slideAnimationEnd, setSlideAnimationEnd] = useState(false);
   const [showIniatives, setShowIniatives] = useState(false);
 
-  let timeId = null;
+  let animationTimeoutId = null;
   const customEase = [0.72, 0, 0.28, 1];
 
   const { scroll } = useLocomotiveScroll();
@@ -39,16 +32,18 @@ const MainModule = ({ setToggler }) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       onAnimationStart={() =>
-        (timeId = setTimeout(() => setContainerAnimation(true), 200))
+        (animationTimeoutId = setTimeout(
+          () => setContainerAnimation(true),
+          200,
+        ))
       }
-      onAnimationEnd={clearTimeout(timeId)}
+      onAnimationEnd={clearTimeout(animationTimeoutId)}
     >
       <section className="absolute left-0 top-0 h-full w-full">
         <motion.div
           initial={{ width: "100%" }}
           animate={containerAnimation && { width: "0" }}
           transition={{ duration: 0.5, ease: customEase }}
-          // onAnimationComplete={() => setSlideAnimationEnd(true)}
           className="absolute left-0 top-0 z-50 h-full bg-customBlack"
         ></motion.div>
 
@@ -117,9 +112,8 @@ const MainModule = ({ setToggler }) => {
                       </div>
                       <div className="w-full sm:grid sm:grid-cols-2">
                         {module_data.map((data, index) => (
-                          <div className="mb-12 w-full px-2">
+                          <div key={data.id} className="mb-12 w-full px-2">
                             <SmoothCard
-                              key={data.id}
                               imgContent={data.imgContent}
                               urlRedirect={data.urlRedirect}
                               title={data.title}

@@ -1,6 +1,6 @@
 import "./App.css";
 import { HomePage } from "./pages";
-import { Navigation, ParticlesComponent } from "./container/commponents/index";
+import { Navigation, ParticlesComponent } from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
 import { useRef } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";

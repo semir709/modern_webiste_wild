@@ -7,7 +7,7 @@ import {
   HorizontalScroll,
   RCButton,
   TvNoiseBg,
-} from "../container/commponents/index";
+} from "../container/components/index";
 import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
 import { Link } from "react-router-dom";
 import wild_dest from "../data/wild_dest.json";
