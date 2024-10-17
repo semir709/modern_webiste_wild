@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
 import { MainSection } from "../container/sections/index";
-import { motion, useDragControls } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   AwardCard,
   CustomDragMouse,
@@ -12,7 +11,7 @@ import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
 import { Link } from "react-router-dom";
 import wild_dest from "../data/wild_dest.json";
 import { eng_data } from "../data/engagements_data";
-import { useDragScroll } from "../customHooks/useDragScroll";
+import { module_data } from "../data/main_module_content_data";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -141,7 +140,7 @@ const Home = () => {
             </ul>
           </div>
         </section>
-        <section data-scroll-section className="py-[230px]">
+        <section data-scroll-section className="pt-[230px]">
           <div className="w-full">
             <div className="px-[5%]">
               <div className="h-[1px] w-full bg-customBlack"></div>
@@ -162,8 +161,46 @@ const Home = () => {
             </CustomDragMouse>
           </div>
         </section>
-        <section data-scroll-section>
-          <div className="h-[400px] bg-pink-300 p-5"></div>
+
+        <section
+          id="stick"
+          data-scroll-section
+          className="h-fit w-full pt-[100px] md:px-[5%]"
+        >
+          <div className="flex">
+            <div
+              data-scroll
+              data-scroll-speed="5"
+              data-scroll-sticky // Attibute that enables the sticky scroll
+              data-scroll-target="#stick"
+              className="h-fit flex-1"
+            >
+              <span className="block text-[6.25vw] font-bold uppercase leading-[0.9] tracking-[-0.05em]">
+                BASIC/DEPT® helps brands ● connect w/ culture
+              </span>
+              <span className="mt-10 block text-lg uppercase">
+                Adweek <strong>Agency Spotlight</strong>
+              </span>
+              <p className="mt-32">
+                <RCButton text={"About Us"} />
+              </p>
+            </div>
+            <div className="flex-1">
+              {module_data.map(({ imgContent }) => (
+                <div className="relative mb-5 h-[400px] w-full">
+                  <div className="absolute left-0 top-0 h-full w-full bg-black opacity-10"></div>
+                  <img
+                    className="h-full w-full object-cover"
+                    src={imgContent.url}
+                    alt={imgContent.alt}
+                  ></img>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section data-scroll-section className="mt-[1200px]">
+          a
         </section>
       </main>
     </>
