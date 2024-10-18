@@ -1,6 +1,10 @@
 import "./App.css";
 import { HomePage } from "./pages";
-import { Navigation, ParticlesComponent } from "./container/components/index";
+import {
+  Footer,
+  Navigation,
+  ParticlesComponent,
+} from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
 import { useRef } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
@@ -26,6 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
           </Routes>
+          <Footer />
         </main>
       </LocomotiveScrollProvider>
     </>

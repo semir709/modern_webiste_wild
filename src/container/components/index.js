@@ -13,3 +13,6 @@ export { default as HorizontalScroll } from "./HorizontalScroll";
 export { default as CustomDragMouse } from "./CustomDragMouse";
 export { default as Nav } from "./Nav";
 export { default as ArticleCard } from "./ArticleCard";
+export { default as Footer } from "./Footer";
+export { default as CustomDot } from "./CustomDot";
+export { default as CustomList } from "./CustomList";
