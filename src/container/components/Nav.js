@@ -10,7 +10,7 @@ const Nav = ({ data }) => {
             <li className="group mb-4 cursor-pointer overflow-hidden lg:mb-0">
               <Link className="block" to={url} key={id}>
                 <span>{text}</span>
-                <div className="animate-lineOnOut group-hover:animate-lineOnHover hidden h-[0.1rem] w-full bg-white lg:block"></div>
+                <div className="animate-animationRight group-hover:animate-animationLeft hidden h-[0.1rem] w-full bg-white lg:block"></div>
               </Link>
             </li>
           ))}

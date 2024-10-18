@@ -1,21 +1,32 @@
+const { transform, delay } = require("framer-motion");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       keyframes: {
-        lineOnHover: {
+        animationLeft: {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0%)" },
         },
-        lineOnOut: {
+        animationRight: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(100%)" },
         },
+
+        animatioLefttoRight: {
+          "0%": { transform: "translateX(0%)" },
+          "30%": { transform: "translateX(100%)" },
+          "70%": { transform: "translateX(100%)" },
+          "71%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
       },
       animation: {
-        lineOnHover: "lineOnHover 0.3s ease-out forwards",
-        lineOnOut: "lineOnOut 0.3s ease-out forwards",
+        animationLeft: "animationLeft 0.3s ease-out forwards",
+        animationRight: "animationRight 0.3s ease-out forwards",
+        animatioLefttoRight: "animatioLefttoRight 0.6s ease-out ",
       },
       colors: {
         customPrimary: "#f9cdcd",

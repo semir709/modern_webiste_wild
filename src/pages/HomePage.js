@@ -1,6 +1,7 @@
 import { MainSection } from "../container/sections/index";
 import { motion } from "framer-motion";
 import {
+  ArticleCard,
   AwardCard,
   CustomDragMouse,
   HorizontalScroll,
@@ -12,6 +13,8 @@ import { Link } from "react-router-dom";
 import wild_dest from "../data/wild_dest.json";
 import { eng_data } from "../data/engagements_data";
 import { module_data } from "../data/main_module_content_data";
+import { news_data } from "../data/news_data";
+import { nanoid } from "nanoid";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -165,15 +168,15 @@ const Home = () => {
         <section
           id="stick"
           data-scroll-section
-          className="h-fit w-full pt-[100px] md:px-[5%]"
+          className="h-fit w-full px-[5%] pt-[100px]"
         >
-          <div className="flex">
+          <div className="flex flex-col lg:flex-row">
             <div
               data-scroll
               data-scroll-speed="5"
               data-scroll-sticky // Attibute that enables the sticky scroll
               data-scroll-target="#stick"
-              className="h-fit flex-1"
+              className="order-2 h-fit flex-1 text-center lg:order-1 lg:text-left"
             >
               <span className="block text-[6.25vw] font-bold uppercase leading-[0.9] tracking-[-0.05em]">
                 BASIC/DEPT® helps brands ● connect w/ culture
@@ -181,11 +184,11 @@ const Home = () => {
               <span className="mt-10 block text-lg uppercase">
                 Adweek <strong>Agency Spotlight</strong>
               </span>
-              <p className="mt-32">
+              <p className="mt-8 lg:mt-32">
                 <RCButton text={"About Us"} />
               </p>
             </div>
-            <div className="flex-1">
+            <div className="order-1 flex-1 lg:order-2">
               {module_data.map(({ imgContent }) => (
                 <div className="relative mb-5 h-[400px] w-full">
                   <div className="absolute left-0 top-0 h-full w-full bg-black opacity-10"></div>
@@ -199,8 +202,25 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section data-scroll-section className="mt-[1200px]">
-          a
+        <section data-scroll-section className="px-[5%] py-[100px]">
+          <div className="mb-10 flex items-center justify-between">
+            <h2 className="max-w-sm text-lg font-semibold uppercase text-customBlack sm:text-5xl">
+              Featured News
+            </h2>
+            <div>
+              <RCButton text={"View All"} />
+            </div>
+          </div>
+          {news_data.map(({ title, date, imgContent, urlRedirect }) => (
+            <div key={nanoid()}>
+              <ArticleCard
+                title={title}
+                date={date}
+                image={imgContent}
+                url={urlRedirect}
+              />
+            </div>
+          ))}
         </section>
       </main>
     </>

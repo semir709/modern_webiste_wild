@@ -4,7 +4,7 @@ import { useState } from "react";
 const RCButton = ({ text }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <p
+    <button
       className="relative w-fit overflow-hidden rounded-3xl border border-customBlack px-8 py-1 hover:cursor-pointer"
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
@@ -24,7 +24,7 @@ const RCButton = ({ text }) => {
         animate={isHovered ? { top: 0 } : { top: "100%" }}
         className="absolute left-0 -z-10 h-full w-full bg-customBlack"
       ></motion.div>
-    </p>
+    </button>
   );
 };
 
