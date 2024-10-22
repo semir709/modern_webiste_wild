@@ -1,28 +1,31 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const RCButton = ({ text }) => {
+const RCButton = ({ text, darkMode = false, url = "/" }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <button
-      className="relative w-fit overflow-hidden rounded-3xl border border-customBlack px-8 py-1 hover:cursor-pointer"
+      className={`relative w-fit overflow-hidden rounded-3xl border px-8 py-1 hover:cursor-pointer ${!darkMode ? "border-customBlack" : "border-customPrimary"}`}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >
       <motion.a
-        className={`text-xs font-semibold uppercase`}
-        href="/"
+        className={`relative z-10 text-xs font-semibold uppercase`}
+        href={url}
         animate={
           isHovered
-            ? { color: "white", transition: { duration: "5ms" } }
-            : { color: "#252422" }
+            ? {
+                color: !darkMode ? "white" : "black",
+                transition: { duration: "5ms" },
+              }
+            : { color: !darkMode ? "#252422" : "#f9cdcd" }
         }
       >
         {text}
       </motion.a>
       <motion.div
         animate={isHovered ? { top: 0 } : { top: "100%" }}
-        className="absolute left-0 -z-10 h-full w-full bg-customBlack"
+        className={`absolute left-0 z-0 h-full w-full ${!darkMode ? "bg-customBlack" : "bg-customPrimary"}`}
       ></motion.div>
     </button>
   );

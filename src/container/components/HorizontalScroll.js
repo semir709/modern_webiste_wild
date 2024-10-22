@@ -3,7 +3,7 @@ import { useDragScroll } from "../../customHooks/useDragScroll";
 import { Link } from "react-router-dom";
 import CustomDragMouse from "./CustomDragMouse";
 
-const HorizontalScroll = ({ data }) => {
+const HorizontalScroll = ({ data, darkMode = false }) => {
   const trackRef = useRef();
   const thumbRef = useRef();
   const contentRef = useRef();
@@ -53,16 +53,21 @@ const HorizontalScroll = ({ data }) => {
         className="-mb-5 mr-4 flex h-full gap-x-14 overflow-auto px-[3.5%] py-8"
         ref={contentRef}
         onScroll={handleScrollContent}
-        // onMouseDown={() => setIsDragging(true)}
-        // onMouseUp={() => setIsDragging(false)}
-        // onMouseLeave={() => setIsDragging(false)}
       >
         {data.map(({ Image, title, content }, index) => (
           <div className="bg-green300 m-5 min-w-[360px] select-none">
-            <figure className="mb-5 h-16">{<Image />}</figure>
-            <div className="w-[30px] bg-customBlack p-[0.05rem]"></div>
-            <div className="mt-24">
-              <h5 className="mb-5 text-2xl">{title}</h5>
+            <figure
+              className={`mb-5 h-16 ${!darkMode ? "fill-customBlack" : "fill-customPrimary"}`}
+            >
+              {<Image />}
+            </figure>
+            <div
+              className={`w-[30px] ${!darkMode ? "bg-customBlack" : "bg-customPrimary"} p-[0.05rem]`}
+            ></div>
+            <div
+              className={`mt-24 ${!darkMode ? "text-customBlack" : "text-customPrimary"}`}
+            >
+              <h5 className={`mb-5 text-2xl`}>{title}</h5>
               <p>
                 {content}
                 <Link className="underline underline-offset-4">here</Link>
@@ -72,9 +77,14 @@ const HorizontalScroll = ({ data }) => {
         ))}
       </div>
 
-      <div className="absolute bottom-0 left-1/2 z-50 h-[.2rem] w-[90%] -translate-x-1/2 bg-gray-300">
+      <div
+        className={`absolute bottom-0 left-1/2 z-50 h-[.2rem] w-[90%] -translate-x-1/2 ${!darkMode ? "bg-gray-300" : "bg-white"} `}
+      >
         <div className="absolute left-0 top-0 h-full w-full" ref={trackRef} />
-        <div className="absolute left-0 h-full bg-customBlack" ref={thumbRef} />
+        <div
+          className={`absolute left-0 h-full ${!darkMode ? "bg-customBlack" : "bg-customPrimary"}`}
+          ref={thumbRef}
+        />
       </div>
     </div>
   );

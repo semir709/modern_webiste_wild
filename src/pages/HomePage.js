@@ -15,6 +15,7 @@ import { eng_data } from "../data/engagements_data";
 import { module_data } from "../data/main_module_content_data";
 import { news_data } from "../data/news_data";
 import { nanoid } from "nanoid";
+import { useEffect, useRef, useState } from "react";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -38,11 +39,69 @@ const variantsChildren = {
   },
 };
 
-const Home = () => {
+const colorPalet = {
+  light: { text: "#252422", bg: "#ffffff" },
+  dark: { text: "#f9cdcd", bg: "#252422" },
+};
+
+const Home = ({ setTextColorNav }) => {
+  const heroRef = useRef();
+  const stickyRef = useRef();
+
+  const [mode, setMode] = useState(1);
+
+  useEffect(() => {
+    const heroSection = heroRef.current;
+    const stickySection = stickyRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === heroSection) {
+              setTextColorNav(0);
+            }
+
+            if (entry.target === stickySection) {
+              setMode(1);
+              console.log("It get's dark");
+            }
+          } else {
+            if (entry.target === heroSection) {
+              setTextColorNav(1);
+            }
+
+            if (entry.target === stickySection) {
+              console.log("It light!!!");
+              setMode(0);
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      },
+    );
+
+    if (heroSection) observer.observe(heroSection);
+    if (stickySection) observer.observe(stickySection);
+
+    return () => {
+      if (heroSection) observer.unobserve(heroSection);
+      if (stickySection) observer.unobserve(stickySection);
+    };
+  }, [setTextColorNav]);
+
   return (
     <>
-      <main>
-        <section data-scroll-section>
+      <div
+        style={{
+          background: mode === 0 ? colorPalet.light.bg : colorPalet.dark.bg,
+          transition: " 0.3s",
+        }}
+        data-scroll-section
+      >
+        <section ref={heroRef}>
           <motion.div
             className="absolute left-0 top-0 z-50 h-full w-full"
             variants={variantsParanet}
@@ -67,8 +126,14 @@ const Home = () => {
           </div>
         </section>
 
-        <section data-scroll-section className="px-[5%] py-[230px]">
-          <div className="flex items-center justify-between text-xs font-semibold uppercase text-customBlack md:px-[10%]">
+        <section className="px-[5%] py-[130px]">
+          <div
+            style={{
+              color: mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+              fill: mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+            }}
+            className="flex items-center justify-between text-xs font-semibold uppercase md:px-[10%]"
+          >
             <div className="mx-5">
               <AwardCard Logo={Logo1} text={"Earth Guardian Award"} />
             </div>
@@ -80,12 +145,24 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section data-scroll-section className="px-[5%] py-[230px]">
-          <div className="h-[2px] w-full bg-customBlack"></div>
+
+        <section className="px-[5%] py-[130px]">
+          <div
+            style={{
+              background:
+                mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+            }}
+            className="h-[2px] w-full"
+          ></div>
           <div className="mt-[80px] flex flex-col justify-center md:flex-row">
             <div className="order-2 flex-1 md:order-1">
               <h3 className="text-lg font-semibold sm:text-3xl">
-                <p>
+                <p
+                  style={{
+                    color:
+                      mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                  }}
+                >
                   BEAUTIFUL/WILD® labore Lorem nulla officia ullamco qui ea
                   incididunt eu enim minim ad. Adipisicing consequat adipisicing
                   quis exercitation nisi veniam nisi elit qui deserunt enim enim
@@ -94,16 +171,22 @@ const Home = () => {
               </h3>
             </div>
             <div className="order-1 flex-1 md:order-2">
-              <figure className="mb-10 w-full text-[200px] font-extrabold text-customBlack md:mb-0 md:ps-[100px]">
+              <figure
+                style={{
+                  fill:
+                    mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                }}
+                className="mb-10 w-full text-[200px] font-extrabold md:mb-0 md:ps-[100px]"
+              >
                 <MainLogoShort />
               </figure>
             </div>
           </div>
           <div className="mt-[60px]">
-            <RCButton text={"See the work"} />
+            <RCButton text={"See the work"} darkMode={mode === 1} />
           </div>
         </section>
-        <section data-scroll-section className="py-[230px] md:px-[5%]">
+        <section className="py-[230px] md:px-[5%]">
           <div className="w-full overflow-auto p-5">
             <ul className="flex w-full gap-5">
               {wild_dest.map(({ type, src, alt }) => (
@@ -127,7 +210,15 @@ const Home = () => {
                         )}
                       </div>
                     </div>
-                    <div className="mt-5 uppercase text-customBlack">
+                    <div
+                      style={{
+                        color:
+                          mode === 0
+                            ? colorPalet.light.text
+                            : colorPalet.dark.text,
+                      }}
+                      className="mt-5 uppercase"
+                    >
                       <h5 className="text-lg font-bold underline-offset-4 group-hover:underline sm:text-2xl">
                         Patogania
                       </h5>
@@ -143,10 +234,16 @@ const Home = () => {
             </ul>
           </div>
         </section>
-        <section data-scroll-section className="pt-[230px]">
+        <section className="pt-[230px]">
           <div className="w-full">
-            <div className="px-[5%]">
-              <div className="h-[1px] w-full bg-customBlack"></div>
+            <div
+              className="px-[5%]"
+              style={{
+                color:
+                  mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+              }}
+            >
+              <div className="h-[1px] w-full"></div>
               <div className="mt-4 items-center justify-between text-sm md:flex">
                 <div className="leading-3 md:w-[40%]">00</div>
                 <div className="flex items-center justify-between md:w-[60%]">
@@ -154,29 +251,31 @@ const Home = () => {
                   <span className="leading-3 md:text-2xl">●</span>
                 </div>
               </div>
-              <h2 className="my-20 text-3xl font-bold uppercase text-customBlack sm:text-5xl">
+              <h2 className="my-20 text-3xl font-bold uppercase sm:text-5xl">
                 Featured <br></br> Engagements
               </h2>
             </div>
 
             <CustomDragMouse>
-              <HorizontalScroll data={eng_data} />
+              <HorizontalScroll data={eng_data} darkMode={mode} />
             </CustomDragMouse>
           </div>
         </section>
 
-        <section
-          id="stick"
-          data-scroll-section
-          className="h-fit w-full px-[5%] pt-[100px]"
-        >
+        <section id="stick" className="h-fit w-full px-[5%] py-[100px]">
           <div className="flex flex-col lg:flex-row">
             <div
+              ref={stickyRef}
               data-scroll
               data-scroll-speed="5"
               data-scroll-sticky // Attibute that enables the sticky scroll
               data-scroll-target="#stick"
               className="order-2 h-fit flex-1 text-center lg:order-1 lg:text-left"
+              style={{
+                color:
+                  mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                transition: "0.3s",
+              }}
             >
               <span className="block text-[6.25vw] font-bold uppercase leading-[0.9] tracking-[-0.05em]">
                 BASIC/DEPT® helps brands ● connect w/ culture
@@ -185,7 +284,7 @@ const Home = () => {
                 Adweek <strong>Agency Spotlight</strong>
               </span>
               <p className="mt-8 lg:mt-32">
-                <RCButton text={"About Us"} />
+                <RCButton text={"About Us"} darkMode={mode} />
               </p>
             </div>
             <div className="order-1 flex-1 lg:order-2">
@@ -202,13 +301,19 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section data-scroll-section className="px-[5%] py-[100px]">
+        <section className="px-[5%] py-[100px]">
           <div className="mb-10 flex items-center justify-between">
-            <h2 className="max-w-sm text-lg font-semibold uppercase text-customBlack sm:text-5xl">
+            <h2
+              style={{
+                color:
+                  mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+              }}
+              className="max-w-sm text-lg font-semibold uppercase sm:text-5xl"
+            >
               Featured News
             </h2>
             <div>
-              <RCButton text={"View All"} />
+              <RCButton text={"View All"} darkMode={mode} />
             </div>
           </div>
           {news_data.map(({ title, date, imgContent, urlRedirect }) => (
@@ -218,11 +323,12 @@ const Home = () => {
                 date={date}
                 image={imgContent}
                 url={urlRedirect}
+                darkMode={mode}
               />
             </div>
           ))}
         </section>
-      </main>
+      </div>
     </>
   );
 };

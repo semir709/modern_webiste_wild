@@ -4,7 +4,7 @@
   y="18"
   font-family="Arial"
   font-size="24"
-  fill="#252422"
+  fill="inherit"
 >
   B/W
 </text>
@@ -14,7 +14,7 @@
   r="8"
   stroke="#252422"
   stroke-width="2"
-  fill="none"
+  fill="inherit"
 />
 <text
   x="60"
@@ -22,7 +22,7 @@
   font-family="Arial"
   font-size="10"
   text-anchor="middle"
-  fill="#252422"
+  fill="inherit"
 >
   R
 </text>

@@ -6,12 +6,13 @@ import {
   ParticlesComponent,
 } from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
 function App() {
   const containerRef = useRef(null);
+  const [textColorNav, setTextColorNav] = useState(0);
 
   return (
     <>
@@ -26,9 +27,12 @@ function App() {
         containerRef={containerRef}
       >
         <main data-scroll-container ref={containerRef}>
-          <Navigation />
+          <Navigation textColorNav={textColorNav} />
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/"
+              element={<HomePage setTextColorNav={setTextColorNav} />}
+            />
           </Routes>
           <Footer />
         </main>

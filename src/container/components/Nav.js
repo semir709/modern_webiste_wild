@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Nav = ({ data }) => {
+const Nav = ({ data, lineColor = "white" }) => {
+  useEffect(() => {
+    console.log(lineColor);
+  }, [lineColor]);
   return (
     <>
       <nav className="h-full w-full">
@@ -10,7 +13,10 @@ const Nav = ({ data }) => {
             <li className="group mb-4 cursor-pointer overflow-hidden lg:mb-0">
               <Link className="block" to={url} key={id}>
                 <span>{text}</span>
-                <div className="animate-animationRight group-hover:animate-animationLeft hidden h-[0.1rem] w-full bg-white lg:block"></div>
+                <div
+                  className={`] hidden h-[0.1rem] w-full animate-animationRight group-hover:animate-animationLeft lg:block`}
+                  style={{ backgroundColor: lineColor }}
+                ></div>
               </Link>
             </li>
           ))}

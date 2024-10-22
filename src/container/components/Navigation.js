@@ -9,10 +9,15 @@ import { nav_data } from "../../data/nav_data";
 
 const variantScroll = {
   up: {
-    y: -75,
+    y: -115,
   },
   down: {
     y: 0,
+    transition: {
+      type: "tween",
+      duration: 0.5,
+      ease: "easeInOut",
+    },
   },
 };
 const variantNav = {
@@ -27,19 +32,13 @@ const variantNav = {
   },
 };
 
-// function debounce(func, delay) {
-//   let timeoutId;
+const navColorSet = {
+  deafult: { text: "#f4f4f4", bg: "transparent" },
+  active: { text: "#252422", bg: "#ffffff" },
+  dark: { text: "#f9cdcd", bg: "#252422" },
+};
 
-//   return function (...args) {
-//     if (timeoutId) clearTimeout(timeoutId);
-
-//     timeoutId = setTimeout(() => {
-//       func.apply(this, args);
-//     }, delay);
-//   };
-// }
-
-const Navigation = () => {
+const Navigation = ({ textColorNav = 0 }) => {
   const [scrollDown, setScrollDown] = useState(true);
   const [toggler, setToggler] = useState(false);
   const url = useNavigate();
@@ -83,31 +82,50 @@ const Navigation = () => {
 
   return (
     <motion.div
-      className={"fixed top-0 z-50 w-full overflow-hidden"}
+      className={`fixed top-0 z-50 w-full overflow-hidden`}
       variants={variantScroll}
       animate={scrollDown ? "down" : "up"}
+      style={{
+        backgroundColor:
+          textColorNav === 0
+            ? navColorSet.deafult.bg
+            : textColorNav === 1
+              ? navColorSet.active.bg
+              : navColorSet.dark.bg,
+        transition: "0.3s",
+      }}
     >
       <NavSpaceWrapper>
         <motion.div
           variants={variantNav}
           initial="initial"
           animate="animate"
-          className="flex items-center justify-between text-sm font-semibold uppercase text-white"
+          className={`flex items-center justify-between text-sm font-semibold uppercase`}
+          style={{
+            color:
+              textColorNav === 0
+                ? navColorSet.deafult.text
+                : textColorNav === 1
+                  ? navColorSet.active.text
+                  : navColorSet.dark.text,
+          }}
         >
           <Link className="cursor-pointer text-lg font-bold sm:text-2xl">
             Beautiful/wild
           </Link>
           <div className="hidden w-1/2 md:block">
-            <Nav data={nav_data} />
+            <Nav
+              data={nav_data}
+              lineColor={
+                textColorNav === 0
+                  ? navColorSet.deafult.text
+                  : textColorNav === 1
+                    ? navColorSet.active.text
+                    : navColorSet.dark.text
+              }
+            />
           </div>
-          {/* <nav className="hidden w-1/2 md:block">
-            <ul className="flex justify-around">
-              <li className="bottomLineAnimation">Explore</li>
-              <li className="bottomLineAnimation">About</li>
-              <li className="bottomLineAnimation">News</li>
-              <li className="bottomLineAnimation">Contact</li>
-            </ul>
-          </nav> */}
+
           <button className="w-[50px]" onClick={togglerOpen}>
             <div className="group hidden items-center justify-center md:flex">
               {Array.from({ length: 3 }).map(() => (
@@ -115,7 +133,15 @@ const Navigation = () => {
                   key={nanoid()}
                   className="me-[1px] transition-[margin] group-hover:me-1"
                 >
-                  <Ellipse />
+                  <Ellipse
+                    fill={
+                      textColorNav === 0
+                        ? navColorSet.deafult.text
+                        : textColorNav === 1
+                          ? navColorSet.active.text
+                          : navColorSet.dark.text // When `textColorNav` is 2
+                    }
+                  />
                 </div>
               ))}
             </div>
