@@ -1,3 +1,7 @@
 1. Navigation scroll up and down bg color issue
 2. changing bg color of a multiple elements when reaches spesific section
 3. On the bottom of a home page there is white horizontal line needs to be removed
+4. fix on noise user can scroll (should not scroll)
+5. sticky wierd error and not gap after sticky section
+6. Nav animation up and down is not smooth
+

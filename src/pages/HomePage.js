@@ -4,6 +4,7 @@ import {
   ArticleCard,
   AwardCard,
   CustomDragMouse,
+  Footer,
   HorizontalScroll,
   RCButton,
   TvNoiseBg,
@@ -44,11 +45,9 @@ const colorPalet = {
   dark: { text: "#f9cdcd", bg: "#252422" },
 };
 
-const Home = ({ setTextColorNav }) => {
+const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
   const heroRef = useRef();
   const stickyRef = useRef();
-
-  const [mode, setMode] = useState(1);
 
   useEffect(() => {
     const heroSection = heroRef.current;
@@ -63,7 +62,7 @@ const Home = ({ setTextColorNav }) => {
             }
 
             if (entry.target === stickySection) {
-              setMode(1);
+              setDarkMode(1);
               console.log("It get's dark");
             }
           } else {
@@ -73,7 +72,7 @@ const Home = ({ setTextColorNav }) => {
 
             if (entry.target === stickySection) {
               console.log("It light!!!");
-              setMode(0);
+              setDarkMode(0);
             }
           }
         });
@@ -96,7 +95,7 @@ const Home = ({ setTextColorNav }) => {
     <>
       <div
         style={{
-          background: mode === 0 ? colorPalet.light.bg : colorPalet.dark.bg,
+          background: darkMode === 0 ? colorPalet.light.bg : colorPalet.dark.bg,
           transition: " 0.3s",
         }}
         data-scroll-section
@@ -126,11 +125,13 @@ const Home = ({ setTextColorNav }) => {
           </div>
         </section>
 
-        <section className="px-[5%] py-[130px]">
+        <section className="px-[5%] py-[180px]">
           <div
             style={{
-              color: mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
-              fill: mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+              color:
+                darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+              fill:
+                darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
             }}
             className="flex items-center justify-between text-xs font-semibold uppercase md:px-[10%]"
           >
@@ -146,11 +147,11 @@ const Home = ({ setTextColorNav }) => {
           </div>
         </section>
 
-        <section className="px-[5%] py-[130px]">
+        <section className="px-[5%] py-[100px]">
           <div
             style={{
               background:
-                mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
             }}
             className="h-[2px] w-full"
           ></div>
@@ -160,7 +161,9 @@ const Home = ({ setTextColorNav }) => {
                 <p
                   style={{
                     color:
-                      mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                      darkMode === 0
+                        ? colorPalet.light.text
+                        : colorPalet.dark.text,
                   }}
                 >
                   BEAUTIFUL/WILD® labore Lorem nulla officia ullamco qui ea
@@ -174,7 +177,9 @@ const Home = ({ setTextColorNav }) => {
               <figure
                 style={{
                   fill:
-                    mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                    darkMode === 0
+                      ? colorPalet.light.text
+                      : colorPalet.dark.text,
                 }}
                 className="mb-10 w-full text-[200px] font-extrabold md:mb-0 md:ps-[100px]"
               >
@@ -183,10 +188,10 @@ const Home = ({ setTextColorNav }) => {
             </div>
           </div>
           <div className="mt-[60px]">
-            <RCButton text={"See the work"} darkMode={mode === 1} />
+            <RCButton text={"See the work"} darkMode={darkMode === 1} />
           </div>
         </section>
-        <section className="py-[230px] md:px-[5%]">
+        <section className="py-[100px] md:px-[5%]">
           <div className="w-full overflow-auto p-5">
             <ul className="flex w-full gap-5">
               {wild_dest.map(({ type, src, alt }) => (
@@ -213,7 +218,7 @@ const Home = ({ setTextColorNav }) => {
                     <div
                       style={{
                         color:
-                          mode === 0
+                          darkMode === 0
                             ? colorPalet.light.text
                             : colorPalet.dark.text,
                       }}
@@ -234,16 +239,24 @@ const Home = ({ setTextColorNav }) => {
             </ul>
           </div>
         </section>
-        <section className="pt-[230px]">
+        <section className="pt-[100px]">
           <div className="w-full">
             <div
               className="px-[5%]"
               style={{
                 color:
-                  mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                  darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
               }}
             >
-              <div className="h-[1px] w-full"></div>
+              <div
+                style={{
+                  background:
+                    darkMode === 0
+                      ? colorPalet.light.text
+                      : colorPalet.dark.text,
+                }}
+                className="h-[1px] w-full"
+              ></div>
               <div className="mt-4 items-center justify-between text-sm md:flex">
                 <div className="leading-3 md:w-[40%]">00</div>
                 <div className="flex items-center justify-between md:w-[60%]">
@@ -257,7 +270,7 @@ const Home = ({ setTextColorNav }) => {
             </div>
 
             <CustomDragMouse>
-              <HorizontalScroll data={eng_data} darkMode={mode} />
+              <HorizontalScroll data={eng_data} darkMode={darkMode} />
             </CustomDragMouse>
           </div>
         </section>
@@ -273,8 +286,8 @@ const Home = ({ setTextColorNav }) => {
               className="order-2 h-fit flex-1 text-center lg:order-1 lg:text-left"
               style={{
                 color:
-                  mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
-                transition: "0.3s",
+                  darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                // transition: "0.3s",
               }}
             >
               <span className="block text-[6.25vw] font-bold uppercase leading-[0.9] tracking-[-0.05em]">
@@ -284,7 +297,7 @@ const Home = ({ setTextColorNav }) => {
                 Adweek <strong>Agency Spotlight</strong>
               </span>
               <p className="mt-8 lg:mt-32">
-                <RCButton text={"About Us"} darkMode={mode} />
+                <RCButton text={"About Us"} darkMode={darkMode} />
               </p>
             </div>
             <div className="order-1 flex-1 lg:order-2">
@@ -306,14 +319,14 @@ const Home = ({ setTextColorNav }) => {
             <h2
               style={{
                 color:
-                  mode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                  darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
               }}
               className="max-w-sm text-lg font-semibold uppercase sm:text-5xl"
             >
               Featured News
             </h2>
             <div>
-              <RCButton text={"View All"} darkMode={mode} />
+              <RCButton text={"View All"} darkMode={darkMode} />
             </div>
           </div>
           {news_data.map(({ title, date, imgContent, urlRedirect }) => (
@@ -323,11 +336,12 @@ const Home = ({ setTextColorNav }) => {
                 date={date}
                 image={imgContent}
                 url={urlRedirect}
-                darkMode={mode}
+                darkMode={darkMode}
               />
             </div>
           ))}
         </section>
+        <Footer />
       </div>
     </>
   );

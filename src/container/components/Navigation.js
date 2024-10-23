@@ -38,7 +38,7 @@ const navColorSet = {
   dark: { text: "#f9cdcd", bg: "#252422" },
 };
 
-const Navigation = ({ textColorNav = 0 }) => {
+const Navigation = ({ textColorNav = 0, darkMode = false }) => {
   const [scrollDown, setScrollDown] = useState(true);
   const [toggler, setToggler] = useState(false);
   const url = useNavigate();
@@ -89,9 +89,9 @@ const Navigation = ({ textColorNav = 0 }) => {
         backgroundColor:
           textColorNav === 0
             ? navColorSet.deafult.bg
-            : textColorNav === 1
-              ? navColorSet.active.bg
-              : navColorSet.dark.bg,
+            : darkMode
+              ? navColorSet.dark.bg
+              : navColorSet.active.bg,
         transition: "0.3s",
       }}
     >
@@ -105,9 +105,9 @@ const Navigation = ({ textColorNav = 0 }) => {
             color:
               textColorNav === 0
                 ? navColorSet.deafult.text
-                : textColorNav === 1
-                  ? navColorSet.active.text
-                  : navColorSet.dark.text,
+                : darkMode
+                  ? navColorSet.dark.text
+                  : navColorSet.active.text,
           }}
         >
           <Link className="cursor-pointer text-lg font-bold sm:text-2xl">
@@ -119,9 +119,9 @@ const Navigation = ({ textColorNav = 0 }) => {
               lineColor={
                 textColorNav === 0
                   ? navColorSet.deafult.text
-                  : textColorNav === 1
-                    ? navColorSet.active.text
-                    : navColorSet.dark.text
+                  : darkMode
+                    ? navColorSet.dark.text
+                    : navColorSet.active.text
               }
             />
           </div>
@@ -137,9 +137,9 @@ const Navigation = ({ textColorNav = 0 }) => {
                     fill={
                       textColorNav === 0
                         ? navColorSet.deafult.text
-                        : textColorNav === 1
-                          ? navColorSet.active.text
-                          : navColorSet.dark.text // When `textColorNav` is 2
+                        : darkMode
+                          ? navColorSet.dark.text
+                          : navColorSet.active.text
                     }
                   />
                 </div>

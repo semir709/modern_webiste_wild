@@ -13,6 +13,7 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 function App() {
   const containerRef = useRef(null);
   const [textColorNav, setTextColorNav] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <>
@@ -27,14 +28,19 @@ function App() {
         containerRef={containerRef}
       >
         <main data-scroll-container ref={containerRef}>
-          <Navigation textColorNav={textColorNav} />
+          <Navigation textColorNav={textColorNav} darkMode={darkMode} />
           <Routes>
             <Route
               path="/"
-              element={<HomePage setTextColorNav={setTextColorNav} />}
+              element={
+                <HomePage
+                  setTextColorNav={setTextColorNav}
+                  setDarkMode={setDarkMode}
+                  darkMode={darkMode}
+                />
+              }
             />
           </Routes>
-          <Footer />
         </main>
       </LocomotiveScrollProvider>
     </>

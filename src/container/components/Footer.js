@@ -32,7 +32,7 @@ const Footer = () => {
     console.log(inputFocused);
   }, [inputFocused]);
   return (
-    <footer data-scroll-section className="bg-customBlack">
+    <footer className="bg-customBlack">
       <div className="px-[5%] py-40">
         <div className="text-customWhite">
           <div className="mb-20 flex w-full flex-col justify-between gap-20 lg:flex-row">
