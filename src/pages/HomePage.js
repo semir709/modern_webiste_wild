@@ -89,14 +89,14 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
       if (heroSection) observer.unobserve(heroSection);
       if (stickySection) observer.unobserve(stickySection);
     };
-  }, [setTextColorNav]);
+  }, [setTextColorNav, setDarkMode]);
 
   return (
     <>
       <div
         style={{
-          background: darkMode === 0 ? colorPalet.light.bg : colorPalet.dark.bg,
-          transition: " 0.3s",
+          background: !darkMode ? colorPalet.light.bg : colorPalet.dark.bg,
+          transition: " 0.3s background",
         }}
         data-scroll-section
       >
@@ -128,10 +128,8 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
         <section className="px-[5%] py-[180px]">
           <div
             style={{
-              color:
-                darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
-              fill:
-                darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+              color: !darkMode ? colorPalet.light.text : colorPalet.dark.text,
+              fill: !darkMode ? colorPalet.light.text : colorPalet.dark.text,
             }}
             className="flex items-center justify-between text-xs font-semibold uppercase md:px-[10%]"
           >
@@ -150,8 +148,9 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
         <section className="px-[5%] py-[100px]">
           <div
             style={{
-              background:
-                darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+              background: !darkMode
+                ? colorPalet.light.text
+                : colorPalet.dark.text,
             }}
             className="h-[2px] w-full"
           ></div>
@@ -160,10 +159,9 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
               <h3 className="text-lg font-semibold sm:text-3xl">
                 <p
                   style={{
-                    color:
-                      darkMode === 0
-                        ? colorPalet.light.text
-                        : colorPalet.dark.text,
+                    color: !darkMode
+                      ? colorPalet.light.text
+                      : colorPalet.dark.text,
                   }}
                 >
                   BEAUTIFUL/WILD® labore Lorem nulla officia ullamco qui ea
@@ -176,10 +174,9 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
             <div className="order-1 flex-1 md:order-2">
               <figure
                 style={{
-                  fill:
-                    darkMode === 0
-                      ? colorPalet.light.text
-                      : colorPalet.dark.text,
+                  fill: !darkMode
+                    ? colorPalet.light.text
+                    : colorPalet.dark.text,
                 }}
                 className="mb-10 w-full text-[200px] font-extrabold md:mb-0 md:ps-[100px]"
               >
@@ -188,7 +185,7 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
             </div>
           </div>
           <div className="mt-[60px]">
-            <RCButton text={"See the work"} darkMode={darkMode === 1} />
+            <RCButton text={"See the work"} darkMode={darkMode} />
           </div>
         </section>
         <section className="py-[100px] md:px-[5%]">
@@ -217,10 +214,9 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
                     </div>
                     <div
                       style={{
-                        color:
-                          darkMode === 0
-                            ? colorPalet.light.text
-                            : colorPalet.dark.text,
+                        color: !darkMode
+                          ? colorPalet.light.text
+                          : colorPalet.dark.text,
                       }}
                       className="mt-5 uppercase"
                     >
@@ -244,16 +240,14 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
             <div
               className="px-[5%]"
               style={{
-                color:
-                  darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                color: !darkMode ? colorPalet.light.text : colorPalet.dark.text,
               }}
             >
               <div
                 style={{
-                  background:
-                    darkMode === 0
-                      ? colorPalet.light.text
-                      : colorPalet.dark.text,
+                  background: !darkMode
+                    ? colorPalet.light.text
+                    : colorPalet.dark.text,
                 }}
                 className="h-[1px] w-full"
               ></div>
@@ -275,19 +269,16 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
           </div>
         </section>
 
-        <section id="stick" className="h-fit w-full px-[5%] py-[100px]">
-          <div className="flex flex-col lg:flex-row">
+        <section className="w-full px-[5%] pt-20">
+          <div id="stick" className="flex flex-col lg:flex-row">
             <div
               ref={stickyRef}
               data-scroll
-              data-scroll-speed="5"
               data-scroll-sticky // Attibute that enables the sticky scroll
               data-scroll-target="#stick"
-              className="order-2 h-fit flex-1 text-center lg:order-1 lg:text-left"
+              className="order-2 h-full flex-1 py-5 text-center lg:order-1 lg:pb-0 lg:pt-36 lg:text-left"
               style={{
-                color:
-                  darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
-                // transition: "0.3s",
+                color: !darkMode ? colorPalet.light.text : colorPalet.dark.text,
               }}
             >
               <span className="block text-[6.25vw] font-bold uppercase leading-[0.9] tracking-[-0.05em]">
@@ -296,13 +287,13 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
               <span className="mt-10 block text-lg uppercase">
                 Adweek <strong>Agency Spotlight</strong>
               </span>
-              <p className="mt-8 lg:mt-32">
+              <p className="mt-8 lg:mt-10">
                 <RCButton text={"About Us"} darkMode={darkMode} />
               </p>
             </div>
             <div className="order-1 flex-1 lg:order-2">
               {module_data.map(({ imgContent }) => (
-                <div className="relative mb-5 h-[400px] w-full">
+                <div className="relative mt-5 h-[400px] w-full">
                   <div className="absolute left-0 top-0 h-full w-full bg-black opacity-10"></div>
                   <img
                     className="h-full w-full object-cover"
@@ -318,8 +309,7 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
           <div className="mb-10 flex items-center justify-between">
             <h2
               style={{
-                color:
-                  darkMode === 0 ? colorPalet.light.text : colorPalet.dark.text,
+                color: !darkMode ? colorPalet.light.text : colorPalet.dark.text,
               }}
               className="max-w-sm text-lg font-semibold uppercase sm:text-5xl"
             >

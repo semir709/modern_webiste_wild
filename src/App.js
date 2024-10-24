@@ -6,7 +6,7 @@ import {
   ParticlesComponent,
 } from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
@@ -29,6 +29,7 @@ function App() {
       >
         <main data-scroll-container ref={containerRef}>
           <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+
           <Routes>
             <Route
               path="/"
