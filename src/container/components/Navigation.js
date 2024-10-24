@@ -10,12 +10,17 @@ import { nav_data } from "../../data/nav_data";
 const variantScroll = {
   up: {
     y: -115,
+    transition: {
+      type: "tween",
+      duration: 0.3,
+      ease: "easeInOut",
+    },
   },
   down: {
     y: 0,
     transition: {
       type: "tween",
-      duration: 0.5,
+      duration: 0.3,
       ease: "easeInOut",
     },
   },

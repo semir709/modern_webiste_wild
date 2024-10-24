@@ -16,7 +16,7 @@ import { eng_data } from "../data/engagements_data";
 import { module_data } from "../data/main_module_content_data";
 import { news_data } from "../data/news_data";
 import { nanoid } from "nanoid";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const variantsParanet = {
   start: { height: "100vh" },
