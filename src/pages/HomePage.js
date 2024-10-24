@@ -6,6 +6,7 @@ import {
   CustomDragMouse,
   Footer,
   HorizontalScroll,
+  ParticlesComponent,
   RCButton,
   TvNoiseBg,
 } from "../container/components/index";
@@ -93,13 +94,7 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
 
   return (
     <>
-      <div
-        style={{
-          background: !darkMode ? colorPalet.light.bg : colorPalet.dark.bg,
-          transition: " 0.3s background",
-        }}
-        data-scroll-section
-      >
+      <div data-scroll-section>
         <section ref={heroRef}>
           <motion.div
             className="absolute left-0 top-0 z-50 h-full w-full"

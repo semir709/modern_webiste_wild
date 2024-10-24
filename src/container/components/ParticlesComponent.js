@@ -3,7 +3,7 @@ import particlesOptions from "../dataJSON/particles.json";
 import { loadFull } from "tsparticles";
 import { useEffect, useState } from "react";
 
-const ParticlesComponent = () => {
+const ParticlesComponent = ({ darkMode = false }) => {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
