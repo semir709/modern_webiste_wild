@@ -1,5 +1,5 @@
 import "./App.css";
-import { HomePage } from "./pages";
+import { HomePage, NewsPage } from "./pages";
 import {
   Footer,
   Navigation,
@@ -46,6 +46,10 @@ function App() {
                   darkMode={darkMode}
                 />
               }
+            />
+            <Route
+              path="/news"
+              element={<NewsPage setTextColorNav={setTextColorNav} />}
             />
           </Routes>
         </main>

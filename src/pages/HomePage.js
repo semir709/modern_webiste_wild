@@ -8,7 +8,6 @@ import {
   HorizontalScroll,
   ParticlesComponent,
   RCButton,
-  TvNoiseBg,
 } from "../container/components/index";
 import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
 import { Link } from "react-router-dom";
@@ -102,7 +101,7 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
             initial="start"
             animate="end"
           >
-            <TvNoiseBg>
+            <div className="absolute left-0 top-0 h-full w-full bg-white">
               <div className="flex h-full w-full items-center justify-center">
                 <div className="h-[200px] text-center text-4xl font-extrabold uppercase leading-none text-customBlack sm:text-[100px]">
                   <motion.div
@@ -113,7 +112,7 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
                   </motion.div>
                 </div>
               </div>
-            </TvNoiseBg>
+            </div>
           </motion.div>
           <div>
             <MainSection />
