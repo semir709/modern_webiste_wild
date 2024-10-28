@@ -1,12 +1,18 @@
 import { nanoid } from "nanoid";
-import { ArticleCard, Footer } from "../container/components";
+import {
+  ArticleCard,
+  CustomRadioFilter,
+  Footer,
+} from "../container/components";
 import { news_data } from "../data/news_data";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const NewsPage = ({ setTextColorNav }) => {
   useEffect(() => {
     setTextColorNav(1);
   }, [setTextColorNav]);
+
   return (
     <>
       <div data-scroll-section>
@@ -24,16 +30,28 @@ const NewsPage = ({ setTextColorNav }) => {
             <div className="w-full">
               <div className="mb-16 flex w-full justify-end">
                 <div>
-                  <ul>
+                  <CustomRadioFilter />
+                  {/* <ul>
                     <li>
-                      <label></label>
-                      <button role="radio" aria-checked="false">
-                        <div className="relative rounded-full border border-black p-5">
-                          <div className="rounded-full bg-black p-1"></div>
+                      <motion.button
+                        onClick={() => setIsSelected((prev) => !prev)}
+                        className="flex items-center"
+                        role="radio"
+                        aria-checked="false"
+                        initial="initial"
+                        whileHover={!isSelected && "whileHover"}
+                        animate={isSelected ? "animate" : "initial"}
+                      >
+                        <div className="relative flex h-[50px] w-[50px] items-center justify-center rounded-full border border-black">
+                          <motion.div
+                            variants={dotVariant}
+                            className="h-1/2 w-1/2 rounded-full bg-black"
+                          ></motion.div>
                         </div>
-                      </button>
+                        <div className="ms-5">some text label</div>
+                      </motion.button>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
               <div>

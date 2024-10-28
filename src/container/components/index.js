@@ -16,3 +16,4 @@ export { default as ArticleCard } from "./ArticleCard";
 export { default as Footer } from "./Footer";
 export { default as CustomDot } from "./CustomDot";
 export { default as CustomList } from "./CustomList";
+export { default as CustomRadioFilter } from "./CustomRadioFilter";
