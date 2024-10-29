@@ -41,7 +41,7 @@ const NewsPage = ({ setTextColorNav }) => {
             </div>
 
             <div className="w-full">
-              <div className="mb-16 flex w-full justify-end">
+              <div className="mb-4 flex w-full overflow-x-auto pb-4 md:justify-end">
                 <div>
                   <CustomRadioFilter
                     radioData={radioData}

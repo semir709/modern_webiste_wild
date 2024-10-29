@@ -28,7 +28,7 @@ const CustomRadioFilter = ({ radioData, setFilter }) => {
   return (
     <ul className="flex items-center">
       {radioData.map(({ id, text, slug }, index) => (
-        <li className="ms-16" key={id}>
+        <li className="ms-16 min-w-fit" key={id}>
           <motion.button
             onClick={() => onMouseClick(index, slug)}
             onMouseEnter={() => onMouseEnter(index)}
