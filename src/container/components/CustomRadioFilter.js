@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const dotVariant = {
   initial: { scale: 0, opacity: 0 },
@@ -8,12 +8,20 @@ const dotVariant = {
 };
 
 const CustomRadioFilter = () => {
-  const [isSelected, setIsSelected] = useState(false);
-  //   const [isHovered, setIsHovered] = useState(false);
+  const [isSelectIndex, setIsSelectIndex] = useState(-1);
+  const [isHovered, setIsHovered] = useState(-1);
 
-  //   useEffect(() => {
-  //     console.log(isHovered);
-  //   }, [isHovered]);
+  const onMouseEnter = (index) => {
+    if (index !== isSelectIndex) setIsHovered(index);
+  };
+  const onMouseLeave = () => {
+    setIsHovered(-1);
+  };
+
+  const onMouseClick = (index) => {
+    setIsSelectIndex(index);
+    setIsHovered(-1);
+  };
 
   const data = [1, 2, 3, 4, 5];
   return (
@@ -21,13 +29,19 @@ const CustomRadioFilter = () => {
       {data.map((el, index) => (
         <li className="mx-2">
           <motion.button
-            onClick={() => setIsSelected(index)}
+            onClick={() => onMouseClick(index)}
+            onMouseEnter={() => onMouseEnter(index)}
+            onMouseLeave={onMouseLeave}
             className="flex items-center"
             role="radio"
-            // aria-checked="false"
-            // animate={isSelected === index ? "animate" : "initial"}
-            animate={isSelected === index ? "animate" : "initial"}
-            whileHover={isSelected === index ? "" : "hovered"}
+            initial="initial"
+            animate={
+              isHovered === index && isSelectIndex !== index
+                ? "hovered"
+                : isHovered !== index && isSelectIndex === index
+                  ? "animate"
+                  : "initial"
+            }
           >
             <div className="relative flex h-[50px] w-[50px] items-center justify-center rounded-full border border-black">
               <motion.div
