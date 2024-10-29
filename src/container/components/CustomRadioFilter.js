@@ -7,8 +7,8 @@ const dotVariant = {
   animate: { scale: 2, opacity: 1 },
 };
 
-const CustomRadioFilter = () => {
-  const [isSelectIndex, setIsSelectIndex] = useState(-1);
+const CustomRadioFilter = ({ radioData, setFilter }) => {
+  const [isSelectIndex, setIsSelectIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(-1);
 
   const onMouseEnter = (index) => {
@@ -18,18 +18,19 @@ const CustomRadioFilter = () => {
     setIsHovered(-1);
   };
 
-  const onMouseClick = (index) => {
+  const onMouseClick = (index, slug) => {
     setIsSelectIndex(index);
     setIsHovered(-1);
+
+    setFilter(slug);
   };
 
-  const data = [1, 2, 3, 4, 5];
   return (
     <ul className="flex items-center">
-      {data.map((el, index) => (
-        <li className="mx-2">
+      {radioData.map(({ id, text, slug }, index) => (
+        <li className="ms-16" key={id}>
           <motion.button
-            onClick={() => onMouseClick(index)}
+            onClick={() => onMouseClick(index, slug)}
             onMouseEnter={() => onMouseEnter(index)}
             onMouseLeave={onMouseLeave}
             className="flex items-center"
@@ -43,13 +44,13 @@ const CustomRadioFilter = () => {
                   : "initial"
             }
           >
-            <div className="relative flex h-[50px] w-[50px] items-center justify-center rounded-full border border-black">
+            <div className="relative flex h-[20px] w-[20px] items-center justify-center rounded-full border border-black">
               <motion.div
                 variants={dotVariant}
                 className="h-1/2 w-1/2 rounded-full bg-black"
               ></motion.div>
             </div>
-            <div className="ms-5">some text label</div>
+            <div className="ms-5 font-semibold uppercase">{text}</div>
           </motion.button>
         </li>
       ))}

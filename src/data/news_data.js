@@ -12,6 +12,7 @@ export const news_data = [
     title: "The Hidden Wonders of Rainforests",
     date: "10.10.2024",
     urlRedirect: "/rainforest",
+    tag: "forest",
   },
   {
     id: nanoid(),
@@ -19,6 +20,7 @@ export const news_data = [
     title: "Mountain Majesty: A Journey Through the Alps",
     date: "10.09.2024",
     urlRedirect: "/alps",
+    tag: "forest",
   },
   {
     id: nanoid(),
@@ -26,6 +28,7 @@ export const news_data = [
     title: "The Oceans: Earth's Final Frontier",
     date: "05.10.2024",
     urlRedirect: "/earthOcean",
+    tag: "ocean",
   },
   {
     id: nanoid(),
@@ -33,6 +36,7 @@ export const news_data = [
     title: "Desert Bloom: The Beauty of Arid Landscapes",
     date: "30.09.2024",
     urlRedirect: "/desert",
+    tag: "desert",
   },
   {
     id: nanoid(),
@@ -40,5 +44,6 @@ export const news_data = [
     title: "The Silent Song of the Arctic",
     date: "12.10.2024",
     urlRedirect: "/artic",
+    tag: "ocean",
   },
 ];

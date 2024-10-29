@@ -6,12 +6,25 @@ import {
 } from "../container/components";
 import { news_data } from "../data/news_data";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { radioData } from "../data/radioData";
 
 const NewsPage = ({ setTextColorNav }) => {
+  const [filter, setFilter] = useState(radioData[0].slug);
+  const [data, setData] = useState(news_data);
+
   useEffect(() => {
     setTextColorNav(1);
   }, [setTextColorNav]);
+
+  useEffect(() => {
+    if (filter === radioData[0].slug) {
+      setData([...news_data]);
+    } else {
+      const newData = news_data.filter(({ tag }) => tag === filter);
+
+      setData([...newData]);
+    }
+  }, [filter]);
 
   return (
     <>
@@ -30,39 +43,20 @@ const NewsPage = ({ setTextColorNav }) => {
             <div className="w-full">
               <div className="mb-16 flex w-full justify-end">
                 <div>
-                  <CustomRadioFilter />
-                  {/* <ul>
-                    <li>
-                      <motion.button
-                        onClick={() => setIsSelected((prev) => !prev)}
-                        className="flex items-center"
-                        role="radio"
-                        aria-checked="false"
-                        initial="initial"
-                        whileHover={!isSelected && "whileHover"}
-                        animate={isSelected ? "animate" : "initial"}
-                      >
-                        <div className="relative flex h-[50px] w-[50px] items-center justify-center rounded-full border border-black">
-                          <motion.div
-                            variants={dotVariant}
-                            className="h-1/2 w-1/2 rounded-full bg-black"
-                          ></motion.div>
-                        </div>
-                        <div className="ms-5">some text label</div>
-                      </motion.button>
-                    </li>
-                  </ul> */}
+                  <CustomRadioFilter
+                    radioData={radioData}
+                    setFilter={setFilter}
+                  />
                 </div>
               </div>
               <div>
-                {news_data.map(({ title, date, imgContent, urlRedirect }) => (
+                {data.map(({ title, date, imgContent, urlRedirect }) => (
                   <div key={nanoid()}>
                     <ArticleCard
                       title={title}
                       date={date}
                       image={imgContent}
                       url={urlRedirect}
-                      // darkMode={darkMode}
                     />
                   </div>
                 ))}
