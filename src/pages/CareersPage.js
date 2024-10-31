@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, transform } from "framer-motion";
 import { Footer, RCButton } from "../container/components";
-
+import shark from "../assets/img/shark.jpg";
 const imageContainerVariant = {
   initial: { translateY: "100%" },
   animate: {
@@ -19,6 +19,29 @@ const imageChildVariant = {
   },
 };
 
+const parentTextVariant = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+const childrenTextVariant = {
+  initial: { translateY: "100%" },
+  animate: {
+    translateY: 0,
+    transition: { duration: 1, ease: [0.72, 0, 0.28, 1] },
+  },
+};
+
+const CustomTextOverflow = ({ text }) => {
+  return (
+    <div className="overflow-hidden">
+      <motion.span className="block" variants={childrenTextVariant}>
+        {text}
+      </motion.span>
+    </div>
+  );
+};
+
 const CareersPage = ({ setDarkMode }) => {
   useEffect(() => {
     setDarkMode(true);
@@ -28,23 +51,23 @@ const CareersPage = ({ setDarkMode }) => {
       <main className="mb-60">
         <section className="flex px-[5%] pt-40 text-customPrimary">
           <div className="flex-1">
-            <div className="w-3/4">
-              <h1 className="text-8xl font-bold uppercase">
-                text
-                {/* <span>
-              <span>Make</span> <br /> <span>BW exceeding.</span> <br />
-              <span className="flex justify-between">
-                <span>●</span>
-                <span>Get</span>
-              </span>
-              Paid.
-            </span> */}
+            <div className="">
+              <h1 className="mb-28 mt-32 text-8xl font-bold uppercase">
+                <motion.span
+                  variants={parentTextVariant}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <CustomTextOverflow text={"Make"} />
+                  <CustomTextOverflow text={"B/W Great."} />
+                  <CustomTextOverflow text={"●Get"} />
+                  <CustomTextOverflow text={"Paid."} />
+                </motion.span>
               </h1>
-              <div className="mt-5">
-                <span className="text-xs uppercase">
-                  ake great work.
-                  <br /> Work with great people. <br /> Beautiful/wild®, Inc 10
-                  - 24©
+              <div className="mt-5 w-40">
+                <span className="block text-xs uppercase leading-3">
+                  Make great work. <br /> Work with great people. <br />
+                  BASIC/DEPT®, Inc 10 - 24©
                 </span>
               </div>
             </div>
@@ -63,9 +86,9 @@ const CareersPage = ({ setDarkMode }) => {
                 className="w-full"
               >
                 <img
-                  className="h-auto w-full"
-                  src="https://cdn.sanity.io/images/8nn8fua5/production/a9848ed1a719d650ff4786ffdfd1345ede200f38-1736x2430.jpg?w=1280&fm=webp&q=65"
-                  alt="img"
+                  className="h-auto w-full object-cover"
+                  src={shark}
+                  alt="hiking"
                 />
               </motion.div>
             </motion.div>
