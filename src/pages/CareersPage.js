@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion, transform } from "framer-motion";
-import { Footer } from "../container/components";
+import { Footer, RCButton } from "../container/components";
 
 const imageContainerVariant = {
   initial: { translateY: "100%" },
@@ -25,7 +25,7 @@ const CareersPage = ({ setDarkMode }) => {
   }, [setDarkMode]);
   return (
     <div data-scroll-section>
-      <main>
+      <main className="mb-60">
         <section className="flex px-[5%] pt-40 text-customPrimary">
           <div className="flex-1">
             <div className="w-3/4">
@@ -69,8 +69,30 @@ const CareersPage = ({ setDarkMode }) => {
                 />
               </motion.div>
             </motion.div>
-            <div className="mt-5">hello</div>
-            <div>more text hhahahah</div>
+            <div className="mt-5 text-sm font-semibold uppercase">
+              <span>
+                Openings <b>(0)</b>
+              </span>
+              <span className="ms-36">
+                Offices <b>(08)</b>
+              </span>
+            </div>
+            <div className="mt-36">
+              <div className="flex gap-10 text-3xl font-semibold">
+                <p>
+                  As part of Dept, we operate offices across the world. We’re
+                  always looking to connect with individuals who want to make
+                  the best work of their lives with the world’s greatest brands.
+                  If you’re interested in working with us or learning more, drop
+                  us a note, portfolio link, or résumé. We’ll take anything
+                  you’ve got.
+                </p>
+                <span>●</span>
+              </div>
+              <div className="mt-10">
+                <RCButton text={"Apply here"} darkMode={true} />
+              </div>
+            </div>
           </div>
         </section>
       </main>
