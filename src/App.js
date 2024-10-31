@@ -1,14 +1,11 @@
 import "./App.css";
-import { HomePage, NewsPage } from "./pages";
-import {
-  Footer,
-  Navigation,
-  ParticlesComponent,
-} from "./container/components/index";
+import { CareersPage, HomePage, NewsPage } from "./pages";
+import { Navigation, ParticlesComponent } from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const containerRef = useRef(null);
@@ -34,6 +31,7 @@ function App() {
         containerRef={containerRef}
       >
         <main data-scroll-container ref={containerRef}>
+          {/* <AnimatePresence> */}
           <Navigation textColorNav={textColorNav} darkMode={darkMode} />
 
           <Routes>
@@ -51,7 +49,12 @@ function App() {
               path="/news"
               element={<NewsPage setTextColorNav={setTextColorNav} />}
             />
+            <Route
+              path="/careers"
+              element={<CareersPage setDarkMode={setDarkMode} />}
+            />
           </Routes>
+          {/* </AnimatePresence> */}
         </main>
       </LocomotiveScrollProvider>
     </>

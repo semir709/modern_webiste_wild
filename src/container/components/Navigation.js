@@ -87,6 +87,7 @@ const Navigation = ({ textColorNav = 0, darkMode = false }) => {
 
   return (
     <motion.div
+      key="asd"
       className={`fixed top-0 z-50 w-full overflow-hidden`}
       variants={variantScroll}
       animate={scrollDown ? "down" : "up"}

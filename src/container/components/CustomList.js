@@ -6,7 +6,7 @@ const CustomList = ({ list, title }) => {
   return (
     <div className="mb-5">
       <div className="flex items-center text-lg font-medium uppercase lg:text-2xl">
-        <CustomDot />
+        <CustomDot color={"bg-customBlack"} />
         <h6>{title}</h6>
       </div>
       <ul className="mt-5">

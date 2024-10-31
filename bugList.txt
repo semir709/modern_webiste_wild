@@ -1,4 +1,3 @@
-- On the bottom of a home page there is white horizontal line needs to be removed
-- fix on noise user can scroll (should not scroll)
-- bacgroung light bugs not appears at all 
+- Nabigation needs to be inside a pages
+- reconsider to bg animatio to be insinde pages too ?
 

@@ -25,16 +25,18 @@ const officesList = [
   { text: "Berlin - GE", url: "/berlin" },
 ];
 
-const Footer = () => {
+const Footer = ({ lightMode = false }) => {
   const [inputFocused, setInputFocused] = useState(false);
 
   useEffect(() => {
     console.log(inputFocused);
   }, [inputFocused]);
   return (
-    <footer className="bg-customBlack">
+    <footer className={`${lightMode ? "bg-white" : "bg-customBlack"} `}>
       <div className="px-[5%] py-40">
-        <div className="text-customWhite">
+        <div
+          className={`${lightMode ? "text-customBlack" : "text-customWhite"}`}
+        >
           <div className="mb-20 flex w-full flex-col justify-between gap-20 lg:flex-row">
             <div className="flex-1">
               <span className="text-4xl font-bold uppercase">B/W</span>
@@ -52,7 +54,7 @@ const Footer = () => {
           <div className="flex w-full flex-col justify-between gap-20 lg:flex-row">
             <div className="flex-1">
               <div className="mb-2 flex items-center font-medium uppercase">
-                <CustomDot />
+                <CustomDot color={"bg-customBlack"} />
                 <h6>Stay in the known</h6>
               </div>
               <form>
@@ -69,7 +71,7 @@ const Footer = () => {
                     </button>
                   </div>
                   <div
-                    className={`mt-3 w-full bg-customWhite ${inputFocused ? "h-[2px]" : "h-[1px]"}`}
+                    className={`mt-3 w-full ${lightMode ? "bg-customBlack" : "bg-customWhite"} ${inputFocused ? "h-[2px]" : "h-[1px]"}`}
                   ></div>
                 </div>
               </form>
@@ -85,7 +87,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-center justify-between bg-[#191918] px-[5%] py-5 lg:flex-row">
+      <div
+        className={`flex w-full flex-col items-center justify-between ${lightMode ? "bg-[#eaeaea]" : "bg-[#191918]"} px-[5%] py-5 lg:flex-row`}
+      >
         <div className="text-xs font-medium uppercase text-customGray">
           <span>Beautiful/wild</span>
         </div>
@@ -93,7 +97,9 @@ const Footer = () => {
           <span>Easy to understand, impossible to ignore.™</span>
         </div>
         <div className="text-xs font-medium uppercase text-customGray">
-          <span>Terms, Privacy Policy</span>
+          <span>
+            <strong>Terms, Privacy Policy</strong>
+          </span>
         </div>
       </div>
     </footer>
