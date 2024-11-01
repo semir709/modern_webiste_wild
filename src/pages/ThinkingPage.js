@@ -30,7 +30,38 @@ const ThinkingPage = ({ setDarkMode }) => {
     <div data-scroll-section>
       <main className="px-[5%] pt-40 text-customPrimary">
         <section>
-          <div>hello firs text</div>
+          <div className="mb-32">
+            <div className="w-full">
+              <h1 className="flex items-center justify-between text-4xl font-bold uppercase sm:text-6xl">
+                <span className="block">Thinking</span>
+                <span className="block h-[30px] w-[30px] rounded-full bg-customPrimary sm:h-[50px] sm:w-[50px]"></span>
+              </h1>
+            </div>
+            <div className="text-md mt-20 grid grid-cols-6 gap-5 font-semibold">
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <p className="mb-5 text-2xl uppercase">
+                  <strong>Our thoughts</strong>
+                </p>
+                <p>
+                  Our Thoughts: These are original articles created by our
+                  company, designed to inform, inspire, and engage our readers
+                  with valuable insights and updates on topics relevant to our
+                  industry.
+                </p>
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <p className="mb-5 text-2xl uppercase">
+                  <strong>Sponsors thoughts</strong>
+                </p>
+                <p>
+                  Sponsored Thoughts: These articles are provided by our
+                  sponsors, offering perspectives, products, or services that
+                  align with our audience’s interests. They are clearly marked
+                  as sponsored content to maintain transparency.
+                </p>
+              </div>
+            </div>
+          </div>
           <div
             // variants={newsVariants}
             // initial="initial"
