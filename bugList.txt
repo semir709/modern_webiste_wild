@@ -1,3 +1,5 @@
 - Nabigation needs to be inside a pages
 - reconsider to bg animatio to be insinde pages too ?
+- there is bug for a mobile screen when reload home and careers page text disipare
+
 

@@ -49,30 +49,37 @@ const CareersPage = ({ setDarkMode }) => {
   return (
     <div data-scroll-section>
       <main className="mb-60">
-        <section className="flex px-[5%] pt-40 text-customPrimary">
-          <div className="flex-1">
-            <div className="">
-              <h1 className="mb-28 mt-32 text-8xl font-bold uppercase">
-                <motion.span
-                  variants={parentTextVariant}
-                  initial="initial"
-                  animate="animate"
-                >
-                  <CustomTextOverflow text={"Make"} />
-                  <CustomTextOverflow text={"B/W Great."} />
-                  <CustomTextOverflow text={"●Get"} />
-                  <CustomTextOverflow text={"Paid."} />
-                </motion.span>
-              </h1>
-              <div className="mt-5 w-40">
-                <span className="block text-xs uppercase leading-3">
-                  Make great work. <br /> Work with great people. <br />
-                  BASIC/DEPT®, Inc 10 - 24©
-                </span>
-              </div>
+        <section className="flex flex-col px-[5%] pt-40 text-customPrimary sm:flex-row">
+          <div className="mb-12 flex-1 sm:mb-0">
+            <h1 className="mb-28 mt-16 text-6xl font-bold uppercase md:mt-32 md:text-8xl">
+              <motion.span
+                variants={parentTextVariant}
+                initial="initial"
+                animate="animate"
+              >
+                <CustomTextOverflow text={"Make"} />
+                <CustomTextOverflow text={"B/W Great."} />
+                <CustomTextOverflow
+                  text={
+                    <div className="flex items-center">
+                      <span className="me-5 block h-fit text-9xl sm:me-32">
+                        <div className="h-[40px] w-[40px] rounded-full bg-customPrimary md:h-[60px] md:w-[60px]"></div>
+                      </span>
+                      <span className="block">Get</span>
+                    </div>
+                  }
+                />
+                <CustomTextOverflow text={"Paid."} />
+              </motion.span>
+            </h1>
+            <div className="mt-5 w-40">
+              <span className="block text-xs uppercase">
+                Make great work. <br /> Work with great people. <br />
+                BASIC/DEPT®, Inc 10 - 24©
+              </span>
             </div>
           </div>
-          <div className="group flex-1">
+          <div className="flex-1">
             <motion.div
               variants={imageContainerVariant}
               initial="initial"
@@ -96,7 +103,7 @@ const CareersPage = ({ setDarkMode }) => {
               <span>
                 Openings <b>(0)</b>
               </span>
-              <span className="ms-36">
+              <span className="ms-12 sm:ms-36">
                 Offices <b>(08)</b>
               </span>
             </div>
@@ -110,7 +117,7 @@ const CareersPage = ({ setDarkMode }) => {
                   us a note, portfolio link, or résumé. We’ll take anything
                   you’ve got.
                 </p>
-                <span>●</span>
+                <span className="hidden sm:block">●</span>
               </div>
               <div className="mt-10">
                 <RCButton text={"Apply here"} darkMode={true} />
