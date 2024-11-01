@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Footer, RCButton } from "../container/components";
 import shark from "../assets/img/shark.jpg";
 const imageContainerVariant = {
