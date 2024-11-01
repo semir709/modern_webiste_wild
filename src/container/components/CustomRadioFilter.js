@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const dotVariant = {
-  initial: { scale: 0, opacity: 0 },
+  initial: { scale: 0, opacity: 0, translateX: "-50%", translateY: "-50%" },
   hovered: { scale: 1.5, opacity: 1, transition: { duration: ".4" } },
-  animate: { scale: 2, opacity: 1 },
+  animate: { scale: 2.2, opacity: 1 },
 };
 
-const CustomRadioFilter = ({ radioData, setFilter }) => {
+const CustomRadioFilter = ({ radioData, setFilter, darkMode = false }) => {
   const [isSelectIndex, setIsSelectIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(-1);
 
@@ -44,10 +44,12 @@ const CustomRadioFilter = ({ radioData, setFilter }) => {
                   : "initial"
             }
           >
-            <div className="relative flex h-[20px] w-[20px] items-center justify-center rounded-full border border-black">
+            <div
+              className={`relative h-[20px] w-[20px] rounded-full border ${darkMode ? "border-customPrimary" : "border-black"} `}
+            >
               <motion.div
                 variants={dotVariant}
-                className="h-1/2 w-1/2 rounded-full bg-black"
+                className={`absolute inset-1/2 h-1/2 w-1/2 rounded-full ${darkMode ? "bg-customPrimary" : "bg-black"} `}
               ></motion.div>
             </div>
             <div className="ms-5 font-semibold uppercase">{text}</div>

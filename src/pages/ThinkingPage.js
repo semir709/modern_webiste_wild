@@ -42,6 +42,7 @@ const ThinkingPage = ({ setDarkMode }) => {
                 <CustomRadioFilter
                   radioData={thinking_radio_data}
                   setFilter={setFilter}
+                  darkMode={true}
                 />
               </div>
             </div>
@@ -53,6 +54,7 @@ const ThinkingPage = ({ setDarkMode }) => {
                     date={date}
                     image={imgContent}
                     url={urlRedirect}
+                    darkMode={true}
                   />
                 </div>
               ))}
@@ -60,7 +62,7 @@ const ThinkingPage = ({ setDarkMode }) => {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer lightMode={true} />
     </div>
   );
 };
