@@ -8,6 +8,17 @@ import { thinking_radio_data } from "../data/thinking_radio_data";
 import { thinking_data } from "../data/thinking_data";
 import { nanoid } from "nanoid";
 
+import { motion } from "framer-motion";
+
+const headerVariants = {
+  initial: { y: "100%" },
+  animate: { y: 0, transition: { duration: 0.5, delay: 0.3 } },
+};
+
+const textVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.5, delay: 0.3 } },
+};
 const ThinkingPage = ({ setDarkMode }) => {
   const [filter, setFilter] = useState(thinking_radio_data[0].slug);
   const [data, setData] = useState(thinking_data);
@@ -28,16 +39,26 @@ const ThinkingPage = ({ setDarkMode }) => {
 
   return (
     <div data-scroll-section>
-      <main className="px-[5%] pt-40 text-customPrimary">
+      <main className="px-[5%] pt-48 text-customPrimary">
         <section>
-          <div className="mb-32">
-            <div className="w-full">
-              <h1 className="flex items-center justify-between text-4xl font-bold uppercase sm:text-6xl">
+          <div className="mb-72">
+            <div className="w-full overflow-hidden">
+              <motion.h1
+                variants={headerVariants}
+                initial="initial"
+                animate="animate"
+                className="flex items-center justify-between text-4xl font-bold uppercase sm:text-8xl"
+              >
                 <span className="block">Thinking</span>
                 <span className="block h-[30px] w-[30px] rounded-full bg-customPrimary sm:h-[50px] sm:w-[50px]"></span>
-              </h1>
+              </motion.h1>
             </div>
-            <div className="text-md mt-20 grid grid-cols-6 gap-5 font-semibold">
+            <motion.div
+              variants={textVariants}
+              initial="initial"
+              animate="animate"
+              className="text-md mt-20 grid grid-cols-6 gap-5 font-semibold"
+            >
               <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                 <p className="mb-5 text-2xl uppercase">
                   <strong>Our thoughts</strong>
@@ -60,14 +81,9 @@ const ThinkingPage = ({ setDarkMode }) => {
                   as sponsored content to maintain transparency.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
-          <div
-            // variants={newsVariants}
-            // initial="initial"
-            // animate="animate"
-            className="w-full"
-          >
+          <div className="w-full">
             <div className="mb-4 flex w-full overflow-x-auto pb-4 md:justify-end">
               <div>
                 <CustomRadioFilter
