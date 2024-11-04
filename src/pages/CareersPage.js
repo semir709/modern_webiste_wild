@@ -1,46 +1,29 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-import { Footer, RCButton } from "../container/components";
+import { useEffect } from "react";
+import {
+  Footer,
+  ImageSmoothHeight,
+  RCButton,
+  TextFromBottomOverflow,
+} from "../container/components/index";
 import shark from "../assets/img/shark.jpg";
-const imageContainerVariant = {
-  initial: { translateY: "100%" },
-  animate: {
-    translateY: "0",
-    transition: { duration: 1, ease: [0.72, 0, 0.28, 1] },
+import { nanoid } from "nanoid";
+
+const title = [
+  { id: nanoid(), text: "Make" },
+  { id: nanoid(), text: "B/W Great." },
+  {
+    id: nanoid(),
+    text: (
+      <div className="flex items-center">
+        <span className="me-5 block h-fit text-9xl sm:me-32">
+          <div className="h-[40px] w-[40px] rounded-full bg-customPrimary md:h-[60px] md:w-[60px]"></div>
+        </span>
+        <span className="block">Get</span>
+      </div>
+    ),
   },
-};
-
-const imageChildVariant = {
-  initial: { translateY: "-100%", scale: 1.25 },
-  animate: {
-    translateY: "0",
-    scale: 1,
-    transition: { duration: 1, ease: [0.72, 0, 0.28, 1] },
-  },
-};
-
-const parentTextVariant = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const childrenTextVariant = {
-  initial: { translateY: "100%" },
-  animate: {
-    translateY: 0,
-    transition: { duration: 1, ease: [0.72, 0, 0.28, 1] },
-  },
-};
-
-const CustomTextOverflow = ({ text }) => {
-  return (
-    <div className="overflow-hidden">
-      <motion.span className="block" variants={childrenTextVariant}>
-        {text}
-      </motion.span>
-    </div>
-  );
-};
+  { id: nanoid(), text: "Paid." },
+];
 
 const CareersPage = ({ setDarkMode }) => {
   useEffect(() => {
@@ -52,25 +35,7 @@ const CareersPage = ({ setDarkMode }) => {
         <section className="flex flex-col px-[5%] pt-40 text-customPrimary sm:flex-row">
           <div className="mb-12 flex-1 sm:mb-0">
             <h1 className="mb-28 mt-16 text-6xl font-bold uppercase md:mt-32 md:text-8xl">
-              <motion.span
-                variants={parentTextVariant}
-                initial="initial"
-                animate="animate"
-              >
-                <CustomTextOverflow text={"Make"} />
-                <CustomTextOverflow text={"B/W Great."} />
-                <CustomTextOverflow
-                  text={
-                    <div className="flex items-center">
-                      <span className="me-5 block h-fit text-9xl sm:me-32">
-                        <div className="h-[40px] w-[40px] rounded-full bg-customPrimary md:h-[60px] md:w-[60px]"></div>
-                      </span>
-                      <span className="block">Get</span>
-                    </div>
-                  }
-                />
-                <CustomTextOverflow text={"Paid."} />
-              </motion.span>
+              <TextFromBottomOverflow text={title} />
             </h1>
             <div className="mt-5 w-40">
               <span className="block text-xs uppercase">
@@ -80,25 +45,7 @@ const CareersPage = ({ setDarkMode }) => {
             </div>
           </div>
           <div className="flex-1">
-            <motion.div
-              variants={imageContainerVariant}
-              initial="initial"
-              animate="animate"
-              className="w-full overflow-hidden"
-            >
-              <motion.div
-                variants={imageChildVariant}
-                initial="initial"
-                animate="animate"
-                className="w-full"
-              >
-                <img
-                  className="h-auto w-full object-cover"
-                  src={shark}
-                  alt="hiking"
-                />
-              </motion.div>
-            </motion.div>
+            <ImageSmoothHeight src={shark} alt={"shark"} />
             <div className="mt-5 text-sm font-semibold uppercase">
               <span>
                 Openings <b>(0)</b>

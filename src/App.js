@@ -1,5 +1,11 @@
 import "./App.css";
-import { CareersPage, HomePage, NewsPage, ThinkingPage } from "./pages";
+import {
+  CareersPage,
+  HomePage,
+  NewsPage,
+  ThinkingPage,
+  Contact,
+} from "./pages/index";
 import { Navigation, ParticlesComponent } from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
 import { useRef, useState } from "react";
@@ -58,6 +64,7 @@ function App() {
                 path="/thinking"
                 element={<ThinkingPage setDarkMode={setDarkMode} />}
               />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </AnimatePresence>
         </main>

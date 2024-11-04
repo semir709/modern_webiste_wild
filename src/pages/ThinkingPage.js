@@ -39,7 +39,7 @@ const ThinkingPage = ({ setDarkMode }) => {
 
   return (
     <div data-scroll-section>
-      <main className="px-[5%] pt-48 text-customPrimary">
+      <main className="mb-24 px-[5%] pt-48 text-customPrimary">
         <section>
           <div className="mb-72">
             <div className="w-full overflow-hidden">
