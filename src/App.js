@@ -64,7 +64,10 @@ function App() {
                 path="/thinking"
                 element={<ThinkingPage setDarkMode={setDarkMode} />}
               />
-              <Route path="/contact" element={<Contact />} />
+              <Route
+                path="/contact"
+                element={<Contact setTextColorNav={setTextColorNav} />}
+              />
             </Routes>
           </AnimatePresence>
         </main>

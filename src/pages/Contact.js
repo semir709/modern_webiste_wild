@@ -6,37 +6,13 @@ import {
 } from "../container/components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { email_contact } from "../data/email_contact";
+import { useEffect } from "react";
+import kitty from "../assets/img/kitty.jpg";
 
 const title = [
   { id: nanoid(), text: "b/w" },
   { id: nanoid(), text: "Contact" },
-];
-
-const email_contact = [
-  {
-    id: nanoid(),
-    title: "New Business",
-    email: "biz@basicagency.com",
-    slug: "new_business",
-  },
-  {
-    id: nanoid(),
-    title: "General",
-    email: "hi@basicagency.com",
-    slug: "general",
-  },
-  {
-    id: nanoid(),
-    title: "Press",
-    email: "press@basicagency.com",
-    slug: "press",
-  },
-  {
-    id: nanoid(),
-    title: "Join Us",
-    email: "recruitment@basicagency.com",
-    slug: "join_us",
-  },
 ];
 
 const varinatsOpacity = {
@@ -49,14 +25,18 @@ const varinatsOpacity = {
     },
   },
 };
-const Contact = () => {
+const Contact = ({ setTextColorNav }) => {
+  useEffect(() => {
+    setTextColorNav(1);
+  }, [setTextColorNav]);
+
   return (
     <div data-scroll-section>
       <main className="px-[5%] pt-40">
         <section>
           <div className="relative w-full">
-            <div className="right-0 top-0 flex h-1/2 w-1/2 flex-col justify-center ps-5 sm:absolute">
-              <h1 className="text-6xl font-bold uppercase">
+            <div className="right-0 top-0 mb-5 flex h-1/2 w-full flex-col justify-center sm:absolute sm:mb-0 sm:w-1/2 sm:ps-5">
+              <h1 className="text-4xl font-bold uppercase sm:text-6xl">
                 <TextFromBottomOverflow text={title} />
               </h1>
               <motion.div
@@ -71,21 +51,16 @@ const Contact = () => {
                 </span>
               </motion.div>
             </div>
-            <div className="w-1/2">
-              <ImageSmoothHeight
-                src={
-                  "https://cdn.sanity.io/images/8nn8fua5/production/cb0aa290219a3dc370e4b6a6c4f4b3effee44767-1736x2430.jpg?w=1280&fm=webp&q=65"
-                }
-                alt={"tet"}
-              />
+            <div className="mb-5 h-full w-full sm:mb-0 sm:w-1/2">
+              <ImageSmoothHeight src={kitty} alt={"tet"} />
             </div>
-            <div className="bottom-0 right-0 h-1/2 w-1/2 ps-5 sm:absolute">
-              <div className="flex justify-between">
+            <div className="bottom-0 right-0 h-1/2 w-full ps-0 sm:absolute sm:w-1/2 sm:ps-5">
+              <div className="justify-between sm:flex">
                 <TextFromBottomOverflow
                   text={[
                     {
                       text: (
-                        <div className="h-[60px] w-[60px] rounded-full bg-customBlack"></div>
+                        <div className="my-5 h-[40px] w-[40px] rounded-full bg-customBlack sm:my-0 md:h-[60px] md:w-[60px]"></div>
                       ),
                     },
                   ]}
@@ -95,7 +70,7 @@ const Contact = () => {
                   variants={varinatsOpacity}
                   initial="initial"
                   animate="animate"
-                  className="grid h-full w-3/4 grid-cols-2 gap-10"
+                  className="grid h-full w-full grid-cols-1 gap-10 sm:w-3/4 md:grid-cols-2"
                 >
                   {email_contact.map(({ id, title, email, slug }) => {
                     if (slug === "join_us") {
