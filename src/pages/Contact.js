@@ -123,26 +123,18 @@ const Contact = ({ setTextColorNav }) => {
               <div className="w-full">
                 <ul className="grid grid-cols-2">
                   {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => {
-                    if (index % 2 !== 0) {
-                      return (
-                        <OfficesCard
-                          rightLine={false}
-                          location={"San Diego"}
-                          address={`<p>350 Tenth Ave Suite 700</p>
-                                 <p>San Diego, CA 92101</p>`}
-                          time={"3:49 AM PST"}
-                        />
-                      );
-                    } else {
-                      return (
-                        <OfficesCard
-                          location={"San Diego"}
-                          address={`<p>350 Tenth Ave Suite 700</p>
-                                 <p>San Diego, CA 92101</p>`}
-                          time={"3:49 AM PST"}
-                        />
-                      );
-                    }
+                    const isOdd = index % 2 !== 0;
+                    const isEnd = index === 6 || index === 7;
+
+                    return (
+                      <OfficesCard
+                        rightLine={!isOdd || !isEnd}
+                        bottomLine={!isEnd}
+                        location={"San Diego"}
+                        address={`<p>350 Tenth Ave Suite 700</p><p>San Diego, CA 92101</p>`}
+                        time={"3:49 AM PST"}
+                      />
+                    );
                   })}
                 </ul>
               </div>
