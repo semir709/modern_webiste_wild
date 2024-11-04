@@ -128,7 +128,7 @@ const Contact = ({ setTextColorNav }) => {
 
                     return (
                       <OfficesCard
-                        rightLine={!isOdd || !isEnd}
+                        rightLine={!isOdd}
                         bottomLine={!isEnd}
                         location={"San Diego"}
                         address={`<p>350 Tenth Ave Suite 700</p><p>San Diego, CA 92101</p>`}
