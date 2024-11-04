@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import {
   ImageSmoothHeight,
+  OfficesCard,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
@@ -33,7 +34,7 @@ const Contact = ({ setTextColorNav }) => {
   return (
     <div data-scroll-section>
       <main className="px-[5%] pt-40">
-        <section>
+        <section className="mb-20">
           <div className="relative w-full">
             <div className="right-0 top-0 mb-5 flex h-1/2 w-full flex-col justify-center sm:absolute sm:mb-0 sm:w-1/2 sm:ps-5">
               <h1 className="text-4xl font-bold uppercase sm:text-6xl">
@@ -52,7 +53,7 @@ const Contact = ({ setTextColorNav }) => {
               </motion.div>
             </div>
             <div className="mb-5 h-full w-full sm:mb-0 sm:w-1/2">
-              <ImageSmoothHeight src={kitty} alt={"tet"} />
+              <ImageSmoothHeight src={kitty} alt={"kitty"} />
             </div>
             <div className="bottom-0 right-0 h-1/2 w-full ps-0 sm:absolute sm:w-1/2 sm:ps-5">
               <div className="justify-between sm:flex">
@@ -112,7 +113,42 @@ const Contact = ({ setTextColorNav }) => {
             </div>
           </div>
         </section>
-        <section>2</section>
+        <section>
+          <div className="flex">
+            <div className="w-[30%]">
+              <h2>Offices</h2>
+            </div>
+            <div className="flex w-[70%]">
+              <div className="me-3 h-full w-[1px] bg-customBlack"></div>
+              <div className="w-full">
+                <ul className="grid grid-cols-2">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => {
+                    if (index % 2 !== 0) {
+                      return (
+                        <OfficesCard
+                          rightLine={false}
+                          location={"San Diego"}
+                          address={`<p>350 Tenth Ave Suite 700</p>
+                                 <p>San Diego, CA 92101</p>`}
+                          time={"3:49 AM PST"}
+                        />
+                      );
+                    } else {
+                      return (
+                        <OfficesCard
+                          location={"San Diego"}
+                          address={`<p>350 Tenth Ave Suite 700</p>
+                                 <p>San Diego, CA 92101</p>`}
+                          time={"3:49 AM PST"}
+                        />
+                      );
+                    }
+                  })}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
         <section>3</section>
       </main>
     </div>

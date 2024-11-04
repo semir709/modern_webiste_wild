@@ -19,3 +19,4 @@ export { default as CustomList } from "./CustomList";
 export { default as CustomRadioFilter } from "./CustomRadioFilter";
 export { default as ImageSmoothHeight } from "./ImageSmoothHeight";
 export { default as TextFromBottomOverflow } from "./TextFromBottomOverflow";
+export { default as OfficesCard } from "./OfficesCard";
