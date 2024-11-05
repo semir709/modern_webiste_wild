@@ -34,9 +34,9 @@ const Contact = ({ setTextColorNav }) => {
   return (
     <div data-scroll-section>
       <main className="px-[5%] pt-40">
-        <section className="mb-20">
+        <section className="mb-24">
           <div className="relative w-full">
-            <div className="right-0 top-0 mb-5 flex h-1/2 w-full flex-col justify-center sm:absolute sm:mb-0 sm:w-1/2 sm:ps-5">
+            <div className="right-0 top-0 mb-5 flex h-1/2 w-full flex-col justify-center sm:absolute lg:mb-0 lg:w-1/2 lg:ps-5">
               <h1 className="text-4xl font-bold uppercase sm:text-6xl">
                 <TextFromBottomOverflow text={title} />
               </h1>
@@ -52,16 +52,16 @@ const Contact = ({ setTextColorNav }) => {
                 </span>
               </motion.div>
             </div>
-            <div className="mb-5 h-full w-full sm:mb-0 sm:w-1/2">
+            <div className="mb-5 h-full w-full lg:mb-0 lg:w-1/2">
               <ImageSmoothHeight src={kitty} alt={"kitty"} />
             </div>
-            <div className="bottom-0 right-0 h-1/2 w-full ps-0 sm:absolute sm:w-1/2 sm:ps-5">
+            <div className="bottom-0 right-0 h-1/2 w-full ps-0 lg:absolute lg:w-1/2 lg:ps-5">
               <div className="justify-between sm:flex">
                 <TextFromBottomOverflow
                   text={[
                     {
                       text: (
-                        <div className="my-5 h-[40px] w-[40px] rounded-full bg-customBlack sm:my-0 md:h-[60px] md:w-[60px]"></div>
+                        <div className="my-5 h-[40px] w-[40px] rounded-full bg-customBlack sm:my-0 lg:h-[60px] lg:w-[60px]"></div>
                       ),
                     },
                   ]}
@@ -71,13 +71,13 @@ const Contact = ({ setTextColorNav }) => {
                   variants={varinatsOpacity}
                   initial="initial"
                   animate="animate"
-                  className="grid h-full w-full grid-cols-1 gap-10 sm:w-3/4 md:grid-cols-2"
+                  className="grid h-full w-full grid-cols-1 gap-2 sm:w-3/4 lg:gap-6 min-[1300px]:grid-cols-2"
                 >
                   {email_contact.map(({ id, title, email, slug }) => {
                     if (slug === "join_us") {
                       return (
                         <div key={id} className="h-full w-full">
-                          <h5 className="mb-5 text-lg font-bold uppercase">
+                          <h5 className="text-lg font-bold uppercase lg:mb-5">
                             {title}
                           </h5>
                           <p>
@@ -114,14 +114,14 @@ const Contact = ({ setTextColorNav }) => {
           </div>
         </section>
         <section>
-          <div className="flex">
-            <div className="w-[30%]">
-              <h2>Offices</h2>
+          <div className="lg:flex">
+            <div className="mb-5 lg:mb-0 lg:w-[30%]">
+              <h2 className="text-4xl font-bold uppercase">Offices</h2>
             </div>
-            <div className="flex w-[70%]">
-              <div className="me-3 h-full w-[1px] bg-customBlack"></div>
+            <div className="flex lg:w-[70%]">
+              <div className="me-3 hidden h-full w-[1px] bg-customBlack lg:block"></div>
               <div className="w-full">
-                <ul className="grid grid-cols-2">
+                <ul className="grid sm:grid-cols-2">
                   {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => {
                     const isOdd = index % 2 !== 0;
                     const isEnd = index === 6 || index === 7;

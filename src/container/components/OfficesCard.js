@@ -1,5 +1,9 @@
 import React from "react";
 
+const rightLineClass = `pe-2 after:sm:absolute after:sm:right-0 after:sm:top-0 after:sm:h-[95%] after:sm:border-r-[1px] after:sm:border-customBlack after:sm:bg-customBlack after:sm:content-[""]`;
+const bottomLineClass = `before:sm:absolute before:sm:bottom-0 before:sm:left-0 before:sm:h-[1px] before:sm:w-full before:sm:bg-customBlack before:sm:content-[""]`;
+const bottomLineClassSmall = `before:max-sm:absolute before:max-sm:bottom-0 before:max-sm:left-0 before:max-sm:h-[1px] before:max-sm:w-full before:max-sm:bg-customBlack before:max-sm:content-[""] `;
+
 const OfficesCard = ({
   bottomLine = true,
   rightLine = true,
@@ -9,7 +13,7 @@ const OfficesCard = ({
 }) => {
   return (
     <li
-      className={`relative mb-5 px-2 ${bottomLine && 'before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-customBlack before:content-[""]'} ${rightLine && 'after:absolute after:right-0 after:top-0 after:h-[95%] after:border-r-[1px] after:border-customBlack after:bg-customBlack after:content-[""]'}`}
+      className={`relative mb-5 ${bottomLineClassSmall} ${bottomLine && bottomLineClass} ${rightLine ? rightLineClass : "ps-2"}`}
     >
       <div className="w-full">
         <img
