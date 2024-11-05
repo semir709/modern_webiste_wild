@@ -9,6 +9,7 @@ const OfficesCard = ({
   rightLine = true,
   location,
   address,
+  addressLocation,
   time,
   imgContent,
 }) => {
@@ -31,7 +32,10 @@ const OfficesCard = ({
           </div>
         </div>
         <div className="mb-10 mt-5 text-sm">
-          <address className="not-italic leading-4">{address}</address>
+          <address className="not-italic leading-4">
+            <p>{address}</p>
+            <p>{addressLocation}</p>
+          </address>
         </div>
       </div>
     </li>

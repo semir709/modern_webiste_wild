@@ -128,7 +128,10 @@ const Contact = ({ setTextColorNav }) => {
               <div className="w-full">
                 <ul className="grid sm:grid-cols-2">
                   {building_data.map(
-                    ({ location, time, address, imgContent }, index) => {
+                    (
+                      { location, time, address, imgContent, addressLocation },
+                      index,
+                    ) => {
                       const isOdd = index % 2 !== 0;
                       const isEnd =
                         index === building_data.length - 2 ||
@@ -142,6 +145,7 @@ const Contact = ({ setTextColorNav }) => {
                           address={address}
                           time={time}
                           imgContent={imgContent}
+                          addressLocation={addressLocation}
                         />
                       );
                     },
