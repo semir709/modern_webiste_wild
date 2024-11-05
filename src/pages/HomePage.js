@@ -4,6 +4,7 @@ import {
   ArticleCard,
   AwardCard,
   CustomDragMouse,
+  CustomLineInfo,
   Footer,
   HorizontalScroll,
   ParticlesComponent,
@@ -237,7 +238,8 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
                 color: !darkMode ? colorPalet.light.text : colorPalet.dark.text,
               }}
             >
-              <div
+              <CustomLineInfo text={"00"} subText={"/05"} />
+              {/* <div
                 style={{
                   background: !darkMode
                     ? colorPalet.light.text
@@ -251,7 +253,7 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
                   <span className="leading-3 md:text-base">/05</span>
                   <span className="leading-3 md:text-2xl">●</span>
                 </div>
-              </div>
+              </div> */}
               <h2 className="my-20 text-3xl font-bold uppercase sm:text-5xl">
                 Featured <br></br> Engagements
               </h2>

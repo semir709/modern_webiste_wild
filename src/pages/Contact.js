@@ -1,5 +1,7 @@
 import { nanoid } from "nanoid";
 import {
+  CustomLineInfo,
+  Footer,
   ImageSmoothHeight,
   OfficesCard,
   RCButton,
@@ -34,7 +36,7 @@ const Contact = ({ setTextColorNav }) => {
   return (
     <div data-scroll-section>
       <main className="px-[5%] pt-40">
-        <section className="mb-24">
+        <section className="mb-24 min-h-screen">
           <div className="relative w-full">
             <div className="right-0 top-0 mb-5 flex h-1/2 w-full flex-col justify-center sm:absolute lg:mb-0 lg:w-1/2 lg:ps-5">
               <h1 className="text-4xl font-bold uppercase sm:text-6xl">
@@ -141,8 +143,24 @@ const Contact = ({ setTextColorNav }) => {
             </div>
           </div>
         </section>
-        <section>3</section>
+        <section className="mb-60 mt-40">
+          <CustomLineInfo text={"sec."} subText={"/a"} />
+
+          <div className="mt-12 justify-between md:flex">
+            <h5 className="text-4xl font-bold uppercase">Follow</h5>
+            <ul className="mt-10 md:mt-0 md:w-[60%]">
+              <h5 className="mb-5 text-2xl font-bold uppercase">Social</h5>
+              <div className="underline">
+                <li className="mb-2">Instagram</li>
+                <li className="mb-2">Twitter</li>
+                <li className="mb-2">Linkedln</li>
+                <li className="mb-2">Facebook</li>
+              </div>
+            </ul>
+          </div>
+        </section>
       </main>
+      <Footer />
     </div>
   );
 };
