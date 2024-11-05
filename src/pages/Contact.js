@@ -13,6 +13,8 @@ import { email_contact } from "../data/email_contact";
 import { useEffect } from "react";
 import kitty from "../assets/img/kitty.jpg";
 
+import { building_data } from "../data/buildings_data";
+
 const title = [
   { id: nanoid(), text: "b/w" },
   { id: nanoid(), text: "Contact" },
@@ -28,6 +30,7 @@ const varinatsOpacity = {
     },
   },
 };
+
 const Contact = ({ setTextColorNav }) => {
   useEffect(() => {
     setTextColorNav(1);
@@ -38,7 +41,7 @@ const Contact = ({ setTextColorNav }) => {
       <main className="px-[5%] pt-40">
         <section className="mb-24 min-h-screen">
           <div className="relative w-full">
-            <div className="right-0 top-0 mb-5 flex h-1/2 w-full flex-col justify-center sm:absolute lg:mb-0 lg:w-1/2 lg:ps-5">
+            <div className="right-0 top-0 mb-5 flex h-1/2 w-full flex-col justify-center lg:absolute lg:mb-0 lg:w-1/2 lg:ps-5">
               <h1 className="text-4xl font-bold uppercase sm:text-6xl">
                 <TextFromBottomOverflow text={title} />
               </h1>
@@ -124,20 +127,25 @@ const Contact = ({ setTextColorNav }) => {
               <div className="me-3 hidden h-full w-[1px] bg-customBlack lg:block"></div>
               <div className="w-full">
                 <ul className="grid sm:grid-cols-2">
-                  {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => {
-                    const isOdd = index % 2 !== 0;
-                    const isEnd = index === 6 || index === 7;
+                  {building_data.map(
+                    ({ location, time, address, imgContent }, index) => {
+                      const isOdd = index % 2 !== 0;
+                      const isEnd =
+                        index === building_data.length - 2 ||
+                        index === building_data.length - 1;
 
-                    return (
-                      <OfficesCard
-                        rightLine={!isOdd}
-                        bottomLine={!isEnd}
-                        location={"San Diego"}
-                        address={`<p>350 Tenth Ave Suite 700</p><p>San Diego, CA 92101</p>`}
-                        time={"3:49 AM PST"}
-                      />
-                    );
-                  })}
+                      return (
+                        <OfficesCard
+                          rightLine={!isOdd}
+                          bottomLine={!isEnd}
+                          location={location}
+                          address={address}
+                          time={time}
+                          imgContent={imgContent}
+                        />
+                      );
+                    },
+                  )}
                 </ul>
               </div>
             </div>
@@ -151,10 +159,10 @@ const Contact = ({ setTextColorNav }) => {
             <ul className="mt-10 md:mt-0 md:w-[60%]">
               <h5 className="mb-5 text-2xl font-bold uppercase">Social</h5>
               <div className="underline">
-                <li className="mb-2">Instagram</li>
-                <li className="mb-2">Twitter</li>
-                <li className="mb-2">Linkedln</li>
-                <li className="mb-2">Facebook</li>
+                <li className="mb-2 cursor-pointer">Instagram</li>
+                <li className="mb-2 cursor-pointer">Twitter</li>
+                <li className="mb-2 cursor-pointer">Linkedln</li>
+                <li className="mb-2 cursor-pointer">Facebook</li>
               </div>
             </ul>
           </div>

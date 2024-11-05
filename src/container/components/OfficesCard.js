@@ -10,16 +10,17 @@ const OfficesCard = ({
   location,
   address,
   time,
+  imgContent,
 }) => {
   return (
     <li
       className={`relative mb-5 ${bottomLineClassSmall} ${bottomLine && bottomLineClass} ${rightLine ? rightLineClass : "ps-2"}`}
     >
-      <div className="w-full">
+      <div className="h-[400px] w-full">
         <img
-          className="h-auto w-full object-cover"
-          src="https://cdn.sanity.io/images/8nn8fua5/production/42cce222e196d8343dcbc2dcb588763e9811138f-720x885.jpg?w=1024&fm=webp&q=65"
-          alt="test"
+          className="h-full w-full object-cover"
+          src={imgContent.url}
+          alt={imgContent.alt}
         />
       </div>
       <div className="text-sm uppercase text-customBlack">
