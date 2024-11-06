@@ -84,6 +84,64 @@ const AboutPage = ({ setDarkMode }) => {
             />
           </div>
         </section>
+        <section className="relative my-40 w-full">
+          <ul className="relative ms-auto h-[900px] w-[70%] bg-gray-300 font-semibold">
+            <div className="absolute bottom-[0] right-[0] w-[60%] hover:z-50">
+              <div className="w-full">
+                <img
+                  className="h-full w-full object-cover"
+                  src="https://cdn.sanity.io/images/8nn8fua5/production/ead0a1be85db6e308cff0308de4a03f1d39a02a9-720x903.jpg?w=1280&fm=webp&q=65"
+                  alt="test"
+                ></img>
+              </div>
+              <div className="mt-2">
+                <span>(01)</span>
+              </div>
+            </div>
+            <div className="absolute bottom-[20%] right-[10%] flex h-fit w-[60%] hover:z-50">
+              <div className="w-full">
+                <img
+                  className="h-full w-full object-cover"
+                  src="https://cdn.sanity.io/images/8nn8fua5/production/8629b3f04cae6cff3fa18289b6eee4fd40c4f4e8-720x903.jpg?w=1280&fm=webp&q=65"
+                  alt="test"
+                ></img>
+              </div>
+              <div className="ms-2">
+                <span>(02)</span>
+              </div>
+            </div>
+            <div className="absolute left-0 top-0 w-[60%] hover:z-50">
+              <div className="w-full">
+                <img
+                  className="h-full w-full object-cover"
+                  src="https://cdn.sanity.io/images/8nn8fua5/production/efe6bb29a36ac6c1c3910e05109a8fcdff26f110-720x900.jpg?w=1280&fm=webp&q=65"
+                  alt="test"
+                ></img>
+              </div>
+              <div className="mt-2">
+                <span>(03)</span>
+              </div>
+            </div>
+            <div className="absolute left-1/2 top-1/2 w-[60%] -translate-x-1/2 -translate-y-1/2 hover:z-50">
+              <div className="w-full">
+                <img
+                  className="h-full w-full object-cover"
+                  src="https://cdn.sanity.io/images/8nn8fua5/production/f249af15eb93ccb7f8a796bfd04002670ee49870-720x900.jpg?w=1280&fm=webp&q=65"
+                  alt="test"
+                ></img>
+              </div>
+              <div className="mt-2">
+                <span>(04)</span>
+              </div>
+            </div>
+          </ul>
+          <div className="absolute bottom-[10%] left-0 -translate-y-1/2 text-xs uppercase leading-3">
+            <p>
+              Easy to understand. <br />
+              Impossible to ignore.™ <br /> BEAUTIFUL/WILD®, Inc 10 - 24©
+            </p>
+          </div>
+        </section>
       </main>
       <Footer lightMode={true} />
     </div>
