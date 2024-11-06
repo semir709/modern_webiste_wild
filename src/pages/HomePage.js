@@ -196,21 +196,6 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
               }}
             >
               <CustomLineInfo text={"00"} subText={"/05"} />
-              {/* <div
-                style={{
-                  background: !darkMode
-                    ? colorPalet.light.text
-                    : colorPalet.dark.text,
-                }}
-                className="h-[1px] w-full"
-              ></div>
-              <div className="mt-4 items-center justify-between text-sm md:flex">
-                <div className="leading-3 md:w-[40%]">00</div>
-                <div className="flex items-center justify-between md:w-[60%]">
-                  <span className="leading-3 md:text-base">/05</span>
-                  <span className="leading-3 md:text-2xl">●</span>
-                </div>
-              </div> */}
               <h2 className="my-20 text-3xl font-bold uppercase sm:text-5xl">
                 Featured <br></br> Engagements
               </h2>
