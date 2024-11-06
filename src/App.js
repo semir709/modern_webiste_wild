@@ -5,6 +5,7 @@ import {
   NewsPage,
   ThinkingPage,
   Contact,
+  WorkPage,
 } from "./pages/index";
 import { Navigation, ParticlesComponent } from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
@@ -68,6 +69,7 @@ function App() {
                 path="/contact"
                 element={<Contact setTextColorNav={setTextColorNav} />}
               />
+              <Route path="/work" element={<WorkPage />} />
             </Routes>
           </AnimatePresence>
         </main>

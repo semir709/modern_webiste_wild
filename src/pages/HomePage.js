@@ -5,6 +5,7 @@ import {
   AwardCard,
   CustomDragMouse,
   CustomLineInfo,
+  CustomZoomCard,
   Footer,
   HorizontalScroll,
   ParticlesComponent,
@@ -12,7 +13,7 @@ import {
 } from "../container/components/index";
 import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
 import { Link } from "react-router-dom";
-import wild_dest from "../data/wild_dest.json";
+import { wild_dest } from "../data/wild_dest.js";
 import { eng_data } from "../data/engagements_data";
 import { module_data } from "../data/main_module_content_data";
 import { news_data } from "../data/news_data";
@@ -183,52 +184,8 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
             <RCButton text={"See the work"} darkMode={darkMode} />
           </div>
         </section>
-        <section className="py-[100px] md:px-[5%]">
-          <div className="w-full overflow-auto p-5">
-            <ul className="flex w-full gap-5">
-              {wild_dest.map(({ type, src, alt }) => (
-                <li className="group min-w-[45%] md:min-w-0 md:flex-1">
-                  <Link>
-                    <div className="h-auto overflow-hidden">
-                      <div className="h-full scale-105 transition-transform duration-300 group-hover:scale-100">
-                        {type === "img" && (
-                          <picture className="h-full">
-                            <img
-                              src={src}
-                              alt={alt}
-                              className="h-full w-full object-cover"
-                            />
-                          </picture>
-                        )}
-                        {type === "video" && (
-                          <video autoPlay loop src={src}>
-                            video
-                          </video>
-                        )}
-                      </div>
-                    </div>
-                    <div
-                      style={{
-                        color: !darkMode
-                          ? colorPalet.light.text
-                          : colorPalet.dark.text,
-                      }}
-                      className="mt-5 uppercase"
-                    >
-                      <h5 className="text-lg font-bold underline-offset-4 group-hover:underline sm:text-2xl">
-                        Patogania
-                      </h5>
-                      <p className="mt-4 w-2/3 text-xs font-medium leading-5 sm:text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit.Curabitur eget aliquet mi, sed malesuada eros.
-                      </p>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-              <li className="ps-1"></li>
-            </ul>
-          </div>
+        <section className="py-[100px] sm:px-[5%]">
+          <CustomZoomCard data={wild_dest} darkMode={darkMode} />
         </section>
         <section className="pt-[100px]">
           <div className="w-full">
