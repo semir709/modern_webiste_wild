@@ -213,6 +213,76 @@ const AboutPage = ({ setDarkMode }) => {
             </ul>
           </div>
         </section>
+        <section className="text-customPrimarys my-40">
+          <div className="">
+            <CustomLineInfo text={"sec."} subText={"/b"} darkMode={true} />
+          </div>
+          <div className="my-5 lg:flex">
+            <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
+              <h2 className="text-lg font-bold uppercase sm:text-4xl">
+                Capabilities
+              </h2>
+            </div>
+            <ul className="grid gap-24 sm:grid-cols-2 lg:w-[60%]">
+              <li className="relative lg:pe-20">
+                <div className="font-bold uppercase">
+                  <h6 className="mb-4 lg:text-2xl">
+                    CX, Commerce, & Product Design
+                  </h6>
+
+                  <div>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li className="relative lg:pe-20">
+                <div className="font-bold uppercase">
+                  <h6 className="mb-4 lg:text-2xl">
+                    CX, Commerce, & Product Design
+                  </h6>
+
+                  <div>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      Market Analysis & Business Case Development
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
       </main>
       <Footer lightMode={true} />
     </div>
