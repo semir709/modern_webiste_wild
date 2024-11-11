@@ -5,6 +5,8 @@ import {
   Footer,
   TextFromBottomOverflow,
 } from "../container/components";
+import { motion } from "framer-motion";
+import { imageCompanyList } from "../data/imageCompanyList";
 
 const title1 = [
   { id: nanoid(), text: "We turn" },
@@ -46,6 +48,36 @@ const titleMobile = [
   },
 ];
 
+const fakeData = [
+  {
+    id: nanoid(),
+    url: "https://cdn.sanity.io/images/8nn8fua5/production/ead0a1be85db6e308cff0308de4a03f1d39a02a9-720x903.jpg?w=1280&fm=webp&q=65",
+    alt: "test1",
+  },
+  {
+    id: nanoid(),
+    url: "https://cdn.sanity.io/images/8nn8fua5/production/8629b3f04cae6cff3fa18289b6eee4fd40c4f4e8-720x903.jpg?w=1280&fm=webp&q=65",
+    alt: "test2",
+  },
+  {
+    id: nanoid(),
+    url: "https://cdn.sanity.io/images/8nn8fua5/production/efe6bb29a36ac6c1c3910e05109a8fcdff26f110-720x900.jpg?w=1280&fm=webp&q=65",
+    alt: "test3",
+  },
+  {
+    id: nanoid(),
+    url: "https://cdn.sanity.io/images/8nn8fua5/production/f249af15eb93ccb7f8a796bfd04002670ee49870-720x900.jpg?w=1280&fm=webp&q=65",
+    alt: "test4",
+  },
+];
+
+const postionStyle = [
+  "right-0 top-full -translate-y-full",
+  "right-[20%] top-[10%] translate-x-[20%]",
+  "right-full top-0 h-[70%] translate-x-full sm:right-1/2 sm:translate-x-1/2",
+  "right-[40%] top-[80%] -translate-y-[80%] translate-x-[40%]",
+];
+
 // company value
 const AboutPage = ({ setDarkMode }) => {
   useEffect(() => {
@@ -53,7 +85,7 @@ const AboutPage = ({ setDarkMode }) => {
   }, [setDarkMode]);
   return (
     <div data-scroll-section>
-      <main className="mt-40 px-[5%] text-customPrimary">
+      <main className="my-40 px-[5%] text-customPrimary">
         <section className="mb-40">
           <h1 className="ljustify-between justify-start text-8xl font-bold uppercase lg:flex lg:h-[500px]">
             <div className="hidden flex-1 self-start lg:block">
@@ -66,13 +98,20 @@ const AboutPage = ({ setDarkMode }) => {
               <TextFromBottomOverflow text={titleMobile} />
             </div>
           </h1>
-          <div className="mt-5 flex w-full justify-end text-lg font-semibold md:text-2xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.5, ease: [0.72, 0, 0.28, 1] },
+            }}
+            className="mt-5 flex w-full justify-end text-lg font-semibold md:text-2xl"
+          >
             <p className="lg:w-1/2">
               BEAUTIFUK/WILD® is a global agency that thrives at the
               intersection of design, data, and technology. Together, we’re
               focused on transforming brands and culture — across the world.
             </p>
-          </div>
+          </motion.div>
           <div className="mt-20 w-full">
             <div className="mb-5 font-bold">
               <span>B/W®</span>
@@ -85,61 +124,93 @@ const AboutPage = ({ setDarkMode }) => {
           </div>
         </section>
         <section className="relative my-40 w-full">
-          <ul className="relative ms-auto h-[900px] w-[70%] bg-gray-300 font-semibold">
-            <div className="absolute bottom-[0] right-[0] w-[60%] hover:z-50">
-              <div className="w-full">
-                <img
-                  className="h-full w-full object-cover"
-                  src="https://cdn.sanity.io/images/8nn8fua5/production/ead0a1be85db6e308cff0308de4a03f1d39a02a9-720x903.jpg?w=1280&fm=webp&q=65"
-                  alt="test"
-                ></img>
-              </div>
-              <div className="mt-2">
-                <span>(01)</span>
-              </div>
-            </div>
-            <div className="absolute bottom-[20%] right-[10%] flex h-fit w-[60%] hover:z-50">
-              <div className="w-full">
-                <img
-                  className="h-full w-full object-cover"
-                  src="https://cdn.sanity.io/images/8nn8fua5/production/8629b3f04cae6cff3fa18289b6eee4fd40c4f4e8-720x903.jpg?w=1280&fm=webp&q=65"
-                  alt="test"
-                ></img>
-              </div>
-              <div className="ms-2">
-                <span>(02)</span>
-              </div>
-            </div>
-            <div className="absolute left-0 top-0 w-[60%] hover:z-50">
-              <div className="w-full">
-                <img
-                  className="h-full w-full object-cover"
-                  src="https://cdn.sanity.io/images/8nn8fua5/production/efe6bb29a36ac6c1c3910e05109a8fcdff26f110-720x900.jpg?w=1280&fm=webp&q=65"
-                  alt="test"
-                ></img>
-              </div>
-              <div className="mt-2">
-                <span>(03)</span>
-              </div>
-            </div>
-            <div className="absolute left-1/2 top-1/2 w-[60%] -translate-x-1/2 -translate-y-1/2 hover:z-50">
-              <div className="w-full">
-                <img
-                  className="h-full w-full object-cover"
-                  src="https://cdn.sanity.io/images/8nn8fua5/production/f249af15eb93ccb7f8a796bfd04002670ee49870-720x900.jpg?w=1280&fm=webp&q=65"
-                  alt="test"
-                ></img>
-              </div>
-              <div className="mt-2">
-                <span>(04)</span>
-              </div>
-            </div>
+          <ul class="relative h-[1000px] w-full">
+            {fakeData.map(({ id, url, alt }, index) => (
+              <li
+                key={id}
+                className={`absolute h-[70%] w-[80%] hover:z-40 min-[350px]:w-[60%] sm:w-[35%] ${postionStyle[index % postionStyle.length]}`}
+              >
+                <div className="h-full w-full">
+                  <img
+                    className="h-full w-full object-cover"
+                    src={url}
+                    alt={alt}
+                  ></img>
+                </div>
+              </li>
+            ))}
           </ul>
-          <div className="absolute bottom-[10%] left-0 -translate-y-1/2 text-xs uppercase leading-3">
+
+          <div className="absolute bottom-[30%] left-0 -translate-y-1/2 text-xs uppercase leading-3 sm:bottom-[10%]">
             <p>
               Easy to understand. <br />
               Impossible to ignore.™ <br /> BEAUTIFUL/WILD®, Inc 10 - 24©
             </p>
+          </div>
+        </section>
+        <section className="text-customPrimarys">
+          <div className="border-t-2 border-customPrimary">
+            <h5 className="my-4 text-9xl font-bold uppercase">
+              Beautiful/Wild
+            </h5>
+            <CustomLineInfo text={"sec."} subText={"/a"} darkMode={true} />
+          </div>
+          <div className="my-5 lg:flex">
+            <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
+              <h2 className="text-4xl font-bold uppercase">
+                Agency <br className="hidden lg:block" /> Snapshot
+              </h2>
+            </div>
+            <ul className="grid gap-24 lg:w-[60%] lg:grid-cols-2">
+              <li className="relative lg:pe-20">
+                <div className="ms-[40%] font-bold uppercase lg:ms-0">
+                  <h6 className="mb-4 lg:text-2xl">People</h6>
+                  <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
+                    120+
+                  </span>
+                  <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                    We're a world-class team of diverse individuals who are here
+                    to do great work as well as be great to work with.
+                  </p>
+                </div>
+              </li>
+              <li className="relative lg:pe-20">
+                <div className="ms-[40%] font-bold uppercase lg:ms-0">
+                  <h6 className="mb-4 lg:text-2xl">People</h6>
+                  <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
+                    120+
+                  </span>
+                  <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                    We're a world-class team of diverse individuals who are here
+                    to do great work as well as be great to work with.
+                  </p>
+                </div>
+              </li>
+              <li className="relative lg:pe-20">
+                <div className="ms-[40%] font-bold uppercase lg:ms-0">
+                  <h6 className="mb-4 lg:text-2xl">People</h6>
+                  <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
+                    120+
+                  </span>
+                  <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                    We're a world-class team of diverse individuals who are here
+                    to do great work as well as be great to work with.
+                  </p>
+                </div>
+              </li>
+              <li className="relative lg:pe-20">
+                <div className="ms-[40%] font-bold uppercase lg:ms-0">
+                  <h6 className="mb-4 lg:text-2xl">People</h6>
+                  <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
+                    120+
+                  </span>
+                  <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                    We're a world-class team of diverse individuals who are here
+                    to do great work as well as be great to work with.
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
         </section>
       </main>
