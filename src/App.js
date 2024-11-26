@@ -8,7 +8,11 @@ import {
   WorkPage,
   AboutPage,
 } from "./pages/index";
-import { Navigation, ParticlesComponent } from "./container/components/index";
+import {
+  Modal,
+  Navigation,
+  ParticlesComponent,
+} from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
 import { useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
@@ -41,7 +45,7 @@ function App() {
       >
         <main data-scroll-container ref={containerRef}>
           <AnimatePresence>
-            <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+            {/* <Navigation textColorNav={textColorNav} darkMode={darkMode} /> */}
 
             <Routes>
               <Route
@@ -71,10 +75,17 @@ function App() {
                 element={<Contact setTextColorNav={setTextColorNav} />}
               />
               <Route path="/work" element={<WorkPage />} />
+              {/* <Route
+                path="/about"
+                element={<AboutPage setDarkMode={setDarkMode} />}
+              /> */}
+
               <Route
                 path="/about"
                 element={<AboutPage setDarkMode={setDarkMode} />}
-              />
+              >
+                <Route path="awards" element={<Modal />} />
+              </Route>
             </Routes>
           </AnimatePresence>
         </main>

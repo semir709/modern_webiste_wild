@@ -22,3 +22,4 @@ export { default as TextFromBottomOverflow } from "./TextFromBottomOverflow";
 export { default as OfficesCard } from "./OfficesCard";
 export { default as CustomLineInfo } from "./CustomLineInfo";
 export { default as CustomZoomCard } from "./CustomZoomCard";
+export { default as Modal } from "./Modal";

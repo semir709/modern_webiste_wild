@@ -3,10 +3,13 @@ import { useEffect } from "react";
 import {
   CustomLineInfo,
   Footer,
+  RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
 import { motion } from "framer-motion";
 import { imageCompanyList } from "../data/imageCompanyList";
+import ListImageText from "../container/components/ListImageText";
+import { Outlet } from "react-router-dom";
 
 const title1 = [
   { id: nanoid(), text: "We turn" },
@@ -83,10 +86,12 @@ const AboutPage = ({ setDarkMode }) => {
   useEffect(() => {
     setDarkMode(true);
   }, [setDarkMode]);
+
   return (
     <div data-scroll-section>
-      <main className="my-40 px-[5%] text-customPrimary">
-        <section className="mb-40">
+      <Outlet />
+      <main className="px-[5%] text-customPrimary">
+        <section className="py-40">
           <h1 className="ljustify-between justify-start text-8xl font-bold uppercase lg:flex lg:h-[500px]">
             <div className="hidden flex-1 self-start lg:block">
               <TextFromBottomOverflow text={title1} />
@@ -281,6 +286,49 @@ const AboutPage = ({ setDarkMode }) => {
                 </div>
               </li>
             </ul>
+          </div>
+        </section>
+        <section>
+          <div className="mb-10">
+            <CustomLineInfo text={"Sec."} subText={"/c"} darkMode={true} />
+          </div>
+          <div className="lg:flex">
+            <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
+              <h2 className="text-lg font-bold uppercase sm:text-4xl">
+                Awards
+              </h2>
+            </div>
+            <div className="lg:w-[60%]">
+              <p className="mb-10 text-lg font-semibold lg:w-1/2 lg:text-3xl">
+                While results are what matter most, we believe awards bring
+                value and recognition to organizations as well as individuals.
+              </p>
+              <p>
+                <RCButton darkMode={true} text={"Full awards lits"} />
+              </p>
+            </div>
+          </div>
+
+          <ListImageText />
+        </section>
+        <section className="mt-20">
+          <div className="mb-10">
+            <CustomLineInfo text={"Sec."} subText={"/d"} darkMode={true} />
+          </div>
+          <div className="pt-10 lg:flex">
+            <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
+              <h2 className="text-lg font-bold uppercase sm:text-4xl">
+                Team & Leadership
+              </h2>
+            </div>
+            <div className="lg:w-[60%]">
+              <p className="mb-10 text-lg font-semibold lg:w-2/3 lg:text-3xl">
+                We’re 120+ individuals from across the world driven by bold
+                ideas and diverse perspectives. Craft, service, and efficiency
+                drive us forward and we see our agency as a place for our shared
+                values to collide.
+              </p>
+            </div>
           </div>
         </section>
       </main>
