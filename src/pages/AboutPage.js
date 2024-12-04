@@ -3,13 +3,14 @@ import { useEffect } from "react";
 import {
   CustomLineInfo,
   Footer,
+  Modal,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { imageCompanyList } from "../data/imageCompanyList";
 import ListImageText from "../container/components/ListImageText";
-import { Outlet } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 
 const title1 = [
   { id: nanoid(), text: "We turn" },
@@ -86,10 +87,17 @@ const AboutPage = ({ setDarkMode }) => {
   useEffect(() => {
     setDarkMode(true);
   }, [setDarkMode]);
+  const location = useLocation();
 
   return (
     <div data-scroll-section>
-      <Outlet />
+      {/* <Outlet /> */}
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.key}>
+          <Route path="/awards" element={<Modal />} />
+        </Routes>
+      </AnimatePresence>
+
       <main className="px-[5%] text-customPrimary">
         <section className="py-40">
           <h1 className="ljustify-between justify-start text-8xl font-bold uppercase lg:flex lg:h-[500px]">
