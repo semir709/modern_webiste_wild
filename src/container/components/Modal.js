@@ -36,7 +36,7 @@ const randomData = {
   year: "2023",
 };
 
-const Modal = () => {
+const Modal = ({ hasFooter = false }) => {
   const [position, setPosition] = useState(0);
   const { scroll } = useLocomotiveScroll();
   const navigate = useNavigate();
@@ -69,17 +69,17 @@ const Modal = () => {
         initial="initial"
         animate="animate"
         exit="exit"
-        className="relative flex w-[75%]"
+        className="relative flex w-full lg:w-[75%]"
       >
-        <div className="p-5">
+        <div className="absolute right-0 top-0 p-5 lg:relative">
           <button
             onClick={() => navigate(-1)}
-            className="rounded-full bg-white p-1"
+            className="rounded-full border border-customBlack bg-white p-1 lg:border-none"
           >
             <IoMdClose fontSize={30} />
           </button>
         </div>
-        <div className="flex h-full w-full flex-col bg-white">
+        <div className="flex h-full w-full flex-col bg-white pt-14 lg:pt-0">
           <div className="w-full px-5">
             <div className="w-full pt-5">
               <div className="flex w-full items-center justify-between">
@@ -96,9 +96,10 @@ const Modal = () => {
               <div className="mt-2 h-[1px] w-full bg-customBlack"></div>
             </div>
           </div>
+          {/* These part wil be child of a modal */}
           <div className="w-full overflow-auto px-5">
             <div className="w-full">
-              <h3 className="p-36 text-end text-4xl font-semibold uppercase">
+              <h3 className="py-36 font-semibold uppercase lg:p-36 lg:text-end lg:text-4xl">
                 B®/Awrds.10 - 24©
               </h3>
               <div className="w-full">
@@ -115,7 +116,8 @@ const Modal = () => {
               </div>
             </div>
           </div>
-          {/* <div className="w-full bg-blue-300"></div> */}
+          {/* These part wil be child of a modal
+          {hasFooter && <div className="w-full bg-blue-300"></div>} */}
         </div>
       </motion.div>
     </motion.div>
@@ -127,14 +129,14 @@ export default Modal;
 const BulletText = ({ isTitle = false, content }) => {
   return (
     <>
-      <div className="grid grid-cols-5 text-xs uppercase">
+      <div className="grid grid-cols-2 text-xs uppercase lg:grid-cols-[25%,25%,40%,10%]">
         <div className="font-bold">
           <span>{content.organization}</span>
         </div>
         <div className={`${isTitle && "font-bold"}`}>
           <span>{content.award}</span>
         </div>
-        <div className={`${isTitle && "font-bold"}`}>
+        <div className={`${isTitle && "font-bold"} `}>
           <span>{content.project}</span>
         </div>
         <div className={`${isTitle && "font-bold"}`}>
