@@ -66,8 +66,8 @@ const Modal = ({ children, subTextTitle = "" }) => {
           </button>
         </div>
         <div className="flex h-full w-full flex-col bg-white pt-14 lg:pt-0">
-          <div className="w-full px-5">
-            <div className="w-full pt-5">
+          <div className="w-full">
+            <div className="w-full px-5 pt-5">
               <div className="flex w-full items-center justify-between">
                 <div>
                   <span className="text-sm uppercase">{subTextTitle}</span>
