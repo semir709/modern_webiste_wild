@@ -346,7 +346,7 @@ const AboutPage = ({ setDarkMode }) => {
           </div>
 
           <div className="w-full">
-            <ul className="grid grid-cols-2 gap-5">
+            <ul className="grid gap-5 lg:grid-cols-2">
               {Array(5)
                 .fill(0)
                 .map(() => (
@@ -368,7 +368,7 @@ const AboutPage = ({ setDarkMode }) => {
                           />
                         </div>
                       </div>
-                      <div className="mt-5 text-lg uppercase leading-5">
+                      <div className="mt-5 uppercase leading-4 lg:text-lg lg:leading-5">
                         <span>
                           Laura Tron
                           <br />
