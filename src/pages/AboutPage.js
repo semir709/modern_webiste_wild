@@ -10,7 +10,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { imageCompanyList } from "../data/imageCompanyList";
 import ListImageText from "../container/components/ListImageText";
-import { Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { Link, Outlet, Route, Routes, useLocation } from "react-router-dom";
 
 const title1 = [
   { id: nanoid(), text: "We turn" },
@@ -82,6 +82,11 @@ const postionStyle = [
   "right-[40%] top-[80%] -translate-y-[80%] translate-x-[40%]",
 ];
 
+const urlImagePerson =
+  "https://cdn.sanity.io/images/8nn8fua5/production/f0680fd40a1c1e60cf306b79e0ce5228037ff7f7-940x1175.png?w=720&fm=webp&q=65";
+const urlImagePersonGray =
+  "https://cdn.sanity.io/images/8nn8fua5/production/8a2b755a82f25ec2e043b7f282d66d9e833b2b8b-940x1175.png?w=720&fm=webp&q=65";
+
 // company value
 const AboutPage = ({ setDarkMode }) => {
   useEffect(() => {
@@ -95,6 +100,7 @@ const AboutPage = ({ setDarkMode }) => {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.key}>
           <Route path="/awards" element={<Modal />} />
+          <Route path="/team:user" element={<Modal />} />
         </Routes>
       </AnimatePresence>
 
@@ -163,7 +169,7 @@ const AboutPage = ({ setDarkMode }) => {
         </section>
         <section className="text-customPrimarys">
           <div className="border-t-2 border-customPrimary">
-            <h5 className="my-4 text-9xl font-bold uppercase">
+            <h5 className="my-4 text-lg font-bold uppercase sm:text-4xl md:text-9xl">
               Beautiful/Wild
             </h5>
             <CustomLineInfo text={"sec."} subText={"/a"} darkMode={true} />
@@ -319,7 +325,7 @@ const AboutPage = ({ setDarkMode }) => {
 
           <ListImageText />
         </section>
-        <section className="mt-20">
+        <section className="my-20">
           <div className="mb-10">
             <CustomLineInfo text={"Sec."} subText={"/d"} darkMode={true} />
           </div>
@@ -337,6 +343,42 @@ const AboutPage = ({ setDarkMode }) => {
                 values to collide.
               </p>
             </div>
+          </div>
+
+          <div className="w-full">
+            <ul className="grid grid-cols-2 gap-5">
+              {Array(5)
+                .fill(0)
+                .map(() => (
+                  <li className="my-5 hover:underline">
+                    <Link to={"/team/laura"}>
+                      <div className="flex gap-5">
+                        <div className="h-full w-full">
+                          <img
+                            className="h-auto w-full object-cover"
+                            alt="person"
+                            src={urlImagePerson}
+                          />
+                        </div>
+                        <div className="h-full w-full">
+                          <img
+                            className="h-auto w-full object-cover"
+                            alt="personGray"
+                            src={urlImagePersonGray}
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-5 text-lg uppercase leading-5">
+                        <span>
+                          Laura Tron
+                          <br />
+                          <strong>svp, clients</strong>
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+            </ul>
           </div>
         </section>
       </main>

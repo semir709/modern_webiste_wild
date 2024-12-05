@@ -107,11 +107,13 @@ const Modal = ({ hasFooter = false }) => {
                   <BulletText content={titleData} isTitle={true} />
                 </div>
                 <ul>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(() => (
-                    <li>
-                      <BulletText content={randomData} />
-                    </li>
-                  ))}
+                  {Array(40)
+                    .fill(0)
+                    .map(() => (
+                      <li>
+                        <BulletText content={randomData} />
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
