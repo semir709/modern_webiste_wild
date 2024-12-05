@@ -5,3 +5,4 @@ export { default as ThinkingPage } from "./ThinkingPage";
 export { default as Contact } from "./Contact";
 export { default as WorkPage } from "./WorkPage";
 export { default as AboutPage } from "./AboutPage";
+export { default as AwardsModal } from "./AwardsModal";

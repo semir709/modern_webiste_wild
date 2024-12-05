@@ -11,6 +11,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { imageCompanyList } from "../data/imageCompanyList";
 import ListImageText from "../container/components/ListImageText";
 import { Link, Outlet, Route, Routes, useLocation } from "react-router-dom";
+import AwardsModal from "./AwardsModal";
+import TeamModal from "./TeamModal";
 
 const title1 = [
   { id: nanoid(), text: "We turn" },
@@ -96,11 +98,10 @@ const AboutPage = ({ setDarkMode }) => {
 
   return (
     <div data-scroll-section>
-      {/* <Outlet /> */}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.key}>
-          <Route path="/awards" element={<Modal />} />
-          <Route path="/team:user" element={<Modal />} />
+          <Route path="/awards" element={<AwardsModal />} />
+          <Route path="/team/:person" element={<TeamModal />} />
         </Routes>
       </AnimatePresence>
 
@@ -351,7 +352,7 @@ const AboutPage = ({ setDarkMode }) => {
                 .fill(0)
                 .map(() => (
                   <li className="my-5 hover:underline">
-                    <Link to={"/team/laura"}>
+                    <Link to={"team/laura"}>
                       <div className="flex gap-5">
                         <div className="h-full w-full">
                           <img

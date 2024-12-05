@@ -22,21 +22,7 @@ const variantsChild = {
   },
 };
 
-const titleData = {
-  organization: "organization",
-  award: "award",
-  project: "project",
-  year: "year",
-};
-
-const randomData = {
-  organization: "CSS Awards",
-  award: "Site of the Day",
-  project: "Luminar",
-  year: "2023",
-};
-
-const Modal = ({ hasFooter = false }) => {
+const Modal = ({ children, subTextTitle = "" }) => {
   const [position, setPosition] = useState(0);
   const { scroll } = useLocomotiveScroll();
   const navigate = useNavigate();
@@ -84,7 +70,7 @@ const Modal = ({ hasFooter = false }) => {
             <div className="w-full pt-5">
               <div className="flex w-full items-center justify-between">
                 <div>
-                  <span className="text-sm uppercase">(awards)</span>
+                  <span className="text-sm uppercase">{subTextTitle}</span>
                 </div>
                 <div>
                   <IoIosArrowDown />
@@ -96,30 +82,7 @@ const Modal = ({ hasFooter = false }) => {
               <div className="mt-2 h-[1px] w-full bg-customBlack"></div>
             </div>
           </div>
-          {/* These part wil be child of a modal */}
-          <div className="w-full overflow-auto px-5">
-            <div className="w-full">
-              <h3 className="py-36 font-semibold uppercase lg:p-36 lg:text-end lg:text-4xl">
-                B®/Awrds.10 - 24©
-              </h3>
-              <div className="w-full">
-                <div>
-                  <BulletText content={titleData} isTitle={true} />
-                </div>
-                <ul>
-                  {Array(40)
-                    .fill(0)
-                    .map(() => (
-                      <li>
-                        <BulletText content={randomData} />
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-          {/* These part wil be child of a modal
-          {hasFooter && <div className="w-full bg-blue-300"></div>} */}
+          {children}
         </div>
       </motion.div>
     </motion.div>
@@ -127,25 +90,3 @@ const Modal = ({ hasFooter = false }) => {
 };
 
 export default Modal;
-
-const BulletText = ({ isTitle = false, content }) => {
-  return (
-    <>
-      <div className="grid grid-cols-2 text-xs uppercase lg:grid-cols-[25%,25%,40%,10%]">
-        <div className="font-bold">
-          <span>{content.organization}</span>
-        </div>
-        <div className={`${isTitle && "font-bold"}`}>
-          <span>{content.award}</span>
-        </div>
-        <div className={`${isTitle && "font-bold"} `}>
-          <span>{content.project}</span>
-        </div>
-        <div className={`${isTitle && "font-bold"}`}>
-          <span>{content.year}</span>
-        </div>
-      </div>
-      <div className="my-5 h-[1px] w-full bg-customBlack"></div>
-    </>
-  );
-};
