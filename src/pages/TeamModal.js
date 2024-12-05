@@ -6,7 +6,7 @@ const TeamModal = () => {
   return (
     <Modal subTextTitle="Laura Tron">
       <div className="overflow-auto px-5 text-customBlack">
-        <div className="flex">
+        <div className="lg:flex">
           <div className="flex-1">
             <div className="my-2 flex w-full justify-between text-sm">
               <div>
@@ -25,13 +25,13 @@ const TeamModal = () => {
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="p-4 text-5xl font-semibold uppercase">
+            <h2 className="py-4 text-2xl font-semibold uppercase lg:p-4 lg:text-5xl">
               Laura Tron <br /> /svp, clients
             </h2>
           </div>
         </div>
         <div className="mb-7 mt-5">
-          <p className="text-4xl font-semibold">
+          <p className="font-semibold lg:text-4xl">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
             fringilla molestie nulla vel sollicitudin. Nullam vel quam pulvinar,
             accumsan sem a, fermentum est. In hac habitasse platea dictumst.
