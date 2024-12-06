@@ -14,6 +14,8 @@ import { Link, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import AwardsModal from "./AwardsModal";
 import TeamModal from "./TeamModal";
 
+import { peoples_data } from "../data/peoples_data";
+
 const title1 = [
   { id: nanoid(), text: "We turn" },
   { id: nanoid(), text: "cultural" },
@@ -348,37 +350,35 @@ const AboutPage = ({ setDarkMode }) => {
 
           <div className="w-full">
             <ul className="grid gap-5 lg:grid-cols-2">
-              {Array(5)
-                .fill(0)
-                .map(() => (
-                  <li className="my-5 hover:underline">
-                    <Link to={"team/laura"}>
-                      <div className="flex gap-5">
-                        <div className="h-full w-full">
-                          <img
-                            className="h-auto w-full object-cover"
-                            alt="person"
-                            src={urlImagePerson}
-                          />
-                        </div>
-                        <div className="h-full w-full">
-                          <img
-                            className="h-auto w-full object-cover"
-                            alt="personGray"
-                            src={urlImagePersonGray}
-                          />
-                        </div>
+              {peoples_data.map(({ id, name, img, darkImage, slug, role }) => (
+                <li key={id} className="my-5 hover:underline">
+                  <Link to={`team/${slug}`}>
+                    <div className="flex gap-5">
+                      <div className="h-full w-full">
+                        <img
+                          className="h-auto w-full object-cover"
+                          alt="person"
+                          src={img}
+                        />
                       </div>
-                      <div className="mt-5 uppercase leading-4 lg:text-lg lg:leading-5">
-                        <span>
-                          Laura Tron
-                          <br />
-                          <strong>svp, clients</strong>
-                        </span>
+                      <div className="h-full w-full">
+                        <img
+                          className="h-auto w-full object-cover"
+                          alt="personGray"
+                          src={darkImage}
+                        />
                       </div>
-                    </Link>
-                  </li>
-                ))}
+                    </div>
+                    <div className="mt-5 uppercase leading-4 lg:text-lg lg:leading-5">
+                      <span>
+                        {name}
+                        <br />
+                        <strong>{role}</strong>
+                      </span>
+                    </div>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </section>
