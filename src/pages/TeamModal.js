@@ -1,8 +1,29 @@
-import { Modal } from "../container/components";
+import { useNavigate, useParams } from "react-router-dom";
+import { Modal, TextFromBottomOverflow } from "../container/components";
 
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { peoples_data } from "../data/peoples_data";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { nanoid } from "nanoid";
 
 const TeamModal = () => {
+  const { person } = useParams();
+
+  const [data, setData] = useState(peoples_data);
+  const [index, setIndex] = useState(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const indexEl = data.map((el) => el.slug).indexOf(person);
+    setIndex(indexEl);
+  }, [data, person]);
+
+  const titleArray = [
+    { id: nanoid(), text: data[index].name },
+    { id: nanoid(), text: "/" + data[index].role },
+  ];
+
   return (
     <Modal subTextTitle="Laura Tron">
       <div className="overflow-auto px-5 text-customBlack">
@@ -10,23 +31,38 @@ const TeamModal = () => {
           <div className="flex-1">
             <div className="my-2 flex w-full justify-between text-sm">
               <div>
-                <span>01</span>
+                <span>
+                  {(index + 1).toLocaleString("en-US", {
+                    minimumIntegerDigits: 2,
+                  })}
+                </span>
               </div>
               <div>
-                <span>/05</span>
+                <span>
+                  /
+                  {data.length.toLocaleString("en-US", {
+                    minimumIntegerDigits: 2,
+                  })}
+                </span>
               </div>
             </div>
             <div className="w-full">
               <img
                 className="h-auto w-full object-cover"
-                alt="person"
-                src="https://cdn.sanity.io/images/8nn8fua5/production/f0680fd40a1c1e60cf306b79e0ce5228037ff7f7-940x1175.png?w=1280&fm=webp&q=65"
+                alt={data[index].image.mainImage.alt}
+                src={data[index].image.mainImage.url}
               />
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="py-4 text-2xl font-semibold uppercase lg:p-4 lg:text-5xl">
-              Laura Tron <br /> /svp, clients
+            <h2
+              initial={{}}
+              animate={{}}
+              className="py-4 text-2xl font-semibold uppercase lg:p-4 lg:text-5xl"
+            >
+              {/* {data[index].name}
+              <br /> /{data[index].role} */}
+              <TextFromBottomOverflow text={titleArray} />
             </h2>
           </div>
         </div>
@@ -44,14 +80,28 @@ const TeamModal = () => {
       <div className="w-full px-5">
         <div className="h-[1px] w-full bg-customBlack"></div>
         <div className="flex py-2">
-          <button className="group flex-1 border-r-2 border-customBlack">
+          <button
+            onClick={() =>
+              navigate(
+                `/about/team/${data[index - 1 < 0 ? data.length - 1 : index - 1].slug}`,
+              )
+            }
+            className="group flex-1 border-r-2 border-customBlack"
+          >
             <div className="w-fit overflow-hidden">
               <div className="group-hover:animate-animatioRighttoLeft">
                 <GoArrowLeft fontSize={40} />
               </div>
             </div>
           </button>
-          <button className="group flex-1">
+          <button
+            onClick={() =>
+              navigate(
+                `/about/team/${data[index + 1 > data.length - 1 ? 0 : index + 1].slug}`,
+              )
+            }
+            className="group flex-1"
+          >
             <div className="ms-auto w-fit overflow-hidden">
               <div className="group-hover:animate-animatioLefttoRight">
                 <GoArrowRight fontSize={40} />

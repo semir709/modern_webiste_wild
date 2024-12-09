@@ -59,7 +59,7 @@ const Modal = ({ children, subTextTitle = "" }) => {
       >
         <div className="absolute right-0 top-0 p-5 lg:relative">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/about")}
             className="rounded-full border border-customBlack bg-white p-1 lg:border-none"
           >
             <IoMdClose fontSize={30} />

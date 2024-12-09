@@ -98,10 +98,12 @@ const AboutPage = ({ setDarkMode }) => {
   }, [setDarkMode]);
   const location = useLocation();
 
+  const mainPath = location.pathname.split("/").slice(0, 3).join("/");
+
   return (
     <div data-scroll-section>
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.key}>
+        <Routes location={location} key={mainPath}>
           <Route path="/awards" element={<AwardsModal />} />
           <Route path="/team/:person" element={<TeamModal />} />
         </Routes>
@@ -350,22 +352,22 @@ const AboutPage = ({ setDarkMode }) => {
 
           <div className="w-full">
             <ul className="grid gap-5 lg:grid-cols-2">
-              {peoples_data.map(({ id, name, img, darkImage, slug, role }) => (
+              {peoples_data.map(({ id, name, image, slug, role }) => (
                 <li key={id} className="my-5 hover:underline">
                   <Link to={`team/${slug}`}>
                     <div className="flex gap-5">
                       <div className="h-full w-full">
                         <img
                           className="h-auto w-full object-cover"
-                          alt="person"
-                          src={img}
+                          alt={image.mainImage.alt}
+                          src={image.mainImage.url}
                         />
                       </div>
                       <div className="h-full w-full">
                         <img
                           className="h-auto w-full object-cover"
-                          alt="personGray"
-                          src={darkImage}
+                          alt={image.darkImage.alt}
+                          src={image.darkImage.url}
                         />
                       </div>
                     </div>
