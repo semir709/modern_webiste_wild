@@ -1,5 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { SocialMedia, TextFromBottomOverflow } from "../container/components";
+import {
+  Footer,
+  SocialMedia,
+  TextFromBottomOverflow,
+} from "../container/components";
 import { nanoid } from "nanoid";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -24,10 +28,11 @@ const Blog = ({ setDarkMode }) => {
   }, [setDarkMode]);
 
   const stickyRef = useRef();
+  const stickyLeftRef = useRef();
 
   return (
     <div data-scroll-section>
-      <main className="px-[5%] text-customPrimary">
+      <main className="mb-16 px-[5%] text-customPrimary">
         <section id="stick" className="mb-40 h-[1270px] py-60">
           <div
             ref={stickyRef}
@@ -71,9 +76,15 @@ const Blog = ({ setDarkMode }) => {
           <div className="mx-auto h-[400px] w-[400px] bg-red-300"></div>
         </section>
         <secitio className="w-full">
-          <div className="flex justify-between">
-            <div>
-              <div className="w-[200px] text-sm uppercase">
+          <div className="flex justify-between" id="stickleft">
+            <div
+              ref={stickyLeftRef}
+              data-scroll
+              data-scroll-sticky // Attibute that enables the sticky scroll
+              data-scroll-target="#stickleft"
+              className="h-fit"
+            >
+              <div className="w-[200px] pt-16 text-sm uppercase">
                 <span className="block">
                   <strong>Events</strong>
                 </span>
@@ -136,6 +147,7 @@ const Blog = ({ setDarkMode }) => {
           </div>
         </secitio>
       </main>
+      <Footer lightMode={true} />
     </div>
   );
 };

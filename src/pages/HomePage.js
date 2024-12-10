@@ -65,7 +65,6 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
 
             if (entry.target === stickySection) {
               setDarkMode(1);
-              console.log("It get's dark");
             }
           } else {
             if (entry.target === heroSection) {
@@ -73,7 +72,6 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
             }
 
             if (entry.target === stickySection) {
-              console.log("It light!!!");
               setDarkMode(0);
             }
           }
