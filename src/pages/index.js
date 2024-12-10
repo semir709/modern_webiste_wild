@@ -6,3 +6,4 @@ export { default as Contact } from "./Contact";
 export { default as WorkPage } from "./WorkPage";
 export { default as AboutPage } from "./AboutPage";
 export { default as AwardsModal } from "./AwardsModal";
+export { default as Blog } from "./Blog";

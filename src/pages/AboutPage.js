@@ -3,14 +3,12 @@ import { useEffect } from "react";
 import {
   CustomLineInfo,
   Footer,
-  Modal,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
 import { AnimatePresence, motion } from "framer-motion";
-import { imageCompanyList } from "../data/imageCompanyList";
 import ListImageText from "../container/components/ListImageText";
-import { Link, Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import AwardsModal from "./AwardsModal";
 import TeamModal from "./TeamModal";
 
@@ -86,12 +84,6 @@ const postionStyle = [
   "right-[40%] top-[80%] -translate-y-[80%] translate-x-[40%]",
 ];
 
-const urlImagePerson =
-  "https://cdn.sanity.io/images/8nn8fua5/production/f0680fd40a1c1e60cf306b79e0ce5228037ff7f7-940x1175.png?w=720&fm=webp&q=65";
-const urlImagePersonGray =
-  "https://cdn.sanity.io/images/8nn8fua5/production/8a2b755a82f25ec2e043b7f282d66d9e833b2b8b-940x1175.png?w=720&fm=webp&q=65";
-
-// company value
 const AboutPage = ({ setDarkMode }) => {
   useEffect(() => {
     setDarkMode(true);

@@ -7,23 +7,18 @@ import {
   Contact,
   WorkPage,
   AboutPage,
+  Blog,
 } from "./pages/index";
-import {
-  Modal,
-  Navigation,
-  ParticlesComponent,
-} from "./container/components/index";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { ParticlesComponent } from "./container/components/index";
+import { Routes, Route } from "react-router-dom";
 import { useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import { AnimatePresence } from "framer-motion";
 
 function App() {
   const containerRef = useRef(null);
   const [textColorNav, setTextColorNav] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
-  const location = useLocation();
 
   return (
     <>
@@ -75,16 +70,15 @@ function App() {
               element={<Contact setTextColorNav={setTextColorNav} />}
             />
             <Route path="/work" element={<WorkPage />} />
-            {/* <Route
-              path="/about"
-              element={<AboutPage setDarkMode={setDarkMode} />}
-            > */}
+
             <Route
               path="/about/*"
               element={<AboutPage setDarkMode={setDarkMode} />}
             />
-            {/* <Route path="awards" element={<Modal />} />
-            </Route> */}
+            <Route
+              path="/blog/*"
+              element={<Blog setDarkMode={setDarkMode} />}
+            />
           </Routes>
         </main>
       </LocomotiveScrollProvider>

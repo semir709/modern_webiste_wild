@@ -4,7 +4,6 @@ import { Modal, TextFromBottomOverflow } from "../container/components";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { peoples_data } from "../data/peoples_data";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { nanoid } from "nanoid";
 
 const TeamModal = () => {
@@ -60,8 +59,6 @@ const TeamModal = () => {
               animate={{}}
               className="py-4 text-2xl font-semibold uppercase lg:p-4 lg:text-5xl"
             >
-              {/* {data[index].name}
-              <br /> /{data[index].role} */}
               <TextFromBottomOverflow text={titleArray} />
             </h2>
           </div>
