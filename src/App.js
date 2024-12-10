@@ -77,7 +77,7 @@ function App() {
             />
             <Route
               path="/blog/*"
-              element={<Blog setDarkMode={setDarkMode} />}
+              element={<Blog setDarkMode={setDarkMode} darkMode={darkMode} />}
             />
           </Routes>
         </main>

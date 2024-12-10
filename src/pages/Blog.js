@@ -7,33 +7,73 @@ import {
 import { nanoid } from "nanoid";
 import { IoIosArrowDown } from "react-icons/io";
 
+import { motion } from "framer-motion";
+
 const titleArray = [
   { id: nanoid(), text: "New Projects on the Podium for" },
   { id: nanoid(), text: "the 28th Webby Awards" },
 ];
-const dot = [
-  {
-    id: nanoid(),
-    text: (
-      <>
-        <div className="h-[40px] w-[40px] rounded-full bg-customPrimary"></div>
-      </>
-    ),
-  },
-];
+// const dot = [
+//   {
+//     id: nanoid(),
+//     text: (
+//       <>
+//         <div className="h-[40px] w-[40px] rounded-full bg-customPrimary"></div>
+//       </>
+//     ),
+//   },
+// ];
 
-const Blog = ({ setDarkMode }) => {
-  useEffect(() => {
-    setDarkMode(true);
-  }, [setDarkMode]);
+const colorPalet = {
+  light: { text: "#252422" },
+  dark: { text: "#f9cdcd" },
+};
 
+const Blog = ({ setDarkMode, darkMode }) => {
   const stickyRef = useRef();
   const stickyLeftRef = useRef();
+  const sectionInfoRef = useRef();
+  const sectionTitleref = useRef();
+
+  // fix bug darkmod overlap colors
+  // responsive
+  // image
+
+  useEffect(() => {
+    const sectionInfo = sectionInfoRef.current;
+    const sectionTitle = sectionTitleref.current;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entri) => {
+        if (entri.isIntersecting) {
+          if (entri.target === sectionInfo) setDarkMode(false);
+          else if (entri.target === sectionTitle) setDarkMode(true);
+        }
+      });
+    });
+
+    if (sectionInfo) observer.observe(sectionInfo);
+    if (sectionInfo) observer.observe(sectionTitle);
+
+    return () => {
+      if (sectionInfo) observer.unobserve(sectionInfo);
+      if (sectionInfo) observer.unobserve(sectionTitle);
+    };
+  }, [setDarkMode]);
 
   return (
     <div data-scroll-section>
-      <main className="mb-16 px-[5%] text-customPrimary">
-        <section id="stick" className="mb-40 h-[1270px] py-60">
+      <main
+        className="mb-40 px-[5%]"
+        style={{
+          color: !darkMode ? colorPalet.light.text : colorPalet.dark.text,
+        }}
+      >
+        <section
+          id="stick"
+          ref={sectionTitleref}
+          className="mb-40 h-[1270px] py-60"
+        >
           <div
             ref={stickyRef}
             data-scroll
@@ -46,14 +86,56 @@ const Blog = ({ setDarkMode }) => {
                 <TextFromBottomOverflow text={titleArray} />
               </h1>
               <div>
-                <TextFromBottomOverflow text={dot} />
+                <div className="h-fit overflow-hidden">
+                  <motion.div
+                    initial={{
+                      translateY: "100%",
+                    }}
+                    animate={{
+                      translateY: "0",
+                      transition: { duration: 1, ease: [0.72, 0, 0.28, 1] },
+                    }}
+                    className="h-[40px] w-[40px] rounded-full"
+                    style={{
+                      background: !darkMode
+                        ? colorPalet.light.text
+                        : colorPalet.dark.text,
+                    }}
+                  ></motion.div>
+                </div>
+                {/* <TextFromBottomOverflow
+                  text={[
+                    {
+                      id: nanoid(),
+                      text: (
+                        <>
+                          <div
+                            className="h-[40px] w-[40px] rounded-full"
+                            style={{
+                              background: !darkMode
+                                ? colorPalet.light.text
+                                : colorPalet.dark.text,
+                            }}
+                          ></div>
+                        </>
+                      ),
+                    },
+                  ]}
+                /> */}
               </div>
             </div>
             <div className="py-40 font-semibold uppercase">
               <div className="text-8xl">
                 <span>4.24.24</span>
               </div>
-              <div className="my-4 h-[1px] w-full bg-customPrimary"></div>
+              <div
+                className="my-4 h-[1px] w-full"
+                style={{
+                  background: !darkMode
+                    ? colorPalet.light.text
+                    : colorPalet.dark.text,
+                }}
+              ></div>
               <div className="flex w-full items-center justify-between">
                 <div>
                   <span>awards</span>
@@ -75,7 +157,7 @@ const Blog = ({ setDarkMode }) => {
 
           <div className="mx-auto h-[400px] w-[400px] bg-red-300"></div>
         </section>
-        <secitio className="w-full">
+        <secitio className="w-full" ref={sectionInfoRef}>
           <div className="flex justify-between" id="stickleft">
             <div
               ref={stickyLeftRef}
@@ -94,7 +176,7 @@ const Blog = ({ setDarkMode }) => {
                 <span className="mt-5 block">(6.13.24)</span>
               </div>
               <div className="mt-10">
-                <SocialMedia />
+                <SocialMedia darkMode={darkMode} />
               </div>
             </div>
             <div className="w-1/2 pe-24 text-lg">
@@ -147,7 +229,7 @@ const Blog = ({ setDarkMode }) => {
           </div>
         </secitio>
       </main>
-      <Footer lightMode={true} />
+      <Footer lightMode={darkMode} />
     </div>
   );
 };
