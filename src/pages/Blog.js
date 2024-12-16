@@ -8,6 +8,7 @@ import { nanoid } from "nanoid";
 import { IoIosArrowDown } from "react-icons/io";
 
 import { motion } from "framer-motion";
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const titleArray = [
   { id: nanoid(), text: "New Projects on the Podium for" },
@@ -29,35 +30,50 @@ const colorPalet = {
   dark: { text: "#f9cdcd" },
 };
 
+// responsive
+
 const Blog = ({ setDarkMode, darkMode }) => {
-  const stickyRef = useRef();
+  const mainContentRef = useRef();
   const stickyLeftRef = useRef();
   const sectionInfoRef = useRef();
-  const sectionTitleref = useRef();
+  // const sectionTitleref = useRef();
+  const imageEndPosition = 890;
 
-  // fix bug darkmod overlap colors
-  // responsive
-  // image
+  const { scroll } = useLocomotiveScroll();
+
+  useEffect(() => {
+    const handleScroll = (obj) => {
+      const newPosition = obj.scroll.y;
+      const mainContent = mainContentRef.current;
+
+      if (newPosition > imageEndPosition) return;
+
+      mainContent.style.transform = `matrix(1, 0, 0, 1, 0, ${newPosition})`;
+    };
+
+    if (scroll) {
+      scroll.on("scroll", handleScroll);
+    }
+
+    return () => {
+      if (scroll) {
+        scroll.off("scroll", handleScroll);
+      }
+    };
+  }, [scroll]);
 
   useEffect(() => {
     const sectionInfo = sectionInfoRef.current;
-    const sectionTitle = sectionTitleref.current;
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entri) => {
-        if (entri.isIntersecting) {
-          if (entri.target === sectionInfo) setDarkMode(false);
-          else if (entri.target === sectionTitle) setDarkMode(true);
-        }
-      });
+      if (entries[0].isIntersecting) setDarkMode(false);
+      else setDarkMode(true);
     });
 
     if (sectionInfo) observer.observe(sectionInfo);
-    if (sectionInfo) observer.observe(sectionTitle);
 
     return () => {
       if (sectionInfo) observer.unobserve(sectionInfo);
-      if (sectionInfo) observer.unobserve(sectionTitle);
     };
   }, [setDarkMode]);
 
@@ -69,18 +85,8 @@ const Blog = ({ setDarkMode, darkMode }) => {
           color: !darkMode ? colorPalet.light.text : colorPalet.dark.text,
         }}
       >
-        <section
-          id="stick"
-          ref={sectionTitleref}
-          className="mb-40 h-[1270px] py-60"
-        >
-          <div
-            ref={stickyRef}
-            data-scroll
-            data-scroll-sticky // Attibute that enables the sticky scroll
-            data-scroll-target="#stick"
-            className="top-0"
-          >
+        <section className="relative py-60">
+          <div ref={mainContentRef}>
             <div className="flex justify-between">
               <h1 className="text-5xl font-semibold uppercase">
                 <TextFromBottomOverflow text={titleArray} />
@@ -155,7 +161,17 @@ const Blog = ({ setDarkMode, darkMode }) => {
             </div>
           </div>
 
-          <div className="mx-auto h-[400px] w-[400px] bg-red-300"></div>
+          <div className="mt-20 w-full">
+            <div className="mx-auto h-1/2 w-1/2 -translate-y-9">
+              <div className="h-full w-full">
+                <img
+                  className="h-full w-full object-cover"
+                  alt="hey"
+                  src="https://cdn.sanity.io/images/8nn8fua5/production/e1ee6f1258bdc530b8843f97029f804856f72d61-2000x1468.jpg?w=1280&fm=webp&q=65"
+                />
+              </div>
+            </div>
+          </div>
         </section>
         <secitio className="w-full" ref={sectionInfoRef}>
           <div className="flex justify-between" id="stickleft">
