@@ -42,7 +42,7 @@ const Footer = ({ lightMode = false }) => {
               <span className="text-4xl font-bold uppercase">B/W</span>
             </div>
             <div className="flex-1">
-              <p className="mt-5 text-2xl font-semibold leading-7 lg:mt-0 lg:max-w-md">
+              <p className="mt-5 text-lg font-semibold leading-7 lg:mt-0 lg:max-w-md">
                 We collaborate with ambitious brands and people. Let's build.
                 <br />
                 <Link className="underline underline-offset-4" to={"/"}>

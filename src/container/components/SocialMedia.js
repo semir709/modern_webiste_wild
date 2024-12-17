@@ -18,8 +18,8 @@ const colorPalet = {
 const SocialMedia = ({ darkMode = false }) => {
   const [toggelMore, setToggelMore] = useState(false);
   return (
-    <ul>
-      <li className="mb-2">
+    <ul className="flex flex-wrap sm:block">
+      <li className="mb-2 me-2 sm:me-0">
         <Link to="https://x.com/?lang=en" target="_blank">
           <div
             style={{
@@ -29,11 +29,11 @@ const SocialMedia = ({ darkMode = false }) => {
             }}
             className="h-fit w-fit rounded-full border p-3"
           >
-            <FaTwitter />
+            <FaTwitter className="h-[10px] w-[10px] sm:h-[18px] sm:w-[18px]" />
           </div>
         </Link>
       </li>
-      <li className="mb-2">
+      <li className="mb-2 me-2 sm:me-0">
         <Link to="https://www.facebook.com/" target="_blank">
           <div
             style={{
@@ -43,13 +43,13 @@ const SocialMedia = ({ darkMode = false }) => {
             }}
             className="h-fit w-fit rounded-full border p-3"
           >
-            <FaFacebookF />
+            <FaFacebookF className="h-[10px] w-[10px] sm:h-[18px] sm:w-[18px]" />
           </div>
         </Link>
       </li>
       {!toggelMore && (
         <li
-          className="mb-2 hover:cursor-pointer"
+          className="mb-2 me-2 hover:cursor-pointer sm:me-0"
           onClick={() => setToggelMore(true)}
         >
           <div
@@ -60,13 +60,13 @@ const SocialMedia = ({ darkMode = false }) => {
             }}
             className="h-fit w-fit rounded-full border p-3"
           >
-            <FaPlus />
+            <FaPlus className="h-[10px] w-[10px] sm:h-[18px] sm:w-[18px]" />
           </div>
         </li>
       )}
       {toggelMore && (
         <>
-          <li className="mb-2">
+          <li className="mb-2 me-2 sm:me-0">
             <Link to="https://ba.linkedin.com/" target="_blank">
               <div
                 style={{
@@ -76,11 +76,11 @@ const SocialMedia = ({ darkMode = false }) => {
                 }}
                 className="h-fit w-fit rounded-full border p-3"
               >
-                <FaLinkedinIn />
+                <FaLinkedinIn className="h-[10px] w-[10px] sm:h-[18px] sm:w-[18px]" />
               </div>
             </Link>
           </li>
-          <li className="mb-2">
+          <li className="mb-2 me-2 sm:me-0">
             <Link to="https://www.pinterest.com/" target="_blank">
               <div
                 style={{
@@ -90,11 +90,11 @@ const SocialMedia = ({ darkMode = false }) => {
                 }}
                 className="h-fit w-fit rounded-full border p-3"
               >
-                <FaPinterestP />
+                <FaPinterestP className="h-[10px] w-[10px] sm:h-[18px] sm:w-[18px]" />
               </div>
             </Link>
           </li>
-          <li className="mb-2">
+          <li className="mb-2 me-2 sm:me-0">
             <Link to="https://x.com/?lang=en" target="_blank">
               <div
                 style={{
@@ -104,13 +104,13 @@ const SocialMedia = ({ darkMode = false }) => {
                 }}
                 className="h-fit w-fit rounded-full border p-3"
               >
-                <MdEmail />
+                <MdEmail className="h-[10px] w-[10px] sm:h-[18px] sm:w-[18px]" />
               </div>
             </Link>
           </li>
           <li
             onClick={() => setToggelMore(false)}
-            className="mb-2 hover:cursor-pointer"
+            className="mb-2 me-2 hover:cursor-pointer sm:me-0"
           >
             <div
               style={{
@@ -120,7 +120,7 @@ const SocialMedia = ({ darkMode = false }) => {
               }}
               className="h-fit w-fit rounded-full border p-3"
             >
-              <FaMinus />
+              <FaMinus className="h-[10px] w-[10px] sm:h-[18px] sm:w-[18px]" />
             </div>
           </li>
         </>
