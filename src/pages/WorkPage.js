@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CustomZoomCard,
   Footer,
+  Navigation,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
@@ -41,91 +42,96 @@ const dest = [
   },
 ];
 
-const WorkPage = () => {
+const WorkPage = ({ darkMode }) => {
+  const [textColorNav, setTextColorNav] = useState(1);
+
   return (
-    <div data-scroll-section>
-      <main className="pt-40">
-        <section className="text-customBlack">
-          <div className="px-[5%]">
-            <h1 className="mb-28 mt-16 text-2xl font-bold uppercase min-[300px]:text-4xl sm:text-6xl md:mt-32 md:text-8xl">
-              <TextFromBottomOverflow text={title} />
-            </h1>
-            <div className="mt-40">
-              <div className="w-[80%] text-sm font-semibold sm:w-[50%] sm:text-base md:w-1/3">
-                <p>
-                  The work we create lives at the intersection of clarity and
-                  surprise and positions brands in culture through shared values
-                  and ideals.
-                </p>
+    <>
+      <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <div data-scroll-section>
+        <main className="pt-40">
+          <section className="text-customBlack">
+            <div className="px-[5%]">
+              <h1 className="mb-28 mt-16 text-2xl font-bold uppercase min-[300px]:text-4xl sm:text-6xl md:mt-32 md:text-8xl">
+                <TextFromBottomOverflow text={title} />
+              </h1>
+              <div className="mt-40">
+                <div className="w-[80%] text-sm font-semibold sm:w-[50%] sm:text-base md:w-1/3">
+                  <p>
+                    The work we create lives at the intersection of clarity and
+                    surprise and positions brands in culture through shared
+                    values and ideals.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="mb-40">
-            <ol>
-              <li className="w-full gap-3 pt-4">
-                <div className="mb-5 px-[5%]">
-                  <div className="h-[1px] w-full bg-customBlack"></div>
-                </div>
-                <div className="gap-3 sm:px-[5%] md:flex">
-                  <div className="px-[5%] sm:px-0 md:w-[35%] md:border-r-[1px] md:border-customBlack">
-                    <div className="flex w-full justify-between pe-2">
-                      <span>01</span>
-                      <span>/04</span>
-                    </div>
-                    <div className="my-10 w-3/4 md:my-[50%]">
-                      <h2 className="mb-5 text-4xl font-bold uppercase">
-                        Branded eCommerce
-                      </h2>
-                      <p className="mb-5 font-semibold">
-                        We go beyond best practices and build best-in-class D2C
-                        channels that drive commerce, shape culture, and define
-                        categories.
-                      </p>
-                      <div>
-                        <RCButton text={"Learn More"} />
+            <div className="mb-40">
+              <ol>
+                <li className="w-full gap-3 pt-4">
+                  <div className="mb-5 px-[5%]">
+                    <div className="h-[1px] w-full bg-customBlack"></div>
+                  </div>
+                  <div className="gap-3 sm:px-[5%] md:flex">
+                    <div className="px-[5%] sm:px-0 md:w-[35%] md:border-r-[1px] md:border-customBlack">
+                      <div className="flex w-full justify-between pe-2">
+                        <span>01</span>
+                        <span>/04</span>
+                      </div>
+                      <div className="my-10 w-3/4 md:my-[50%]">
+                        <h2 className="mb-5 text-4xl font-bold uppercase">
+                          Branded eCommerce
+                        </h2>
+                        <p className="mb-5 font-semibold">
+                          We go beyond best practices and build best-in-class
+                          D2C channels that drive commerce, shape culture, and
+                          define categories.
+                        </p>
+                        <div>
+                          <RCButton text={"Learn More"} />
+                        </div>
                       </div>
                     </div>
+                    <ul className="md:w-[65%]">
+                      <CustomZoomCard data={dest} />
+                    </ul>
                   </div>
-                  <ul className="md:w-[65%]">
-                    <CustomZoomCard data={dest} />
-                  </ul>
-                </div>
-              </li>
-              <li className="w-full gap-3 pt-4">
-                <div className="mb-5 px-[5%]">
-                  <div className="h-[1px] w-full bg-customBlack"></div>
-                </div>
-                <div className="gap-3 sm:px-[5%] md:flex">
-                  <div className="px-[5%] sm:px-0 md:w-[35%] md:border-r-[1px] md:border-customBlack">
-                    <div className="flex w-full justify-between pe-2">
-                      <span>01</span>
-                      <span>/04</span>
-                    </div>
-                    <div className="my-10 w-3/4 md:my-[50%]">
-                      <h2 className="mb-5 text-4xl font-bold uppercase">
-                        Branded eCommerce
-                      </h2>
-                      <p className="mb-5 font-semibold">
-                        We go beyond best practices and build best-in-class D2C
-                        channels that drive commerce, shape culture, and define
-                        categories.
-                      </p>
-                      <div>
-                        <RCButton text={"Learn More"} />
+                </li>
+                <li className="w-full gap-3 pt-4">
+                  <div className="mb-5 px-[5%]">
+                    <div className="h-[1px] w-full bg-customBlack"></div>
+                  </div>
+                  <div className="gap-3 sm:px-[5%] md:flex">
+                    <div className="px-[5%] sm:px-0 md:w-[35%] md:border-r-[1px] md:border-customBlack">
+                      <div className="flex w-full justify-between pe-2">
+                        <span>01</span>
+                        <span>/04</span>
+                      </div>
+                      <div className="my-10 w-3/4 md:my-[50%]">
+                        <h2 className="mb-5 text-4xl font-bold uppercase">
+                          Branded eCommerce
+                        </h2>
+                        <p className="mb-5 font-semibold">
+                          We go beyond best practices and build best-in-class
+                          D2C channels that drive commerce, shape culture, and
+                          define categories.
+                        </p>
+                        <div>
+                          <RCButton text={"Learn More"} />
+                        </div>
                       </div>
                     </div>
+                    <ul className="md:w-[65%]">
+                      <CustomZoomCard data={dest} />
+                    </ul>
                   </div>
-                  <ul className="md:w-[65%]">
-                    <CustomZoomCard data={dest} />
-                  </ul>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+                </li>
+              </ol>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 

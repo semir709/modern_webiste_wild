@@ -1,5 +1,9 @@
 - Nabigation needs to be inside a pages
 - reconsider to bg animatio to be insinde pages too ?
 - bg animation bg color not change when swithc between pages 
+- fix darkmode stay on the newx webpage in navigation
+- some routes are not accessable throught ui
+- fix warnings in home page
+- when scroll down and change page new page is not scrolly 0 but position of the previus page
 
 

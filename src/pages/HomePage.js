@@ -8,6 +8,7 @@ import {
   CustomZoomCard,
   Footer,
   HorizontalScroll,
+  Navigation,
   RCButton,
 } from "../container/components/index";
 import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
@@ -16,7 +17,7 @@ import { eng_data } from "../data/engagements_data";
 import { module_data } from "../data/main_module_content_data";
 import { news_data } from "../data/news_data";
 import { nanoid } from "nanoid";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -45,9 +46,10 @@ const colorPalet = {
   dark: { text: "#f9cdcd", bg: "#252422" },
 };
 
-const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
+const Home = ({ setDarkMode, darkMode = false }) => {
   const heroRef = useRef();
   const stickyRef = useRef();
+  const [textColorNav, setTextColorNav] = useState(0);
 
   useEffect(() => {
     const heroSection = heroRef.current;
@@ -91,6 +93,7 @@ const Home = ({ setTextColorNav, setDarkMode, darkMode = false }) => {
 
   return (
     <>
+      <Navigation textColorNav={textColorNav} darkMode={darkMode} />
       <div data-scroll-section>
         <section ref={heroRef}>
           <motion.div

@@ -49,7 +49,6 @@ const Navigation = ({ textColorNav = 0, darkMode = false }) => {
   const url = useNavigate();
   const { scroll } = useLocomotiveScroll();
 
-  // nav animation on scroll
   useEffect(() => {
     let currentPosition = 0;
 
@@ -116,7 +115,10 @@ const Navigation = ({ textColorNav = 0, darkMode = false }) => {
                   : navColorSet.active.text,
           }}
         >
-          <Link className="cursor-pointer text-lg font-bold sm:text-2xl">
+          <Link
+            to={"/"}
+            className="cursor-pointer text-lg font-bold sm:text-2xl"
+          >
             Beautiful/wild
           </Link>
           <div className="hidden w-1/2 md:block">

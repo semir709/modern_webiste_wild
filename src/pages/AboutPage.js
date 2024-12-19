@@ -1,8 +1,9 @@
 import { nanoid } from "nanoid";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   CustomLineInfo,
   Footer,
+  Navigation,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
@@ -84,7 +85,9 @@ const postionStyle = [
   "right-[40%] top-[80%] -translate-y-[80%] translate-x-[40%]",
 ];
 
-const AboutPage = ({ setDarkMode }) => {
+const AboutPage = ({ setDarkMode, darkMode }) => {
+  const [textColorNav, setTextColorNav] = useState(0);
+
   useEffect(() => {
     setDarkMode(true);
   }, [setDarkMode]);
@@ -93,292 +96,295 @@ const AboutPage = ({ setDarkMode }) => {
   const mainPath = location.pathname.split("/").slice(0, 3).join("/");
 
   return (
-    <div data-scroll-section>
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={mainPath}>
-          <Route path="/awards" element={<AwardsModal />} />
-          <Route path="/team/:person" element={<TeamModal />} />
-        </Routes>
-      </AnimatePresence>
+    <>
+      <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <div data-scroll-section>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={mainPath}>
+            <Route path="/awards" element={<AwardsModal />} />
+            <Route path="/team/:person" element={<TeamModal />} />
+          </Routes>
+        </AnimatePresence>
 
-      <main className="px-[5%] text-customPrimary">
-        <section className="py-40">
-          <h1 className="ljustify-between justify-start text-8xl font-bold uppercase lg:flex lg:h-[500px]">
-            <div className="hidden flex-1 self-start lg:block">
-              <TextFromBottomOverflow text={title1} />
+        <main className="px-[5%] text-customPrimary">
+          <section className="py-40">
+            <h1 className="ljustify-between justify-start text-8xl font-bold uppercase lg:flex lg:h-[500px]">
+              <div className="hidden flex-1 self-start lg:block">
+                <TextFromBottomOverflow text={title1} />
+              </div>
+              <div className="hidden flex-1 self-end lg:block">
+                <TextFromBottomOverflow text={title2} />
+              </div>
+              <div className="block text-4xl sm:text-6xl lg:hidden">
+                <TextFromBottomOverflow text={titleMobile} />
+              </div>
+            </h1>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { duration: 0.5, ease: [0.72, 0, 0.28, 1] },
+              }}
+              className="mt-5 flex w-full justify-end text-lg font-semibold md:text-2xl"
+            >
+              <p className="lg:w-1/2">
+                BEAUTIFUK/WILD® is a global agency that thrives at the
+                intersection of design, data, and technology. Together, we’re
+                focused on transforming brands and culture — across the world.
+              </p>
+            </motion.div>
+            <div className="mt-20 w-full">
+              <div className="mb-5 font-bold">
+                <span>B/W®</span>
+              </div>
+              <CustomLineInfo
+                text={"2010-"}
+                subText={"present"}
+                darkMode={true}
+              />
             </div>
-            <div className="hidden flex-1 self-end lg:block">
-              <TextFromBottomOverflow text={title2} />
-            </div>
-            <div className="block text-4xl sm:text-6xl lg:hidden">
-              <TextFromBottomOverflow text={titleMobile} />
-            </div>
-          </h1>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { duration: 0.5, ease: [0.72, 0, 0.28, 1] },
-            }}
-            className="mt-5 flex w-full justify-end text-lg font-semibold md:text-2xl"
-          >
-            <p className="lg:w-1/2">
-              BEAUTIFUK/WILD® is a global agency that thrives at the
-              intersection of design, data, and technology. Together, we’re
-              focused on transforming brands and culture — across the world.
-            </p>
-          </motion.div>
-          <div className="mt-20 w-full">
-            <div className="mb-5 font-bold">
-              <span>B/W®</span>
-            </div>
-            <CustomLineInfo
-              text={"2010-"}
-              subText={"present"}
-              darkMode={true}
-            />
-          </div>
-        </section>
-        <section className="relative my-40 w-full">
-          <ul class="relative h-[1000px] w-full">
-            {fakeData.map(({ id, url, alt }, index) => (
-              <li
-                key={id}
-                className={`absolute h-[70%] w-[80%] hover:z-40 min-[350px]:w-[60%] sm:w-[35%] ${postionStyle[index % postionStyle.length]}`}
-              >
-                <div className="h-full w-full">
-                  <img
-                    className="h-full w-full object-cover"
-                    src={url}
-                    alt={alt}
-                  ></img>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="absolute bottom-[30%] left-0 -translate-y-1/2 text-xs uppercase leading-3 sm:bottom-[10%]">
-            <p>
-              Easy to understand. <br />
-              Impossible to ignore.™ <br /> BEAUTIFUL/WILD®, Inc 10 - 24©
-            </p>
-          </div>
-        </section>
-        <section className="text-customPrimarys">
-          <div className="border-t-2 border-customPrimary">
-            <h5 className="my-4 text-lg font-bold uppercase sm:text-4xl md:text-9xl">
-              Beautiful/Wild
-            </h5>
-            <CustomLineInfo text={"sec."} subText={"/a"} darkMode={true} />
-          </div>
-          <div className="my-5 lg:flex">
-            <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
-              <h2 className="text-4xl font-bold uppercase">
-                Agency <br className="hidden lg:block" /> Snapshot
-              </h2>
-            </div>
-            <ul className="grid gap-24 lg:w-[60%] lg:grid-cols-2">
-              <li className="relative lg:pe-20">
-                <div className="ms-[40%] font-bold uppercase lg:ms-0">
-                  <h6 className="mb-4 lg:text-2xl">People</h6>
-                  <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
-                    120+
-                  </span>
-                  <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                    We're a world-class team of diverse individuals who are here
-                    to do great work as well as be great to work with.
-                  </p>
-                </div>
-              </li>
-              <li className="relative lg:pe-20">
-                <div className="ms-[40%] font-bold uppercase lg:ms-0">
-                  <h6 className="mb-4 lg:text-2xl">People</h6>
-                  <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
-                    120+
-                  </span>
-                  <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                    We're a world-class team of diverse individuals who are here
-                    to do great work as well as be great to work with.
-                  </p>
-                </div>
-              </li>
-              <li className="relative lg:pe-20">
-                <div className="ms-[40%] font-bold uppercase lg:ms-0">
-                  <h6 className="mb-4 lg:text-2xl">People</h6>
-                  <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
-                    120+
-                  </span>
-                  <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                    We're a world-class team of diverse individuals who are here
-                    to do great work as well as be great to work with.
-                  </p>
-                </div>
-              </li>
-              <li className="relative lg:pe-20">
-                <div className="ms-[40%] font-bold uppercase lg:ms-0">
-                  <h6 className="mb-4 lg:text-2xl">People</h6>
-                  <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
-                    120+
-                  </span>
-                  <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                    We're a world-class team of diverse individuals who are here
-                    to do great work as well as be great to work with.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <section className="text-customPrimarys my-40">
-          <div className="">
-            <CustomLineInfo text={"sec."} subText={"/b"} darkMode={true} />
-          </div>
-          <div className="my-5 lg:flex">
-            <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
-              <h2 className="text-lg font-bold uppercase sm:text-4xl">
-                Capabilities
-              </h2>
-            </div>
-            <ul className="grid gap-24 sm:grid-cols-2 lg:w-[60%]">
-              <li className="relative lg:pe-20">
-                <div className="font-bold uppercase">
-                  <h6 className="mb-4 lg:text-2xl">
-                    CX, Commerce, & Product Design
-                  </h6>
-
-                  <div>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
+          </section>
+          <section className="relative my-40 w-full">
+            <ul class="relative h-[1000px] w-full">
+              {fakeData.map(({ id, url, alt }, index) => (
+                <li
+                  key={id}
+                  className={`absolute h-[70%] w-[80%] hover:z-40 min-[350px]:w-[60%] sm:w-[35%] ${postionStyle[index % postionStyle.length]}`}
+                >
+                  <div className="h-full w-full">
+                    <img
+                      className="h-full w-full object-cover"
+                      src={url}
+                      alt={alt}
+                    ></img>
                   </div>
-                </div>
-              </li>
-              <li className="relative lg:pe-20">
-                <div className="font-bold uppercase">
-                  <h6 className="mb-4 lg:text-2xl">
-                    CX, Commerce, & Product Design
-                  </h6>
-
-                  <div>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
-                      Market Analysis & Business Case Development
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <section>
-          <div className="mb-10">
-            <CustomLineInfo text={"Sec."} subText={"/c"} darkMode={true} />
-          </div>
-          <div className="lg:flex">
-            <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
-              <h2 className="text-lg font-bold uppercase sm:text-4xl">
-                Awards
-              </h2>
-            </div>
-            <div className="lg:w-[60%]">
-              <p className="mb-10 text-lg font-semibold lg:w-1/2 lg:text-3xl">
-                While results are what matter most, we believe awards bring
-                value and recognition to organizations as well as individuals.
-              </p>
-              <p>
-                <RCButton darkMode={true} text={"Full awards lits"} />
-              </p>
-            </div>
-          </div>
-
-          <ListImageText />
-        </section>
-        <section className="my-20">
-          <div className="mb-10">
-            <CustomLineInfo text={"Sec."} subText={"/d"} darkMode={true} />
-          </div>
-          <div className="pt-10 lg:flex">
-            <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
-              <h2 className="text-lg font-bold uppercase sm:text-4xl">
-                Team & Leadership
-              </h2>
-            </div>
-            <div className="lg:w-[60%]">
-              <p className="mb-10 text-lg font-semibold lg:w-2/3 lg:text-3xl">
-                We’re 120+ individuals from across the world driven by bold
-                ideas and diverse perspectives. Craft, service, and efficiency
-                drive us forward and we see our agency as a place for our shared
-                values to collide.
-              </p>
-            </div>
-          </div>
-
-          <div className="w-full">
-            <ul className="grid gap-5 lg:grid-cols-2">
-              {peoples_data.map(({ id, name, image, slug, role }) => (
-                <li key={id} className="my-5 hover:underline">
-                  <Link to={`team/${slug}`}>
-                    <div className="flex gap-5">
-                      <div className="h-full w-full">
-                        <img
-                          className="h-auto w-full object-cover"
-                          alt={image.mainImage.alt}
-                          src={image.mainImage.url}
-                        />
-                      </div>
-                      <div className="h-full w-full">
-                        <img
-                          className="h-auto w-full object-cover"
-                          alt={image.darkImage.alt}
-                          src={image.darkImage.url}
-                        />
-                      </div>
-                    </div>
-                    <div className="mt-5 uppercase leading-4 lg:text-lg lg:leading-5">
-                      <span>
-                        {name}
-                        <br />
-                        <strong>{role}</strong>
-                      </span>
-                    </div>
-                  </Link>
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-      </main>
-      <Footer lightMode={true} />
-    </div>
+
+            <div className="absolute bottom-[30%] left-0 -translate-y-1/2 text-xs uppercase leading-3 sm:bottom-[10%]">
+              <p>
+                Easy to understand. <br />
+                Impossible to ignore.™ <br /> BEAUTIFUL/WILD®, Inc 10 - 24©
+              </p>
+            </div>
+          </section>
+          <section className="text-customPrimarys">
+            <div className="border-t-2 border-customPrimary">
+              <h5 className="my-4 text-lg font-bold uppercase sm:text-4xl md:text-9xl">
+                Beautiful/Wild
+              </h5>
+              <CustomLineInfo text={"sec."} subText={"/a"} darkMode={true} />
+            </div>
+            <div className="my-5 lg:flex">
+              <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
+                <h2 className="text-4xl font-bold uppercase">
+                  Agency <br className="hidden lg:block" /> Snapshot
+                </h2>
+              </div>
+              <ul className="grid gap-24 lg:w-[60%] lg:grid-cols-2">
+                <li className="relative lg:pe-20">
+                  <div className="ms-[40%] font-bold uppercase lg:ms-0">
+                    <h6 className="mb-4 lg:text-2xl">People</h6>
+                    <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
+                      120+
+                    </span>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      We're a world-class team of diverse individuals who are
+                      here to do great work as well as be great to work with.
+                    </p>
+                  </div>
+                </li>
+                <li className="relative lg:pe-20">
+                  <div className="ms-[40%] font-bold uppercase lg:ms-0">
+                    <h6 className="mb-4 lg:text-2xl">People</h6>
+                    <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
+                      120+
+                    </span>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      We're a world-class team of diverse individuals who are
+                      here to do great work as well as be great to work with.
+                    </p>
+                  </div>
+                </li>
+                <li className="relative lg:pe-20">
+                  <div className="ms-[40%] font-bold uppercase lg:ms-0">
+                    <h6 className="mb-4 lg:text-2xl">People</h6>
+                    <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
+                      120+
+                    </span>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      We're a world-class team of diverse individuals who are
+                      here to do great work as well as be great to work with.
+                    </p>
+                  </div>
+                </li>
+                <li className="relative lg:pe-20">
+                  <div className="ms-[40%] font-bold uppercase lg:ms-0">
+                    <h6 className="mb-4 lg:text-2xl">People</h6>
+                    <span className="absolute left-0 top-0 text-4xl lg:static lg:text-6xl">
+                      120+
+                    </span>
+                    <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                      We're a world-class team of diverse individuals who are
+                      here to do great work as well as be great to work with.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section className="text-customPrimarys my-40">
+            <div className="">
+              <CustomLineInfo text={"sec."} subText={"/b"} darkMode={true} />
+            </div>
+            <div className="my-5 lg:flex">
+              <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
+                <h2 className="text-lg font-bold uppercase sm:text-4xl">
+                  Capabilities
+                </h2>
+              </div>
+              <ul className="grid gap-24 sm:grid-cols-2 lg:w-[60%]">
+                <li className="relative lg:pe-20">
+                  <div className="font-bold uppercase">
+                    <h6 className="mb-4 lg:text-2xl">
+                      CX, Commerce, & Product Design
+                    </h6>
+
+                    <div>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li className="relative lg:pe-20">
+                  <div className="font-bold uppercase">
+                    <h6 className="mb-4 lg:text-2xl">
+                      CX, Commerce, & Product Design
+                    </h6>
+
+                    <div>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                      <p className="mt-4 text-sm font-normal normal-case lg:text-base">
+                        Market Analysis & Business Case Development
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <div className="mb-10">
+              <CustomLineInfo text={"Sec."} subText={"/c"} darkMode={true} />
+            </div>
+            <div className="lg:flex">
+              <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
+                <h2 className="text-lg font-bold uppercase sm:text-4xl">
+                  Awards
+                </h2>
+              </div>
+              <div className="lg:w-[60%]">
+                <p className="mb-10 text-lg font-semibold lg:w-1/2 lg:text-3xl">
+                  While results are what matter most, we believe awards bring
+                  value and recognition to organizations as well as individuals.
+                </p>
+                <p>
+                  <RCButton darkMode={true} text={"Full awards lits"} />
+                </p>
+              </div>
+            </div>
+
+            <ListImageText />
+          </section>
+          <section className="my-20">
+            <div className="mb-10">
+              <CustomLineInfo text={"Sec."} subText={"/d"} darkMode={true} />
+            </div>
+            <div className="pt-10 lg:flex">
+              <div className="mb-10 mt-10 lg:mt-0 lg:w-[40%]">
+                <h2 className="text-lg font-bold uppercase sm:text-4xl">
+                  Team & Leadership
+                </h2>
+              </div>
+              <div className="lg:w-[60%]">
+                <p className="mb-10 text-lg font-semibold lg:w-2/3 lg:text-3xl">
+                  We’re 120+ individuals from across the world driven by bold
+                  ideas and diverse perspectives. Craft, service, and efficiency
+                  drive us forward and we see our agency as a place for our
+                  shared values to collide.
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full">
+              <ul className="grid gap-5 lg:grid-cols-2">
+                {peoples_data.map(({ id, name, image, slug, role }) => (
+                  <li key={id} className="my-5 hover:underline">
+                    <Link to={`team/${slug}`}>
+                      <div className="flex gap-5">
+                        <div className="h-full w-full">
+                          <img
+                            className="h-auto w-full object-cover"
+                            alt={image.mainImage.alt}
+                            src={image.mainImage.url}
+                          />
+                        </div>
+                        <div className="h-full w-full">
+                          <img
+                            className="h-auto w-full object-cover"
+                            alt={image.darkImage.alt}
+                            src={image.darkImage.url}
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-5 uppercase leading-4 lg:text-lg lg:leading-5">
+                        <span>
+                          {name}
+                          <br />
+                          <strong>{role}</strong>
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        </main>
+        <Footer lightMode={true} />
+      </div>
+    </>
   );
 };
 
