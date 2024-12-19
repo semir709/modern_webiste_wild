@@ -54,7 +54,9 @@ const Footer = ({ lightMode = false }) => {
           <div className="flex w-full flex-col justify-between gap-20 lg:flex-row">
             <div className="flex-1">
               <div className="mb-2 flex items-center font-medium uppercase">
-                <CustomDot color={"bg-customBlack"} />
+                <CustomDot
+                  color={lightMode ? "bg-customBlack" : "bg-customWhite"}
+                />
                 <h6>Stay in the known</h6>
               </div>
               <form>
@@ -78,9 +80,21 @@ const Footer = ({ lightMode = false }) => {
             </div>
             <div className="flex-1">
               <div className="flex flex-col justify-between lg:flex-row">
-                <CustomList list={socialsList} title={"socials"} />
-                <CustomList list={initiativesList} title={"Initiatives"} />
-                <CustomList list={officesList} title={"Offices"} />
+                <CustomList
+                  list={socialsList}
+                  title={"socials"}
+                  color={lightMode ? "bg-customBlack" : "bg-customWhite"}
+                />
+                <CustomList
+                  list={initiativesList}
+                  title={"Initiatives"}
+                  color={lightMode ? "bg-customBlack" : "bg-customWhite"}
+                />
+                <CustomList
+                  list={officesList}
+                  title={"Offices"}
+                  color={lightMode ? "bg-customBlack" : "bg-customWhite"}
+                />
               </div>
             </div>
           </div>

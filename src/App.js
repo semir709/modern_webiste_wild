@@ -9,7 +9,7 @@ import {
   AboutPage,
   Blog,
 } from "./pages/index";
-import { ParticlesComponent } from "./container/components/index";
+import { Navigation, ParticlesComponent } from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
 import { useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
@@ -50,7 +50,7 @@ function App() {
         containerRef={containerRef}
       >
         <main data-scroll-container ref={containerRef}>
-          {/* <Navigation textColorNav={textColorNav} darkMode={darkMode} /> */}
+          <Navigation textColorNav={textColorNav} darkMode={darkMode} />
 
           <Routes>
             <Route

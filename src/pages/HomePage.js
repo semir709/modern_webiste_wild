@@ -8,11 +8,9 @@ import {
   CustomZoomCard,
   Footer,
   HorizontalScroll,
-  ParticlesComponent,
   RCButton,
 } from "../container/components/index";
 import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
-import { Link } from "react-router-dom";
 import { wild_dest } from "../data/wild_dest.js";
 import { eng_data } from "../data/engagements_data";
 import { module_data } from "../data/main_module_content_data";

@@ -4,12 +4,16 @@ import { mainVideo } from "../../assets/videos/index";
 
 const BgVideo = ({ setChangeVideo }) => {
   const cursor = useRef(null);
+  const containerRef = useRef(null);
 
   const mouseMovment = (e) => {
+    const container = containerRef.current;
+    const cordiatnesCon = container.getBoundingClientRect();
+
     const target = cursor.current;
     target.style.transition = "none";
-    target.style.top = `${e.clientY}px`;
-    target.style.left = `${e.clientX}px`;
+    target.style.top = `${e.clientY - cordiatnesCon.top}px`;
+    target.style.left = `${e.clientX - cordiatnesCon.left}px`;
   };
 
   const mouseOut = () => {
@@ -30,10 +34,11 @@ const BgVideo = ({ setChangeVideo }) => {
 
   return (
     <div
-      className={`h-screen w-full cursor-none`}
+      className={`h-screen w-full cursor-none bg-red-300`}
       onMouseMove={mouseMovment}
       onMouseOut={mouseOut}
       onClick={() => setChangeVideo(true)}
+      ref={containerRef}
     >
       <div className="absolute left-0 top-0 h-full w-full bg-black opacity-20"></div>
       <video

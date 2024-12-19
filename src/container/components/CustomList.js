@@ -2,11 +2,11 @@ import React from "react";
 import CustomDot from "./CustomDot";
 import { Link } from "react-router-dom";
 
-const CustomList = ({ list, title }) => {
+const CustomList = ({ list, title, color = "bg-customBlack" }) => {
   return (
     <div className="mb-5">
       <div className="flex items-center text-lg font-medium uppercase lg:text-2xl">
-        <CustomDot color={"bg-customBlack"} />
+        <CustomDot color={color} />
         <h6>{title}</h6>
       </div>
       <ul className="mt-5">
