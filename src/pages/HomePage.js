@@ -205,7 +205,6 @@ const Home = ({ setDarkMode, darkMode = false }) => {
             </CustomDragMouse>
           </div>
         </section>
-
         <section className="w-full px-[5%] pt-20">
           <div id="stick" className="flex flex-col lg:flex-row">
             <div
@@ -229,8 +228,8 @@ const Home = ({ setDarkMode, darkMode = false }) => {
               </p>
             </div>
             <div className="order-1 flex-1 lg:order-2">
-              {module_data.map(({ imgContent }) => (
-                <div className="relative mt-5 h-[400px] w-full">
+              {module_data.map(({ imgContent, id }) => (
+                <div key={id} className="relative mt-5 h-[400px] w-full">
                   <div className="absolute left-0 top-0 h-full w-full bg-black opacity-10"></div>
                   <img
                     className="h-full w-full object-cover"

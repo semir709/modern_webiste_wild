@@ -54,8 +54,8 @@ const HorizontalScroll = ({ data, darkMode = false }) => {
         ref={contentRef}
         onScroll={handleScrollContent}
       >
-        {data.map(({ Image, title, content }, index) => (
-          <div className="bg-green300 m-5 min-w-[360px] select-none">
+        {data.map(({ Image, title, content, id }) => (
+          <div key={id} className="bg-green300 m-5 min-w-[360px] select-none">
             <figure
               className={`mb-5 h-16 ${!darkMode ? "fill-customBlack" : "fill-customPrimary"}`}
             >

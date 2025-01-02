@@ -1,5 +1,8 @@
+import { nanoid } from "nanoid";
+
 export const wild_dest = [
   {
+    id: nanoid(),
     title: "Patogania",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur eget aliquet mi, sed malesuada eros.",
     type: "img",
@@ -7,6 +10,7 @@ export const wild_dest = [
     alt: "mount",
   },
   {
+    id: nanoid(),
     title: "Patogania",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur eget aliquet mi, sed malesuada eros.",
     type: "img",
@@ -14,6 +18,7 @@ export const wild_dest = [
     alt: "mount",
   },
   {
+    id: nanoid(),
     title: "Patogania",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur eget aliquet mi, sed malesuada eros.",
     type: "video",

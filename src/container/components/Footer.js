@@ -3,34 +3,32 @@ import { Link } from "react-router-dom";
 import { IoArrowForward } from "react-icons/io5";
 import CustomDot from "./CustomDot";
 import CustomList from "./CustomList";
+import { nanoid } from "nanoid";
 
 const socialsList = [
-  { text: "Instagram", url: "/instagram" },
-  { text: "Twitter", url: "/twitter" },
-  { text: "Linkedln", url: "/linkedln" },
-  { text: "Facebook", url: "/facebook" },
+  { id: nanoid(), text: "Instagram", url: "/instagram" },
+  { id: nanoid(), text: "Twitter", url: "/twitter" },
+  { id: nanoid(), text: "Linkedln", url: "/linkedln" },
+  { id: nanoid(), text: "Facebook", url: "/facebook" },
 ];
 
 const initiativesList = [
-  { text: "Crafted", url: "/crafted" },
-  { text: "Applied", url: "/applied" },
-  { text: "Brandbeats", url: "/brandbeats" },
-  { text: "Moves", url: "/moves" },
+  { id: nanoid(), text: "Crafted", url: "/crafted" },
+  { id: nanoid(), text: "Applied", url: "/applied" },
+  { id: nanoid(), text: "Brandbeats", url: "/brandbeats" },
+  { id: nanoid(), text: "Moves", url: "/moves" },
 ];
 
 const officesList = [
-  { text: "San Diego - CA", url: "/san_diego" },
-  { text: "New York - NY", url: "/new_york" },
-  { text: "London - EN", url: "/london" },
-  { text: "Berlin - GE", url: "/berlin" },
+  { id: nanoid(), text: "San Diego - CA", url: "/san_diego" },
+  { id: nanoid(), text: "New York - NY", url: "/new_york" },
+  { id: nanoid(), text: "London - EN", url: "/london" },
+  { id: nanoid(), text: "Berlin - GE", url: "/berlin" },
 ];
 
 const Footer = ({ lightMode = false }) => {
   const [inputFocused, setInputFocused] = useState(false);
 
-  useEffect(() => {
-    console.log(inputFocused);
-  }, [inputFocused]);
   return (
     <footer className={`${lightMode ? "bg-white" : "bg-customBlack"} `}>
       <div className="px-[5%] py-40">

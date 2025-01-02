@@ -10,8 +10,11 @@ const CustomList = ({ list, title, color = "bg-customBlack" }) => {
         <h6>{title}</h6>
       </div>
       <ul className="mt-5">
-        {list.map(({ text, url }) => (
-          <li className="cursor-pointer text-sm underline-offset-4 hover:underline lg:text-lg">
+        {list.map(({ text, url, id }) => (
+          <li
+            key={id}
+            className="cursor-pointer text-sm underline-offset-4 hover:underline lg:text-lg"
+          >
             <Link to={url}>{text}</Link>
           </li>
         ))}
