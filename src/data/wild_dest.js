@@ -1,28 +1,28 @@
 import { nanoid } from "nanoid";
+import boat_water from "../assets/img/boat_water.jpg";
+import canyon from "../assets/img/canyon.jpg";
+import { winter_from_sky } from "../assets/videos/index";
 
 export const wild_dest = [
   {
     id: nanoid(),
-    title: "Patogania",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur eget aliquet mi, sed malesuada eros.",
+    title: "Lake Escape",
+    text: "Escape to the calm of crystal-clear waters.Breathe in serenity, surrounded by nature.",
     type: "img",
-    src: "https://cdn.sanity.io/images/8nn8fua5/production/931c4de4f3cbbeb30a5b65677a174f2980e44805-720x900.jpg?w=720&fm=webp&q=65",
-    alt: "mount",
+    src: { img: boat_water, alt: "boat_water" },
   },
   {
     id: nanoid(),
-    title: "Patogania",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur eget aliquet mi, sed malesuada eros.",
+    title: "Canyon Wonders",
+    text: "Wander through landscapes etched by time.Adventure and wonder await at every turn.",
     type: "img",
-    src: "https://cdn.sanity.io/images/8nn8fua5/production/931c4de4f3cbbeb30a5b65677a174f2980e44805-720x900.jpg?w=720&fm=webp&q=65",
-    alt: "mount",
+    src: { img: canyon, alt: "canyon" },
   },
   {
     id: nanoid(),
-    title: "Patogania",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur eget aliquet mi, sed malesuada eros.",
+    title: "Winter Haven",
+    text: "Dive into the thrill of snow-covered mountains.Experience the warmth of winter magic.",
     type: "video",
-    src: "https://cdn.sanity.io/files/8nn8fua5/production/9dc5a490bd877e8685f2089209db192188dd21e7.mp4",
-    alt: "mount",
+    src: { video: winter_from_sky, alt: "winterVideo" },
   },
 ];

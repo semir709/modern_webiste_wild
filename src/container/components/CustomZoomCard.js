@@ -10,22 +10,27 @@ const CustomZoomCard = ({ data, darkMode = false }) => {
   return (
     <div className="w-full overflow-auto pb-5 ps-3 sm:ps-0">
       <ul className="flex w-full gap-2">
-        {data.map(({ type, src, alt, title, text, id }) => (
+        {data.map(({ type, src, title, text, id }) => (
           <li key={id} className={`group min-w-[250px] md:min-w-0 md:flex-1`}>
             <Link>
               <div className="h-auto overflow-hidden">
-                <div className="h-full scale-105 transition-transform duration-300 group-hover:scale-100">
+                <div className="h-[500px] scale-105 transition-transform duration-300 group-hover:scale-100">
                   {type === "img" && (
                     <picture className="h-full">
                       <img
-                        src={src}
-                        alt={alt}
-                        className="h-full w-full object-cover"
+                        src={src.img}
+                        alt={src.alt}
+                        className="h-full object-cover"
                       />
                     </picture>
                   )}
                   {type === "video" && (
-                    <video autoPlay loop src={src}>
+                    <video
+                      className="h-full w-full object-cover"
+                      autoPlay
+                      loop
+                      src={src.video}
+                    >
                       video
                     </video>
                   )}
