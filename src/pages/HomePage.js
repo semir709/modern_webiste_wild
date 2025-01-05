@@ -11,13 +11,14 @@ import {
   Navigation,
   RCButton,
 } from "../container/components/index";
-import { Logo1, Logo2, Logo3, MainLogoShort } from "../assets/svg";
+import { MainLogoShort } from "../assets/svg";
 import { wild_dest } from "../data/wild_dest.js";
 import { eng_data } from "../data/engagements_data";
 import { module_data } from "../data/main_module_content_data";
 import { news_data } from "../data/news_data";
 import { nanoid } from "nanoid";
 import { useEffect, useRef, useState } from "react";
+import { awards_data } from "../data/awards_data.js";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -128,15 +129,18 @@ const Home = ({ setDarkMode, darkMode = false }) => {
             }}
             className="flex items-center justify-between text-xs font-semibold uppercase md:px-[10%]"
           >
-            <div className="mx-5">
-              <AwardCard Logo={Logo1} text={"Earth Guardian Award"} />
-            </div>
-            <div className="mx-5">
+            {awards_data.map(({ id, text, logo, url }) => (
+              <div className="mx-5" key={id}>
+                <AwardCard Logo={logo} text={text} url={url} />
+              </div>
+            ))}
+
+            {/* <div className="mx-5">
               <AwardCard Logo={Logo2} text={"Green Horizon Award"} />
             </div>
             <div className="mx-5">
               <AwardCard Logo={Logo3} text={"Nature's Beacon Award"} />
-            </div>
+            </div> */}
           </div>
         </section>
 
