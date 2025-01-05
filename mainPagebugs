@@ -4,8 +4,9 @@
 - can't click on link in sponsor sections
 - generaly missing a lot of actualy clickable parts [working currently]
 - dark mode not swithc when navigatio on new page
-- when switch to the new page using navigation scroll poistion is not back to 0
+- when switch to the new page using navigation scroll poistion is not back to 0 or any navigation type [next one]
 - in the work page image is not loading
 - navigation visiable line hover on work :url
 - navigation url's options are gone between two responsive point between desktop and tablet mode
+- navigation sometime just wirde when scroll up just once
 

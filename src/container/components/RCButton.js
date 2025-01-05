@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const RCButton = ({ text, darkMode = false, url = "/" }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -9,20 +10,21 @@ const RCButton = ({ text, darkMode = false, url = "/" }) => {
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >
-      <motion.a
-        className={`relative z-10 text-xs font-semibold uppercase`}
-        href={url}
-        animate={
-          isHovered
-            ? {
-                color: !darkMode ? "white" : "black",
-                transition: { duration: "5ms" },
-              }
-            : { color: !darkMode ? "#252422" : "#f9cdcd" }
-        }
-      >
-        {text}
-      </motion.a>
+      <Link to={url}>
+        <motion.div
+          className={`relative z-10 text-xs font-semibold uppercase`}
+          animate={
+            isHovered
+              ? {
+                  color: !darkMode ? "white" : "black",
+                  transition: { duration: "5ms" },
+                }
+              : { color: !darkMode ? "#252422" : "#f9cdcd" }
+          }
+        >
+          {text}
+        </motion.div>
+      </Link>
       <motion.div
         animate={isHovered ? { top: 0 } : { top: "100%" }}
         className={`absolute left-0 z-0 h-full w-full ${!darkMode ? "bg-customBlack" : "bg-customPrimary"}`}

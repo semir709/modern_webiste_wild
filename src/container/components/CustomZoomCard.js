@@ -10,9 +10,9 @@ const CustomZoomCard = ({ data, darkMode = false }) => {
   return (
     <div className="w-full overflow-auto pb-5 ps-3 sm:ps-0">
       <ul className="flex w-full gap-2">
-        {data.map(({ type, src, title, text, id }) => (
+        {data.map(({ type, src, title, text, id, url }) => (
           <li key={id} className={`group min-w-[250px] md:min-w-0 md:flex-1`}>
-            <Link>
+            <Link to={url}>
               <div className="h-auto overflow-hidden">
                 <div className="h-[500px] scale-105 transition-transform duration-300 group-hover:scale-100">
                   {type === "img" && (

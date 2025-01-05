@@ -134,13 +134,6 @@ const Home = ({ setDarkMode, darkMode = false }) => {
                 <AwardCard Logo={logo} text={text} url={url} />
               </div>
             ))}
-
-            {/* <div className="mx-5">
-              <AwardCard Logo={Logo2} text={"Green Horizon Award"} />
-            </div>
-            <div className="mx-5">
-              <AwardCard Logo={Logo3} text={"Nature's Beacon Award"} />
-            </div> */}
           </div>
         </section>
 
@@ -184,7 +177,7 @@ const Home = ({ setDarkMode, darkMode = false }) => {
             </div>
           </div>
           <div className="mt-[60px]">
-            <RCButton text={"See the work"} darkMode={darkMode} />
+            <RCButton text={"See the work"} darkMode={darkMode} url="/work" />
           </div>
         </section>
         <section className="py-[100px] sm:px-[5%]">
