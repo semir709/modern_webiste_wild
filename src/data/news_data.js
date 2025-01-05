@@ -11,7 +11,7 @@ export const news_data = [
     imgContent: { url: rainforest, alt: "rainforest" },
     title: "The Hidden Wonders of Rainforests",
     date: "10.10.2024",
-    urlRedirect: "/rainforest",
+    urlRedirect: "blog/rainforest",
     tag: "forest",
   },
   {
@@ -19,7 +19,7 @@ export const news_data = [
     imgContent: { url: alps, alt: "alps" },
     title: "Mountain Majesty: A Journey Through the Alps",
     date: "10.09.2024",
-    urlRedirect: "/alps",
+    urlRedirect: "blog/alps",
     tag: "forest",
   },
   {
@@ -27,7 +27,7 @@ export const news_data = [
     imgContent: { url: ocean, alt: "ocean" },
     title: "The Oceans: Earth's Final Frontier",
     date: "05.10.2024",
-    urlRedirect: "/earthOcean",
+    urlRedirect: "blog/earthOcean",
     tag: "ocean",
   },
   {
@@ -35,7 +35,7 @@ export const news_data = [
     imgContent: { url: desert, alt: "desert" },
     title: "Desert Bloom: The Beauty of Arid Landscapes",
     date: "30.09.2024",
-    urlRedirect: "/desert",
+    urlRedirect: "blog/desert",
     tag: "desert",
   },
   {
@@ -43,7 +43,7 @@ export const news_data = [
     imgContent: { url: artic, alt: "artic" },
     title: "The Silent Song of the Arctic",
     date: "12.10.2024",
-    urlRedirect: "/artic",
+    urlRedirect: "blog/artic",
     tag: "ocean",
   },
 ];

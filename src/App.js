@@ -65,7 +65,7 @@ function App() {
               }
             />
             <Route
-              path="/thinking"
+              path="/thinking/*"
               element={
                 <ThinkingPage setDarkMode={setDarkMode} darkMode={darkMode} />
               }

@@ -2,7 +2,12 @@ import React from "react";
 import CustomDot from "./CustomDot";
 import { Link } from "react-router-dom";
 
-const CustomList = ({ list, title, color = "bg-customBlack" }) => {
+const CustomList = ({
+  list,
+  title,
+  color = "bg-customBlack",
+  openNewWindow = false,
+}) => {
   return (
     <div className="mb-5">
       <div className="flex items-center text-lg font-medium uppercase lg:text-2xl">
@@ -15,7 +20,9 @@ const CustomList = ({ list, title, color = "bg-customBlack" }) => {
             key={id}
             className="cursor-pointer text-sm underline-offset-4 hover:underline lg:text-lg"
           >
-            <Link to={url}>{text}</Link>
+            <Link to={url} target={openNewWindow ? "_blank" : "_self"}>
+              {text}
+            </Link>
           </li>
         ))}
       </ul>

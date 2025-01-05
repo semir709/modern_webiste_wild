@@ -220,7 +220,7 @@ const Home = ({ setDarkMode, darkMode = false }) => {
                 Adweek <strong>Agency Spotlight</strong>
               </span>
               <p className="mt-8 lg:mt-10">
-                <RCButton text={"About Us"} darkMode={darkMode} />
+                <RCButton text={"About Us"} darkMode={darkMode} url="/about" />
               </p>
             </div>
             <div className="order-1 flex-1 lg:order-2">
@@ -248,7 +248,7 @@ const Home = ({ setDarkMode, darkMode = false }) => {
               Featured News
             </h2>
             <div>
-              <RCButton text={"View All"} darkMode={darkMode} />
+              <RCButton text={"View All"} darkMode={darkMode} url="/blog" />
             </div>
           </div>
           {news_data.map(({ title, date, imgContent, urlRedirect }) => (
