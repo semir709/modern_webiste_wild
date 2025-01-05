@@ -10,6 +10,7 @@ import {
   HorizontalScroll,
   Navigation,
   RCButton,
+  SponsorComponent,
 } from "../container/components/index";
 import { MainLogoShort } from "../assets/svg";
 import { wild_dest } from "../data/wild_dest.js";
@@ -197,9 +198,7 @@ const Home = ({ setDarkMode, darkMode = false }) => {
               </h2>
             </div>
 
-            <CustomDragMouse>
-              <HorizontalScroll data={eng_data} darkMode={darkMode} />
-            </CustomDragMouse>
+            <SponsorComponent darkMode={darkMode} />
           </div>
         </section>
         <section className="w-full px-[5%] pt-20">

@@ -13,13 +13,12 @@ export const useDragScroll = (contentRef) => {
         x: e.clientX,
         y: e.clientY,
       };
-
+      updateCursor(node);
       const handleMouseMove = (e) => {
         const dx = e.clientX - startPos.x;
         const dy = e.clientY - startPos.y;
         node.scrollTop = startPos.top - dy;
         node.scrollLeft = startPos.left - dx;
-        updateCursor(node);
       };
 
       const handleMouseUp = () => {
@@ -56,14 +55,13 @@ export const useDragScroll = (contentRef) => {
         x: touch.clientX,
         y: touch.clientY,
       };
-
+      updateCursor(node);
       const handleTouchMove = (e) => {
         const touch = e.touches[0];
         const dx = touch.clientX - startPos.x;
         const dy = touch.clientY - startPos.y;
         node.scrollTop = startPos.top - dy;
         node.scrollLeft = startPos.left - dx;
-        updateCursor(node);
       };
 
       const handleTouchEnd = () => {
@@ -84,7 +82,7 @@ export const useDragScroll = (contentRef) => {
   };
 
   const resetCursor = (ele) => {
-    ele.style.cursor = "grab";
+    ele.style.cursor = "none";
     ele.style.removeProperty("user-select");
   };
 

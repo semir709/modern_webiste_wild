@@ -3,11 +3,11 @@ import { useDragScroll } from "../../customHooks/useDragScroll";
 import { Link } from "react-router-dom";
 import CustomDragMouse from "./CustomDragMouse";
 
-const HorizontalScroll = ({ data, darkMode = false }) => {
+const HorizontalScroll = ({ data, darkMode = false, setIsHoverd }) => {
   const trackRef = useRef();
   const thumbRef = useRef();
   const contentRef = useRef();
-  const [isDragging, setIsDragging] = useState(false);
+  // const [isDragging, setIsDragging] = useState(false);
 
   useDragScroll(contentRef);
 
@@ -54,6 +54,7 @@ const HorizontalScroll = ({ data, darkMode = false }) => {
         ref={contentRef}
         onScroll={handleScrollContent}
       >
+        <div className="h-[400px] w-[800px]"></div>
         {data.map(({ Image, title, content, id }) => (
           <div key={id} className="bg-green300 m-5 min-w-[360px] select-none">
             <figure
@@ -70,7 +71,14 @@ const HorizontalScroll = ({ data, darkMode = false }) => {
               <h5 className={`mb-5 text-2xl`}>{title}</h5>
               <p>
                 {content}
-                <Link className="underline underline-offset-4">here</Link>
+                <Link
+                  to={"/thinking"}
+                  onMouseOver={() => setIsHoverd(true)}
+                  onMouseLeave={() => setIsHoverd(false)}
+                  className="underline underline-offset-4"
+                >
+                  here
+                </Link>
               </p>
             </div>
           </div>
