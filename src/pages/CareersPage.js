@@ -3,6 +3,7 @@ import {
   Footer,
   ImageSmoothHeight,
   Navigation,
+  ParticlesContainer,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components/index";
@@ -26,16 +27,14 @@ const title = [
   { id: nanoid(), text: "Paid." },
 ];
 
-const CareersPage = ({ setDarkMode, darkMode }) => {
-  const [textColorNav, setTextColorNav] = useState(0);
-
-  useEffect(() => {
-    setDarkMode(true);
-  }, [setDarkMode]);
+const CareersPage = () => {
+  const textColorNav = 0;
+  const darkMode = true;
 
   return (
     <>
       <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <main className="mb-60">
           <section className="flex flex-col px-[5%] pt-40 text-customPrimary sm:flex-row">

@@ -10,6 +10,7 @@ import {
   HorizontalScroll,
   Navigation,
   ParticlesComponent,
+  ParticlesContainer,
   RCButton,
   SponsorComponent,
 } from "../container/components/index";
@@ -49,10 +50,11 @@ const colorPalet = {
   dark: { text: "#f9cdcd", bg: "#252422" },
 };
 
-const Home = ({ setDarkMode, darkMode = false }) => {
+const Home = () => {
   const heroRef = useRef();
   const stickyRef = useRef();
   const [textColorNav, setTextColorNav] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const heroSection = heroRef.current;
@@ -97,15 +99,7 @@ const Home = ({ setDarkMode, darkMode = false }) => {
   return (
     <>
       <Navigation textColorNav={textColorNav} darkMode={darkMode} />
-      {/* <div
-        className="fixed left-0 top-0 -z-10 h-full w-full"
-        style={{
-          background: darkMode ? "#252422" : "white",
-          transition: "background 0.3s ease",
-        }}
-      >
-        <ParticlesComponent darkMode={darkMode} />
-      </div> */}
+      <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <section ref={heroRef}>
           <motion.div

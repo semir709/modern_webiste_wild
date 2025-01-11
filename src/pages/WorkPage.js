@@ -3,6 +3,7 @@ import {
   CustomZoomCard,
   Footer,
   Navigation,
+  ParticlesContainer,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
@@ -42,12 +43,14 @@ const dest = [
   },
 ];
 
-const WorkPage = ({ darkMode }) => {
-  const [textColorNav, setTextColorNav] = useState(1);
+const WorkPage = () => {
+  const textColorNav = 1;
+  const darkMode = false;
 
   return (
     <>
       <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <main className="pt-40">
           <section className="text-customBlack">

@@ -4,6 +4,7 @@ import {
   CustomRadioFilter,
   Footer,
   Navigation,
+  ParticlesContainer,
 } from "../container/components";
 import { thinking_radio_data } from "../data/thinking_radio_data";
 import { thinking_data } from "../data/thinking_data";
@@ -20,10 +21,11 @@ const textVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 0.5, delay: 0.3 } },
 };
-const ThinkingPage = ({ setDarkMode, darkMode }) => {
+const ThinkingPage = () => {
   const [filter, setFilter] = useState(thinking_radio_data[0].slug);
   const [data, setData] = useState(thinking_data);
-  const [textColorNav, setTextColorNav] = useState(0);
+  const darkMode = true;
+  const textColorNav = 0;
 
   useEffect(() => {
     if (filter === thinking_radio_data[0].slug) {
@@ -35,13 +37,10 @@ const ThinkingPage = ({ setDarkMode, darkMode }) => {
     }
   }, [filter]);
 
-  useEffect(() => {
-    setDarkMode(true);
-  }, [setDarkMode]);
-
   return (
     <>
       <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <main className="mb-24 px-[5%] pt-48 text-customPrimary">
           <section>

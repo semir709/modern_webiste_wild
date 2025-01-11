@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   Footer,
   Navigation,
+  ParticlesContainer,
   SocialMedia,
   TextFromBottomOverflow,
 } from "../container/components";
@@ -23,13 +24,14 @@ const colorPalet = {
 
 // responsive
 
-const Blog = ({ setDarkMode, darkMode }) => {
+const Blog = () => {
   const mainContentRef = useRef();
   const stickyLeftRef = useRef();
   const heroSectionRef = useRef();
   const imgContentRef = useRef();
+  const [darkMode, setDarkMode] = useState(false);
 
-  const [textColorNav, setTextColorNav] = useState(0);
+  const textColorNav = 0;
 
   const imageEndPositionTweak = 140;
 
@@ -82,6 +84,7 @@ const Blog = ({ setDarkMode, darkMode }) => {
   return (
     <>
       <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <main
           className="mb-40 px-[5%]"

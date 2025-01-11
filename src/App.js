@@ -17,15 +17,14 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 
 function App() {
   const containerRef = useRef(null);
-
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
 
   // and set parial compponent to one compoenent that will be on each page where all dark mode goes
   //  witout anyting bing on app.js
 
   return (
     <>
-      <div
+      {/* <div
         className="fixed left-0 top-0 -z-10 h-full w-full"
         style={{
           background: darkMode ? "#252422" : "white",
@@ -33,7 +32,7 @@ function App() {
         }}
       >
         <ParticlesComponent darkMode={darkMode} />
-      </div>
+      </div> */}
 
       <LocomotiveScrollProvider
         options={{
@@ -45,41 +44,14 @@ function App() {
         <ResetScroll>
           <main data-scroll-container ref={containerRef}>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <HomePage setDarkMode={setDarkMode} darkMode={darkMode} />
-                }
-              />
-              <Route path="/news" element={<NewsPage darkMode={darkMode} />} />
-              <Route
-                path="/careers"
-                element={
-                  <CareersPage setDarkMode={setDarkMode} darkMode={darkMode} />
-                }
-              />
-              <Route
-                path="/thinking/*"
-                element={
-                  <ThinkingPage setDarkMode={setDarkMode} darkMode={darkMode} />
-                }
-              />
-              <Route
-                path="/contact"
-                element={<Contact darkMode={darkMode} />}
-              />
-              <Route path="/work" element={<WorkPage darkMode={darkMode} />} />
-
-              <Route
-                path="/about/*"
-                element={
-                  <AboutPage setDarkMode={setDarkMode} darkMode={darkMode} />
-                }
-              />
-              <Route
-                path="/blog/*"
-                element={<Blog setDarkMode={setDarkMode} darkMode={darkMode} />}
-              />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/news" element={<NewsPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/thinking/*" element={<ThinkingPage />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/work" element={<WorkPage />} />
+              <Route path="/about/*" element={<AboutPage />} />
+              <Route path="/blog/*" element={<Blog />} />
             </Routes>
           </main>
         </ResetScroll>

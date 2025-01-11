@@ -4,6 +4,7 @@ import {
   CustomRadioFilter,
   Footer,
   Navigation,
+  ParticlesContainer,
 } from "../container/components";
 import { news_data } from "../data/news_data";
 import { useEffect, useState } from "react";
@@ -20,14 +21,11 @@ const newsVariants = {
   animate: { opacity: 1, transition: { duration: 0.5, delay: 0.3 } },
 };
 
-const NewsPage = ({ darkMode }) => {
+const NewsPage = () => {
   const [filter, setFilter] = useState(radioData[0].slug);
   const [data, setData] = useState(news_data);
-  const [textColorNav, setTextColorNav] = useState(0);
-
-  useEffect(() => {
-    setTextColorNav(1);
-  }, [setTextColorNav]);
+  const textColorNav = 1;
+  const darkMode = false;
 
   useEffect(() => {
     if (filter === radioData[0].slug) {
@@ -42,6 +40,7 @@ const NewsPage = ({ darkMode }) => {
   return (
     <>
       <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <main className="px-[5%] pt-40 text-customBlack">
           <section>

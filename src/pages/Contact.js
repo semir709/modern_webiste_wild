@@ -5,6 +5,7 @@ import {
   ImageSmoothHeight,
   Navigation,
   OfficesCard,
+  ParticlesContainer,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
@@ -32,16 +33,14 @@ const varinatsOpacity = {
   },
 };
 
-const Contact = ({ darkMode }) => {
-  const [textColorNav, setTextColorNav] = useState(0);
-
-  useEffect(() => {
-    setTextColorNav(1);
-  }, [setTextColorNav]);
+const Contact = () => {
+  const textColorNav = useState(1);
+  const darkMode = false;
 
   return (
     <>
       <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <main className="px-[5%] pt-40">
           <section className="mb-24 min-h-screen">

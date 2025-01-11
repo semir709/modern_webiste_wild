@@ -4,6 +4,7 @@ import {
   CustomLineInfo,
   Footer,
   Navigation,
+  ParticlesContainer,
   RCButton,
   TextFromBottomOverflow,
 } from "../container/components";
@@ -85,19 +86,16 @@ const postionStyle = [
   "right-[40%] top-[80%] -translate-y-[80%] translate-x-[40%]",
 ];
 
-const AboutPage = ({ setDarkMode, darkMode }) => {
-  const [textColorNav, setTextColorNav] = useState(0);
-
-  useEffect(() => {
-    setDarkMode(true);
-  }, [setDarkMode]);
+const AboutPage = () => {
+  const textColorNav = 0;
+  const darkMode = true;
   const location = useLocation();
-
   const mainPath = location.pathname.split("/").slice(0, 3).join("/");
 
   return (
     <>
       <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <AnimatePresence mode="wait">
           <Routes location={location} key={mainPath}>
