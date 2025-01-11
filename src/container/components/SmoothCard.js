@@ -86,20 +86,20 @@ const SmoothCard = ({
       animate="rest"
       whileHover="hover"
     >
-      <div className="absolute left-0 top-0 h-fit w-full lg:h-full lg:w-fit">
-        <div className="h-[0.1rem] w-full bg-customPrimary lg:h-[95%] lg:w-[0.1rem]"></div>
+      <div className="absolute left-0 top-0 h-fit w-full md:h-full md:w-fit">
+        <div className="h-[0.1rem] w-full bg-customPrimary md:h-[95%] md:w-[0.1rem]"></div>
         <div className="ms-auto w-fit text-sm">{formatNumber(number)}</div>
       </div>
       <motion.div
         variants={imageVariant}
-        className="pointer-events-none ms-2 hidden lg:block"
+        className="pointer-events-none ms-2 hidden md:block"
       >
         <SmoothCardImage imgContent={imgContent} />
       </motion.div>
-      <div className="pointer-events-none block pt-8 lg:hidden">
+      <div className="pointer-events-none block pt-8 md:hidden">
         <SmoothCardImage imgContent={imgContent} />
       </div>
-      <div className="text-sm font-medium lg:ms-2">
+      <div className="text-sm font-medium md:ms-2">
         <div className="uppercase">
           <h5 className="relative flex items-center justify-between text-lg font-bold">
             {title}
@@ -107,7 +107,7 @@ const SmoothCard = ({
           </h5>
           <span>{subtext}</span>
         </div>
-        <motion.div variants={textVariant} className="mt-4 hidden lg:block">
+        <motion.div variants={textVariant} className="mt-4 hidden md:block">
           <TextBlock
             urlRedirect={urlRedirect}
             text={text}
@@ -116,7 +116,7 @@ const SmoothCard = ({
             whenMouseOut={whenMouseOut}
           />
         </motion.div>
-        <div className="mt-4 block lg:hidden">
+        <div className="mt-4 block md:hidden">
           <TextBlock urlRedirect={urlRedirect} text={text} urlText={urlText} />
         </div>
       </div>

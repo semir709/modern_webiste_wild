@@ -48,12 +48,12 @@ const MainModule = ({ setToggler }) => {
         ></motion.div>
 
         <div className="relative flex h-full w-full flex-col pt-8">
-          <div className="w-full flex-[2_1_0%] px-8 lg:px-24">
+          <div className="w-full flex-[2_1_0%] px-8 md:px-24">
             <div className="flex h-full w-full items-center justify-between text-sm font-semibold uppercase leading-4 text-customPrimary">
-              <div className="block text-lg font-bold lg:hidden">
+              <div className="block text-lg font-bold md:hidden">
                 World wild Nautre Care
               </div>
-              <div className="hidden flex-[2_1_0%] justify-between lg:flex">
+              <div className="hidden flex-[2_1_0%] justify-between md:flex">
                 <div className="me-4">
                   <span>
                     <div className="rounded-full bg-customPrimary p-1"></div>
@@ -84,15 +84,15 @@ const MainModule = ({ setToggler }) => {
             </div>
           </div>
           <div className="w-full flex-[9_1_0%] pb-14 pt-8">
-            <div className="hidden h-full lg:block">
+            <div className="hidden h-full md:block">
               <CarouselSmoothCard />
             </div>
-            <div className="block text-customPrimary lg:hidden">
+            <div className="block text-customPrimary md:hidden">
               {showIniatives && (
                 <div>
                   <div className="h-[1px] w-full bg-customPrimary"></div>
                   <div className="h-screen overflow-y-auto pb-16">
-                    <div className="px-8 lg:px-0">
+                    <div className="px-8 md:px-0">
                       <div className="my-5 flex">
                         <div>
                           <button onClick={() => setShowIniatives(false)}>
@@ -131,7 +131,7 @@ const MainModule = ({ setToggler }) => {
                 </div>
               )}
               {!showIniatives && (
-                <div className="px-8 lg:px-24">
+                <div className="px-8 md:px-24">
                   <Nav data={nav_data} />
                   <button
                     className="flex items-center text-lg font-semibold uppercase"
@@ -146,7 +146,7 @@ const MainModule = ({ setToggler }) => {
               )}
             </div>
           </div>
-          <div className="absolute bottom-5 px-8 text-customGray lg:px-24">
+          <div className="absolute bottom-5 px-8 text-customGray md:px-24">
             <span>World wild Nautre Care &reg;, Inc</span>
           </div>
         </div>
