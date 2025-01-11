@@ -9,32 +9,19 @@ import {
   AboutPage,
   Blog,
 } from "./pages/index";
-import { ParticlesComponent } from "./container/components/index";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { useLayoutEffect, useRef, useState } from "react";
+import { ParticlesComponent, ResetScroll } from "./container/components/index";
+import { Routes, Route } from "react-router-dom";
+import { useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import LocomotiveScroll from "locomotive-scroll";
 
 function App() {
   const containerRef = useRef(null);
+
   const [darkMode, setDarkMode] = useState(false);
 
-  const location = useLocation();
-
-  useLayoutEffect(() => {
-    const scroll = new LocomotiveScroll({
-      el: containerRef.current,
-      smooth: true,
-    });
-    scroll.scrollTo("top", {
-      offset: 0,
-    });
-
-    return () => {
-      if (scroll) scroll.destroy();
-    };
-  }, [location.pathname]);
+  // and set parial compponent to one compoenent that will be on each page where all dark mode goes
+  //  witout anyting bing on app.js
 
   return (
     <>
@@ -48,48 +35,55 @@ function App() {
         <ParticlesComponent darkMode={darkMode} />
       </div>
 
-      {/* <LocomotiveScrollProvider
+      <LocomotiveScrollProvider
         options={{
           smooth: true,
         }}
         watch={[]}
         containerRef={containerRef}
-      > */}
-      <main data-scroll-container ref={containerRef}>
-        <Routes>
-          <Route
-            path="/"
-            element={<HomePage setDarkMode={setDarkMode} darkMode={darkMode} />}
-          />
-          <Route path="/news" element={<NewsPage darkMode={darkMode} />} />
-          <Route
-            path="/careers"
-            element={
-              <CareersPage setDarkMode={setDarkMode} darkMode={darkMode} />
-            }
-          />
-          <Route
-            path="/thinking/*"
-            element={
-              <ThinkingPage setDarkMode={setDarkMode} darkMode={darkMode} />
-            }
-          />
-          <Route path="/contact" element={<Contact darkMode={darkMode} />} />
-          <Route path="/work" element={<WorkPage darkMode={darkMode} />} />
+      >
+        <ResetScroll>
+          <main data-scroll-container ref={containerRef}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <HomePage setDarkMode={setDarkMode} darkMode={darkMode} />
+                }
+              />
+              <Route path="/news" element={<NewsPage darkMode={darkMode} />} />
+              <Route
+                path="/careers"
+                element={
+                  <CareersPage setDarkMode={setDarkMode} darkMode={darkMode} />
+                }
+              />
+              <Route
+                path="/thinking/*"
+                element={
+                  <ThinkingPage setDarkMode={setDarkMode} darkMode={darkMode} />
+                }
+              />
+              <Route
+                path="/contact"
+                element={<Contact darkMode={darkMode} />}
+              />
+              <Route path="/work" element={<WorkPage darkMode={darkMode} />} />
 
-          <Route
-            path="/about/*"
-            element={
-              <AboutPage setDarkMode={setDarkMode} darkMode={darkMode} />
-            }
-          />
-          <Route
-            path="/blog/*"
-            element={<Blog setDarkMode={setDarkMode} darkMode={darkMode} />}
-          />
-        </Routes>
-      </main>
-      {/* </LocomotiveScrollProvider> */}
+              <Route
+                path="/about/*"
+                element={
+                  <AboutPage setDarkMode={setDarkMode} darkMode={darkMode} />
+                }
+              />
+              <Route
+                path="/blog/*"
+                element={<Blog setDarkMode={setDarkMode} darkMode={darkMode} />}
+              />
+            </Routes>
+          </main>
+        </ResetScroll>
+      </LocomotiveScrollProvider>
     </>
   );
 }
