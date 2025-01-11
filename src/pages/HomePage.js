@@ -1,10 +1,10 @@
 import { MainSection } from "../container/sections/index";
-import { motion } from "framer-motion";
 import {
   ArticleCard,
   AwardCard,
   CustomLineInfo,
   CustomZoomCard,
+  FirstLoadIntroComponent,
   Footer,
   Navigation,
   ParticlesContainer,
@@ -18,28 +18,6 @@ import { news_data } from "../data/news_data";
 import { nanoid } from "nanoid";
 import { useEffect, useRef, useState } from "react";
 import { awards_data } from "../data/awards_data.js";
-
-const variantsParanet = {
-  start: { height: "100vh" },
-  end: {
-    height: 0,
-    transition: {
-      duration: 0.3,
-      when: "afterChildren",
-    },
-  },
-};
-
-const variantsChildren = {
-  start: { height: "100%" },
-  end: {
-    height: 0,
-    transition: {
-      delay: 0.5,
-      duration: 0.3,
-    },
-  },
-};
 
 const colorPalet = {
   light: { text: "#252422", bg: "#ffffff" },
@@ -98,25 +76,6 @@ const Home = () => {
       <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <section ref={heroRef}>
-          <motion.div
-            className="absolute left-0 top-0 z-50 h-full w-full"
-            variants={variantsParanet}
-            initial="start"
-            animate="end"
-          >
-            <div className="absolute left-0 top-0 h-full w-full bg-white">
-              <div className="flex h-full w-full items-center justify-center">
-                <div className="h-[200px] text-center text-4xl font-extrabold uppercase leading-none text-customBlack sm:text-[100px]">
-                  <motion.div
-                    className="overflow-hidden"
-                    variants={variantsChildren}
-                  >
-                    Beautiful <br /> wild
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
           <div>
             <MainSection />
           </div>
@@ -265,6 +224,7 @@ const Home = () => {
         </section>
         <Footer />
       </div>
+      <FirstLoadIntroComponent />
     </>
   );
 };

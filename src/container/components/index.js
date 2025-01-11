@@ -27,3 +27,4 @@ export { default as SocialMedia } from "./SocialMedia";
 export { default as SponsorComponent } from "./SponsorComponent";
 export { default as ResetScroll } from "./ResetScroll";
 export { default as ParticlesContainer } from "./ParticlesContainer";
+export { default as FirstLoadIntroComponent } from "./FirstLoadIntroComponent";

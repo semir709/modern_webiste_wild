@@ -1,5 +1,4 @@
-- Mobile dark mode not working correctly (currently working)
-- when just load the page it shows first hero message but user can scroll it should not scroll until message  animation is done
+- when just load the page it shows first hero message but user can scroll it should not scroll until message  animation is done (currently working)
 
 - in the work page image is not loading (these is for anither page)
 
