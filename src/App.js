@@ -9,31 +9,17 @@ import {
   AboutPage,
   Blog,
 } from "./pages/index";
-import { ParticlesComponent, ResetScroll } from "./container/components/index";
+import { ResetScroll } from "./container/components/index";
 import { Routes, Route } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
 function App() {
   const containerRef = useRef(null);
-  // const [darkMode, setDarkMode] = useState(false);
-
-  // and set parial compponent to one compoenent that will be on each page where all dark mode goes
-  //  witout anyting bing on app.js
 
   return (
     <>
-      {/* <div
-        className="fixed left-0 top-0 -z-10 h-full w-full"
-        style={{
-          background: darkMode ? "#252422" : "white",
-          transition: "background 0.3s ease",
-        }}
-      >
-        <ParticlesComponent darkMode={darkMode} />
-      </div> */}
-
       <LocomotiveScrollProvider
         options={{
           smooth: true,

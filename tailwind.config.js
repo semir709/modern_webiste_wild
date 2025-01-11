@@ -7,13 +7,13 @@ module.exports = {
     extend: {
       keyframes: {
         animationLeft: {
-          "0%": { transform: "translateX(-100%)" },
+          "0%": { transform: "translateX(-110%)" },
           "100%": { transform: "translateX(0%)" },
         },
 
         animationRight: {
           "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(110%)" },
         },
 
         animatioLefttoRight: {

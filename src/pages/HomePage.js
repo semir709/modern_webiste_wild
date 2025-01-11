@@ -3,20 +3,16 @@ import { motion } from "framer-motion";
 import {
   ArticleCard,
   AwardCard,
-  CustomDragMouse,
   CustomLineInfo,
   CustomZoomCard,
   Footer,
-  HorizontalScroll,
   Navigation,
-  ParticlesComponent,
   ParticlesContainer,
   RCButton,
   SponsorComponent,
 } from "../container/components/index";
 import { MainLogoShort } from "../assets/svg";
 import { wild_dest } from "../data/wild_dest.js";
-import { eng_data } from "../data/engagements_data";
 import { module_data } from "../data/main_module_content_data";
 import { news_data } from "../data/news_data";
 import { nanoid } from "nanoid";
