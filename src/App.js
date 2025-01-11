@@ -23,6 +23,16 @@ function App() {
       <LocomotiveScrollProvider
         options={{
           smooth: true,
+          smartphone: {
+            smooth: true,
+            direction: "vertical",
+            gestureDirection: "both",
+          },
+          tablet: {
+            smooth: true,
+            direction: "vertical",
+            gestureDirection: "both",
+          },
         }}
         watch={[]}
         containerRef={containerRef}

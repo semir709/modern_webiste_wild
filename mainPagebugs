@@ -1,9 +1,7 @@
-- Button not working (not leaading anywhere)
-- Mobile dark mode not working correctly
+- Mobile dark mode not working correctly (currently working)
 - when just load the page it shows first hero message but user can scroll it should not scroll until message  animation is done
-- can't click on link in sponsor sections
-- in the work page image is not loading
-- navigation visiable line hover on work :url (currently working)
+
+- in the work page image is not loading (these is for anither page)
+
 - navigation url's options are gone between two responsive point between desktop and tablet mode
-- navigation sometime just wirde when scroll up just once
 - second section images loads too slow

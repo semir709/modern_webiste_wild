@@ -48,13 +48,13 @@ const colorPalet = {
 
 const Home = () => {
   const heroRef = useRef();
-  const stickyRef = useRef();
   const [textColorNav, setTextColorNav] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
+  const imagesStickyRef = useRef();
 
   useEffect(() => {
     const heroSection = heroRef.current;
-    const stickySection = stickyRef.current;
+    const imagesTarget = imagesStickyRef.current;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,7 +64,7 @@ const Home = () => {
               setTextColorNav(0);
             }
 
-            if (entry.target === stickySection) {
+            if (entry.target === imagesTarget) {
               setDarkMode(1);
             }
           } else {
@@ -72,7 +72,7 @@ const Home = () => {
               setTextColorNav(1);
             }
 
-            if (entry.target === stickySection) {
+            if (entry.target === imagesTarget) {
               setDarkMode(0);
             }
           }
@@ -84,11 +84,11 @@ const Home = () => {
     );
 
     if (heroSection) observer.observe(heroSection);
-    if (stickySection) observer.observe(stickySection);
+    if (imagesTarget) observer.observe(imagesTarget);
 
     return () => {
       if (heroSection) observer.unobserve(heroSection);
-      if (stickySection) observer.unobserve(stickySection);
+      if (imagesTarget) observer.unobserve(imagesTarget);
     };
   }, [setTextColorNav, setDarkMode]);
 
@@ -204,7 +204,7 @@ const Home = () => {
         <section className="w-full px-[5%] pt-20">
           <div id="stick" className="flex flex-col lg:flex-row">
             <div
-              ref={stickyRef}
+              // ref={stickyRef}
               data-scroll
               data-scroll-sticky // Attibute that enables the sticky scroll
               data-scroll-target="#stick"
@@ -223,7 +223,7 @@ const Home = () => {
                 <RCButton text={"About Us"} darkMode={darkMode} url="/about" />
               </p>
             </div>
-            <div className="order-1 flex-1 lg:order-2">
+            <div ref={imagesStickyRef} className="order-1 flex-1 lg:order-2">
               {module_data.map(({ imgContent, id }) => (
                 <div key={id} className="relative mt-5 h-[400px] w-full">
                   <div className="absolute left-0 top-0 h-full w-full bg-black opacity-10"></div>
