@@ -43,7 +43,11 @@ const navColorSet = {
   dark: { text: "#f9cdcd", bg: "#252422" },
 };
 
-const Navigation = ({ textColorNav = 0, darkMode = false }) => {
+const Navigation = ({
+  textColorNav = 0,
+  darkMode = false,
+  pageLoaded = true,
+}) => {
   const [scrollDown, setScrollDown] = useState(true);
   const [toggler, setToggler] = useState(false);
   const url = useNavigate();
@@ -103,7 +107,7 @@ const Navigation = ({ textColorNav = 0, darkMode = false }) => {
         <motion.div
           variants={variantNav}
           initial="initial"
-          animate="animate"
+          animate={pageLoaded && "animate"}
           className={`flex items-center justify-between text-sm font-semibold uppercase`}
           style={{
             color:

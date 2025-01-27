@@ -70,14 +70,20 @@ const Home = () => {
     };
   }, [setTextColorNav, setDarkMode]);
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <>
-      <Navigation textColorNav={textColorNav} darkMode={darkMode} />
+      <Navigation
+        textColorNav={textColorNav}
+        darkMode={darkMode}
+        pageLoaded={isLoaded}
+      />
       <ParticlesContainer darkMode={darkMode} />
       <div data-scroll-section>
         <section ref={heroRef}>
           <div>
-            <MainSection />
+            <MainSection setIsLoaded={setIsLoaded} />
           </div>
         </section>
 

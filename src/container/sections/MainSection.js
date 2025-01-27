@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BgVideo,
   FirstLoadIntroComponent,
   MainVideo,
 } from "../components/index";
 
-const MainSection = () => {
+const MainSection = ({ setIsLoaded = false }) => {
   const [changeVideo, setChangeVideo] = useState(false);
   const [bgVideoLoaded, setBgVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(bgVideoLoaded);
+  }, [bgVideoLoaded, setIsLoaded]);
 
   return (
     <main>
