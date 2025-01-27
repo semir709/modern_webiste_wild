@@ -1,9 +1,10 @@
-- Nabigation needs to be inside a pages
-- reconsider to bg animatio to be insinde pages too ?
-- bg animation bg color not change when swithc between pages 
-- fix darkmode stay on the newx webpage in navigation
-- some routes are not accessable throught ui
-- fix warnings in home page
-- when scroll down and change page new page is not scrolly 0 but position of the previus page
+WORK PAGE
+- in the work page image is not loading (these is for anither page)
 
+HOME PAGE
+- dark mode transition is bad on mobile
+- transition of a navigation bad on mobile
+- opacity transition bad on mobile when get on video and from video
+- they made intersting decidion when video is not into view it is like not loading (currently working)
+littile different for a main video that needs to load completly before showing use hero message
 

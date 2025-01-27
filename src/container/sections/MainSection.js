@@ -1,10 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import { mainVideo, sideVideo } from "../../assets/videos";
-import { motion } from "framer-motion";
-import { BgVideo, MainVideo } from "../components/index";
+import React, { useState } from "react";
+import {
+  BgVideo,
+  FirstLoadIntroComponent,
+  MainVideo,
+} from "../components/index";
 
 const MainSection = () => {
   const [changeVideo, setChangeVideo] = useState(false);
+  const [bgVideoLoaded, setBgVideoLoaded] = useState(false);
 
   return (
     <main>
@@ -17,9 +20,13 @@ const MainSection = () => {
         </div>
 
         <div className={`${changeVideo ? "hidden" : "block"}`}>
-          <BgVideo setChangeVideo={setChangeVideo} />
+          <BgVideo
+            setChangeVideo={setChangeVideo}
+            setVideoLoaded={setBgVideoLoaded}
+          />
         </div>
       </div>
+      <FirstLoadIntroComponent videoLoaded={bgVideoLoaded} />
     </main>
   );
 };

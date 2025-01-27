@@ -224,7 +224,7 @@ const Home = () => {
         </section>
         <Footer />
       </div>
-      <FirstLoadIntroComponent />
+      {/* <FirstLoadIntroComponent /> */}
     </>
   );
 };

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { mainVideo } from "../../assets/videos/index";
 
-const BgVideo = ({ setChangeVideo }) => {
+const BgVideo = ({ setChangeVideo, setVideoLoaded }) => {
   const cursor = useRef(null);
   const containerRef = useRef(null);
+  // const [imageLoaded, setIsImageLoaded] = useState(false);
 
   const mouseMovment = (e) => {
     const container = containerRef.current;
@@ -32,9 +33,13 @@ const BgVideo = ({ setChangeVideo }) => {
     }
   }, [cursor.current]);
 
+  const isVideoLoaded = () => {
+    setVideoLoaded(true);
+  };
+
   return (
     <div
-      className={`h-screen w-full cursor-none bg-red-300`}
+      className={`h-screen w-full cursor-none`}
       onMouseMove={mouseMovment}
       onMouseOut={mouseOut}
       onClick={() => setChangeVideo(true)}
@@ -47,6 +52,7 @@ const BgVideo = ({ setChangeVideo }) => {
         autoPlay
         loop
         muted
+        onLoadedData={isVideoLoaded}
       >
         <source src={mainVideo} type="video/mp4" />
         Your browser does not support HTML5 video.

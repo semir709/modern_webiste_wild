@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const variantsParanet = {
   start: { height: "100vh" },
@@ -22,13 +23,16 @@ const variantsChildren = {
   },
 };
 
-const FirstLoadIntroComponent = () => {
+const FirstLoadIntroComponent = ({ videoLoaded = false }) => {
+  useEffect(() => {
+    console.log(videoLoaded, "video loadede");
+  }, [videoLoaded]);
   return (
     <motion.div
       className="fixed left-0 top-0 h-full w-full"
       variants={variantsParanet}
       initial="start"
-      animate="end"
+      animate={videoLoaded && "end"}
     >
       <div className="absolute left-0 top-0 h-full w-full bg-white">
         <div className="flex h-full w-full items-center justify-center">
