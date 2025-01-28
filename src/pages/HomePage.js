@@ -4,7 +4,6 @@ import {
   AwardCard,
   CustomLineInfo,
   CustomZoomCard,
-  FirstLoadIntroComponent,
   Footer,
   Navigation,
   ParticlesContainer,

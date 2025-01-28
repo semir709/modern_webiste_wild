@@ -6,7 +6,7 @@ const ParticlesContainer = ({ darkMode }) => {
       className="fixed left-0 top-0 -z-10 h-full w-full"
       style={{
         background: darkMode ? "#252422" : "white",
-        transition: "background 0.3s ease",
+        transition: "background 0.5s ease",
       }}
     >
       <ParticlesComponent darkMode={darkMode} />

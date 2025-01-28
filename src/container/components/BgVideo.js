@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { mainVideo } from "../../assets/videos/index";
+import LazyVideo from "./LazyVideo";
 
 const BgVideo = ({ setChangeVideo, setVideoLoaded }) => {
   const cursor = useRef(null);
@@ -46,18 +47,11 @@ const BgVideo = ({ setChangeVideo, setVideoLoaded }) => {
       ref={containerRef}
     >
       <div className="absolute left-0 top-0 h-full w-full bg-black opacity-20"></div>
-      <video
-        className="h-full w-full object-cover"
-        preload="auto"
-        autoPlay
-        loop
-        muted
+      <LazyVideo
+        src={mainVideo}
+        alt={"background video"}
         onLoadedData={isVideoLoaded}
-      >
-        <source src={mainVideo} type="video/mp4" />
-        Your browser does not support HTML5 video.
-      </video>
-
+      />
       <div
         ref={cursor}
         className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2"

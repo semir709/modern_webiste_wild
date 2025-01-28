@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LazyVideo from "./LazyVideo";
 
 const colorPalet = {
   light: { text: "#252422", bg: "#ffffff" },
@@ -25,14 +26,7 @@ const CustomZoomCard = ({ data, darkMode = false }) => {
                     </picture>
                   )}
                   {type === "video" && (
-                    <video
-                      className="h-full w-full object-cover"
-                      autoPlay
-                      loop
-                      src={src.video}
-                    >
-                      video
-                    </video>
+                    <LazyVideo src={src.video} alt={"winter mounten"} />
                   )}
                 </div>
               </div>
