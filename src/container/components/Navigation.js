@@ -9,7 +9,7 @@ import { nav_data } from "../../data/nav_data";
 
 const variantScroll = {
   up: {
-    y: -115,
+    y: -145,
     transition: {
       type: "tween",
       duration: 0.3,
@@ -50,7 +50,7 @@ const Navigation = ({
 }) => {
   const [scrollDown, setScrollDown] = useState(true);
   const [toggler, setToggler] = useState(false);
-  const url = useNavigate();
+  // const url = useNavigate();
   const { scroll } = useLocomotiveScroll();
 
   useEffect(() => {
@@ -78,10 +78,6 @@ const Navigation = ({
       }
     };
   }, [scroll]);
-
-  useEffect(() => {
-    setToggler(false);
-  }, [url]);
 
   const togglerOpen = () => {
     setToggler(true);
@@ -137,7 +133,7 @@ const Navigation = ({
             />
           </div>
 
-          <button className="w-[50px]" onClick={togglerOpen}>
+          <button className="md:w-[50px]" onClick={togglerOpen}>
             <div className="group hidden items-center justify-center md:flex">
               {Array.from({ length: 3 }).map(() => (
                 <div

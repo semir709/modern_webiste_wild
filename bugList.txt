@@ -1,6 +1,1 @@
-WORK PAGE
-- in the work page image is not loading (these is for anither page)
-
-HOME PAGE
-- transition of a navigation bad on mobile(currently working)
-
+NEWS SPAGE

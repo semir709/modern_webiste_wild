@@ -14,11 +14,12 @@ const CustomZoomCard = ({ data, darkMode = false }) => {
         {data.map(({ type, src, title, text, id, url }) => (
           <li key={id} className={`group min-w-[250px] md:min-w-0 md:flex-1`}>
             <Link to={url}>
-              <div className="h-auto overflow-hidden">
+              <div className="h-auto w-full overflow-hidden">
                 <div className="h-[500px] scale-105 transition-transform duration-300 group-hover:scale-100">
                   {type === "img" && (
                     <picture className="h-full">
                       <img
+                        loading="lazy"
                         src={src.img}
                         alt={src.alt}
                         className="h-full object-cover"

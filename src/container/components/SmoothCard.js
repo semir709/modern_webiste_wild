@@ -33,6 +33,7 @@ const textVariant = {
 const SmoothCardImage = ({ imgContent }) => (
   <img
     className="h-full w-full object-cover"
+    loading="lazy"
     src={imgContent.url}
     alt={imgContent.alt}
   />

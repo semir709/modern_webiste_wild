@@ -8,6 +8,7 @@ import {
   TextFromBottomOverflow,
 } from "../container/components";
 import { nanoid } from "nanoid";
+import { wild_dest } from "../data/wild_dest";
 
 const title = [
   { id: nanoid(), text: "Easy to" },
@@ -31,15 +32,19 @@ const dest = [
     title: "Patogania",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur eget aliquet mi, sed malesuada eros.",
     type: "img",
-    src: "https://cdn.sanity.io/images/8nn8fua5/production/931c4de4f3cbbeb30a5b65677a174f2980e44805-720x900.jpg?w=720&fm=webp&q=65",
-    alt: "mount",
+    src: {
+      img: "https://cdn.sanity.io/images/8nn8fua5/production/931c4de4f3cbbeb30a5b65677a174f2980e44805-720x900.jpg?w=720&fm=webp&q=65",
+      alt: "mounten",
+    },
   },
   {
     title: "Patogania",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur eget aliquet mi, sed malesuada eros.",
     type: "img",
-    src: "https://cdn.sanity.io/images/8nn8fua5/production/931c4de4f3cbbeb30a5b65677a174f2980e44805-720x900.jpg?w=720&fm=webp&q=65",
-    alt: "mount",
+    src: {
+      img: "https://cdn.sanity.io/images/8nn8fua5/production/931c4de4f3cbbeb30a5b65677a174f2980e44805-720x900.jpg?w=720&fm=webp&q=65",
+      alt: "mounten",
+    },
   },
 ];
 
@@ -95,7 +100,7 @@ const WorkPage = () => {
                       </div>
                     </div>
                     <ul className="md:w-[65%]">
-                      <CustomZoomCard data={dest} />
+                      <CustomZoomCard data={wild_dest.slice(0, 2)} />
                     </ul>
                   </div>
                 </li>
@@ -124,7 +129,7 @@ const WorkPage = () => {
                       </div>
                     </div>
                     <ul className="md:w-[65%]">
-                      <CustomZoomCard data={dest} />
+                      <CustomZoomCard data={wild_dest.slice(0, 2)} />
                     </ul>
                   </div>
                 </li>

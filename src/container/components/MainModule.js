@@ -75,7 +75,10 @@ const MainModule = ({ setToggler }) => {
               </div>
               <div className="flex flex-[1_1_0%] justify-end">
                 <button
-                  onClick={() => setToggler(false)}
+                  onClick={() => {
+                    setToggler(false);
+                    document.body.style.overflow = "auto";
+                  }}
                   className="rounded-full border border-white hover:cursor-pointer"
                 >
                   <VscClose color="white" className="h-5 w-5 sm:h-8 sm:w-8" />
