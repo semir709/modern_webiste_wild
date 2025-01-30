@@ -31,7 +31,12 @@ const ImageSmoothHeight = ({ src, alt }) => {
         animate="animate"
         className="w-full"
       >
-        <img className="h-auto w-full object-cover" src={src} alt={alt} />
+        <img
+          className="h-auto w-full object-cover"
+          loading="lazy"
+          src={src}
+          alt={alt}
+        />
       </motion.div>
     </motion.div>
   );
