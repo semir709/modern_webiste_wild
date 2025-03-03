@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { nanoid } from "nanoid";
 
 const parentTextVariant = {
   initial: { opacity: 0 },
@@ -31,7 +32,7 @@ const TextFromBottomOverflow = ({ text }) => {
       animate="animate"
     >
       {text.map(({ text, id }, index) => (
-        <CustomTextOverflow key={id} text={text} />
+        <CustomTextOverflow key={id ? id : nanoid()} text={text} />
       ))}
     </motion.span>
   );

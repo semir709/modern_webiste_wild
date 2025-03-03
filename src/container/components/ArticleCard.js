@@ -27,7 +27,15 @@ const ArticleCard = ({ title, date, image, url, darkMode = false }) => {
               alt={image.alt}
             ></img>
           ) : (
-            <Skeleton className="min-h-[300px] w-full" />
+            <Skeleton
+              className="min-h-[300px] w-full"
+              style={darkMode ? { background: "rgba(30, 30, 30, 0.8)" } : {}}
+              customHighlightBackground={
+                darkMode
+                  ? "linear-gradient(90deg, rgba(30, 30, 30, 0.8) 40%, rgba(60, 60, 60, 0.9) 50%, rgba(30, 30, 30, 0.8) 60%)"
+                  : undefined
+              }
+            />
           )}
         </div>
         <div
@@ -46,7 +54,16 @@ const ArticleCard = ({ title, date, image, url, darkMode = false }) => {
               </div>
             </div>
           ) : (
-            <Skeleton count={3} className="min-h-[40px]" />
+            <Skeleton
+              count={3}
+              className="min-h-[40px]"
+              style={darkMode ? { background: "rgba(30, 30, 30, 0.8)" } : {}}
+              customHighlightBackground={
+                darkMode
+                  ? "linear-gradient(90deg, rgba(30, 30, 30, 0.8) 40%, rgba(60, 60, 60, 0.9) 50%, rgba(30, 30, 30, 0.8) 60%)"
+                  : undefined
+              }
+            />
           )}
           {isLoaded ? (
             <div className="mt-5 flex items-center justify-between text-xs sm:block md:mt-0 md:text-sm">
@@ -61,7 +78,14 @@ const ArticleCard = ({ title, date, image, url, darkMode = false }) => {
               </div>
             </div>
           ) : (
-            <Skeleton />
+            <Skeleton
+              style={darkMode ? { background: "rgba(30, 30, 30, 0.8)" } : {}}
+              customHighlightBackground={
+                darkMode
+                  ? "linear-gradient(90deg, rgba(30, 30, 30, 0.8) 40%, rgba(60, 60, 60, 0.9) 50%, rgba(30, 30, 30, 0.8) 60%)"
+                  : undefined
+              }
+            />
           )}
         </div>
       </div>

@@ -13,7 +13,7 @@ export const thinking_data = [
     title:
       "The Healing Power of Nature: How Spending Time Outdoors Benefits Our Health",
     date: "12.10.2024",
-    urlRedirect: "/article/healing_power",
+    urlRedirect: "/blog/healing_power",
     tag: "our_thoughts",
   },
   {
@@ -22,7 +22,7 @@ export const thinking_data = [
     title:
       "Protecting Animal Health: Why Wildlife Conservation is Essential for Biodiversity",
     date: "15.10.2024",
-    urlRedirect: "/article/protecting_animals",
+    urlRedirect: "/blog/protecting_animals",
     tag: "our_thoughts",
   },
   {
@@ -31,7 +31,7 @@ export const thinking_data = [
     title:
       "Human Responsibility for Earth’s Health: Our Role in Environmental Sustainability",
     date: "20.10.2024",
-    urlRedirect: "article/human_responsibility",
+    urlRedirect: "/blog/human_responsibility",
     tag: "our_thoughts",
   },
   {
@@ -40,7 +40,7 @@ export const thinking_data = [
     title:
       "Teaching Future Generations: The Importance of Environmental Education in Schools",
     date: "10.09.2024",
-    urlRedirect: "article/future_gens",
+    urlRedirect: "/blog/future_gens",
     tag: "sponsors_thoughts",
   },
   {
@@ -49,7 +49,7 @@ export const thinking_data = [
     title:
       "From Green Spaces to Clean Air: The Link Between a Healthy Planet and Human Well-being",
     date: "10.08.2024",
-    urlRedirect: "article/green_space",
+    urlRedirect: "/blog/green_space",
     tag: "sponsors_thoughts",
   },
 ];

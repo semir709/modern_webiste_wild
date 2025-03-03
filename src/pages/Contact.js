@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import {
   CustomLineInfo,
+  CustomList,
   Footer,
   ImageSmoothHeight,
   Navigation,
@@ -12,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { email_contact } from "../data/email_contact";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import kitty from "../assets/img/kitty.jpg";
 
 import { building_data } from "../data/buildings_data";
@@ -32,6 +33,25 @@ const varinatsOpacity = {
     },
   },
 };
+
+const socialsList = [
+  {
+    id: nanoid(),
+    text: "Instagram",
+    url: "https://www.instagram.com/beautiful_wild",
+  },
+  { id: nanoid(), text: "Twitter", url: "https://x.com/beautiful_wild" },
+  {
+    id: nanoid(),
+    text: "Linkedln",
+    url: "https://ba.linkedin.com/beautiful_wild",
+  },
+  {
+    id: nanoid(),
+    text: "Facebook",
+    url: "https://www.facebook.com/beautiful_wild",
+  },
+];
 
 const Contact = () => {
   const textColorNav = useState(1);
@@ -93,9 +113,9 @@ const Contact = () => {
                               <Link className="underline hover:no-underline">
                                 {email}
                               </Link>
-                              <div className="text-sm font-semibold">
+                              <span className="block text-sm font-semibold">
                                 <span>(Various Openings)</span>
-                              </div>
+                              </span>
                             </p>
                             <div className="mt-5">
                               <RCButton text="Applay now" />
@@ -149,6 +169,7 @@ const Contact = () => {
 
                         return (
                           <OfficesCard
+                            key={nanoid()}
                             rightLine={!isOdd}
                             bottomLine={!isEnd}
                             location={location}
@@ -171,12 +192,14 @@ const Contact = () => {
             <div className="mt-12 justify-between md:flex">
               <h5 className="text-4xl font-bold uppercase">Follow</h5>
               <ul className="mt-10 md:mt-0 md:w-[60%]">
-                <h5 className="mb-5 text-2xl font-bold uppercase">Social</h5>
-                <div className="underline">
-                  <li className="mb-2 cursor-pointer">Instagram</li>
-                  <li className="mb-2 cursor-pointer">Twitter</li>
-                  <li className="mb-2 cursor-pointer">Linkedln</li>
-                  <li className="mb-2 cursor-pointer">Facebook</li>
+                <div className="">
+                  <li className="mb-2 cursor-pointer">
+                    <CustomList
+                      list={socialsList}
+                      title={"socials"}
+                      openNewWindow={true}
+                    />
+                  </li>
                 </div>
               </ul>
             </div>
