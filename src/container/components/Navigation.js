@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Ellipse } from "../../assets/svg/index";
 import { MainModule, Nav, NavSpaceWrapper } from "./index";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { nav_data } from "../../data/nav_data";
@@ -79,6 +79,17 @@ const Navigation = ({
     };
   }, [scroll]);
 
+  const location = useLocation();
+
+  useEffect(() => {
+    if (
+      location.pathname === "/about" ||
+      location.pathname.startsWith("/about/")
+    ) {
+      setScrollDown(false);
+    }
+  }, [location.pathname]);
+
   const togglerOpen = () => {
     setToggler(true);
     document.body.style.overflow = "hidden";
@@ -86,7 +97,7 @@ const Navigation = ({
 
   return (
     <motion.div
-      className={`fixed top-0 z-50 w-full overflow-hidden`}
+      className={`fixed top-0 z-20 w-full overflow-hidden`}
       variants={variantScroll}
       animate={scrollDown ? "down" : "up"}
       style={{

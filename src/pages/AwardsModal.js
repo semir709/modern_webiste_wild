@@ -1,4 +1,6 @@
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { Modal } from "../container/components";
+import { useEffect } from "react";
 
 const titleData = {
   organization: "organization",

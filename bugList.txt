@@ -1,3 +1,6 @@
-CONTACT PAGE
+*ABOUT*
 - console warnings
-- socials links don't work
+- when open modal navigation make issue
+
+*OTHER*
+- lake escape and canyoun wonders images load blank

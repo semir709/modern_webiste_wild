@@ -94,8 +94,8 @@ const AboutPage = () => {
 
   return (
     <>
-      <Navigation textColorNav={textColorNav} darkMode={darkMode} />
       <ParticlesContainer darkMode={darkMode} />
+      <Navigation textColorNav={textColorNav} darkMode={darkMode} />
       <div data-scroll-section>
         <AnimatePresence mode="wait">
           <Routes location={location} key={mainPath}>
@@ -103,7 +103,6 @@ const AboutPage = () => {
             <Route path="/team/:person" element={<TeamModal />} />
           </Routes>
         </AnimatePresence>
-
         <main className="px-[5%] text-customPrimary">
           <section className="py-40">
             <h1 className="ljustify-between justify-start text-8xl font-bold uppercase lg:flex lg:h-[500px]">
