@@ -1,6 +1,8 @@
 import { nanoid } from "nanoid";
-import boat_water from "../assets/img/boat_water.jpg";
-import canyon from "../assets/img/canyon.jpg";
+// import boat_water from "../assets/img/boat_water.jpg";
+import boat_water from "../assets/img/lake.webp";
+// import canyon from "../assets/img/canyon.jpg";
+import canyon from "../assets/img/canyon.webp";
 import { winter_from_sky } from "../assets/videos/index";
 
 export const wild_dest = [

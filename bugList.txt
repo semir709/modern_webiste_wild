@@ -1,2 +1,4 @@
-*OTHER*
-- lake escape and canyoun wonders images load blank
+*BLOG PAGE*
+- console messages
+- on mobile socials still moving with scroll
+- navigation is not changing bg when blog page change

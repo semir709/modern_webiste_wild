@@ -22,7 +22,18 @@ const colorPalet = {
   dark: { text: "#f9cdcd" },
 };
 
-// responsive
+const useIsMobile = () => {
+  let isMobileState = window.innerWidth <= 640;
+
+  useEffect(() => {
+    const handleResize = () => (isMobileState = window.innerWidth <= 640);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isMobileState;
+};
 
 const Blog = () => {
   const mainContentRef = useRef();
@@ -30,12 +41,10 @@ const Blog = () => {
   const heroSectionRef = useRef();
   const imgContentRef = useRef();
   const [darkMode, setDarkMode] = useState(false);
-
   const textColorNav = 0;
-
   const imageEndPositionTweak = 140;
-
   const { scroll } = useLocomotiveScroll();
+  const isMobileState = useIsMobile();
 
   useEffect(() => {
     const handleScroll = (obj) => {
@@ -80,6 +89,14 @@ const Blog = () => {
       if (heroSection) observer.unobserve(heroSection);
     };
   }, [setDarkMode]);
+
+  const stickyAttributes = !isMobileState
+    ? {
+        "data-scroll": true,
+        "data-scroll-sticky": true,
+        "data-scroll-target": "#stickleft",
+      }
+    : {};
 
   return (
     <>
@@ -167,13 +184,7 @@ const Blog = () => {
           </section>
           <secitio className="mt-40 w-full">
             <div className="justify-between sm:flex" id="stickleft">
-              <div
-                ref={stickyLeftRef}
-                data-scroll
-                data-scroll-sticky
-                data-scroll-target="#stickleft"
-                className="h-fit"
-              >
+              <div ref={stickyLeftRef} {...stickyAttributes} className="h-fit">
                 <div className="pt-16 text-xs uppercase sm:w-[200px] sm:text-sm">
                   <span className="sm:block">
                     <strong>Events</strong>
