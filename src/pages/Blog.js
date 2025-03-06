@@ -41,7 +41,7 @@ const Blog = () => {
   const heroSectionRef = useRef();
   const imgContentRef = useRef();
   const [darkMode, setDarkMode] = useState(false);
-  const textColorNav = 0;
+  const [textColorNav, setTextColorNav] = useState(0);
   const imageEndPositionTweak = 140;
   const { scroll } = useLocomotiveScroll();
   const isMobileState = useIsMobile();
@@ -77,8 +77,13 @@ const Blog = () => {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) setDarkMode(true);
-        else setDarkMode(false);
+        if (entries[0].isIntersecting) {
+          setDarkMode(true);
+          setTextColorNav(0);
+        } else {
+          setDarkMode(false);
+          setTextColorNav(1);
+        }
       },
       { threshold: 0 },
     );
