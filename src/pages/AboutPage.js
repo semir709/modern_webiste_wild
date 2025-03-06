@@ -142,7 +142,7 @@ const AboutPage = () => {
             </div>
           </section>
           <section className="relative my-40 w-full">
-            <ul class="relative h-[1000px] w-full">
+            <ul className="relative h-[1000px] w-full">
               {fakeData.map(({ id, url, alt }, index) => (
                 <li
                   key={id}

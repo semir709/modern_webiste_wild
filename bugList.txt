@@ -1,6 +1,2 @@
-*ABOUT*
-- console warnings
-- when open modal navigation make issue
-
 *OTHER*
 - lake escape and canyoun wonders images load blank

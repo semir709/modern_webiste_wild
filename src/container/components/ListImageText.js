@@ -70,6 +70,7 @@ const ListImageText = () => {
         <ul className="font-bold uppercase sm:text-2xl lg:text-8xl">
           {listTextData.map(({ text, id }) => (
             <li
+              key={id}
               onClick={() => navigate("awards")}
               onMouseOver={() => setGlobalIndex(id)}
               onMouseOut={() => setGlobalIndex(null)}
@@ -85,7 +86,10 @@ const ListImageText = () => {
           className="pointer-events-none -translate-x-1/2 -translate-y-1/2"
         >
           {listImageData.map(({ url, alt, id }) => (
-            <li className={`${id === globlaIndex ? "block" : "hidden"}`}>
+            <li
+              key={id}
+              className={`${id === globlaIndex ? "block" : "hidden"}`}
+            >
               <div className="h-[200px] w-[200px] lg:h-[400px] lg:w-[400px]">
                 <img
                   className="h-full w-full object-cover"

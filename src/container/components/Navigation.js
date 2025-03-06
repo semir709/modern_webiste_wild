@@ -50,11 +50,25 @@ const Navigation = ({
 }) => {
   const [scrollDown, setScrollDown] = useState(true);
   const [toggler, setToggler] = useState(false);
-  // const url = useNavigate();
   const { scroll } = useLocomotiveScroll();
+  const location = useLocation();
+
+  // useEffect(() => {
+  //   if (
+  //     location.pathname === "/about" ||
+  //     location.pathname.startsWith("/about/")
+  //   ) {
+  //     setScrollDown(false);
+  //   }
+  // }, [location.pathname, scroll]);
 
   useEffect(() => {
     let currentPosition = 0;
+
+    if (location.pathname.startsWith("/about/")) {
+      setScrollDown(false);
+      return;
+    }
 
     const handleScroll = (obj) => {
       const newPosition = obj.scroll.y;
@@ -77,18 +91,7 @@ const Navigation = ({
         scroll.off("scroll", handleScroll);
       }
     };
-  }, [scroll]);
-
-  const location = useLocation();
-
-  useEffect(() => {
-    if (
-      location.pathname === "/about" ||
-      location.pathname.startsWith("/about/")
-    ) {
-      setScrollDown(false);
-    }
-  }, [location.pathname]);
+  }, [scroll, location.pathname]);
 
   const togglerOpen = () => {
     setToggler(true);

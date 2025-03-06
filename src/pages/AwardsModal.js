@@ -1,6 +1,7 @@
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { Modal } from "../container/components";
 import { useEffect } from "react";
+import { nanoid } from "nanoid";
 
 const titleData = {
   organization: "organization",
@@ -32,7 +33,7 @@ const AwardsModal = () => {
               {Array(40)
                 .fill(0)
                 .map(() => (
-                  <li>
+                  <li key={nanoid()}>
                     <BulletText content={randomData} />
                   </li>
                 ))}
