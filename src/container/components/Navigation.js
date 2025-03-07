@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Ellipse } from "../../assets/svg/index";
 import { MainModule, Nav, NavSpaceWrapper } from "./index";
@@ -52,6 +52,7 @@ const Navigation = ({
   const [toggler, setToggler] = useState(false);
   const { scroll } = useLocomotiveScroll();
   const location = useLocation();
+  const currentPositionRef = useRef(0);
 
   useEffect(() => {
     let currentPosition = 0;
@@ -61,16 +62,17 @@ const Navigation = ({
       return;
     }
 
+    const THRESHOLD = 2;
+
     const handleScroll = (obj) => {
       const newPosition = obj.scroll.y;
+      const prevPosition = currentPositionRef.current;
 
-      if (newPosition > currentPosition) {
-        setScrollDown(false);
-      } else {
-        setScrollDown(true);
+      if (Math.abs(newPosition - prevPosition) > THRESHOLD) {
+        setScrollDown(newPosition < prevPosition);
       }
 
-      currentPosition = newPosition <= 0 ? 0 : newPosition;
+      currentPositionRef.current = newPosition;
     };
 
     if (scroll) {

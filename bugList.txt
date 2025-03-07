@@ -1,3 +1,3 @@
 STILL ISSUE WITH PHOTOS LOADING
 
-fix behv on the phone navigation srcoll up between two sections
+fix chrome mobile navigation get hidden when scroll up
