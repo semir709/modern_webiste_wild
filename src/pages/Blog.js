@@ -187,7 +187,7 @@ const Blog = () => {
               </div>
             </div>
           </section>
-          <secitio className="mt-40 w-full">
+          <section className="mt-40 w-full">
             <div className="justify-between sm:flex" id="stickleft">
               <div ref={stickyLeftRef} {...stickyAttributes} className="h-fit">
                 <div className="pt-16 text-xs uppercase sm:w-[200px] sm:text-sm">
@@ -251,7 +251,7 @@ const Blog = () => {
                 </ul>
               </div>
             </div>
-          </secitio>
+          </section>
         </main>
 
         <Footer lightMode={darkMode} />

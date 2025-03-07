@@ -25,7 +25,7 @@ const ThinkingPage = () => {
   const [filter, setFilter] = useState(thinking_radio_data[0].slug);
   const [data, setData] = useState(thinking_data);
   const darkMode = true;
-  const textColorNav = 0;
+  const textColorNav = 1;
 
   useEffect(() => {
     if (filter === thinking_radio_data[0].slug) {

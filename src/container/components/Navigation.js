@@ -53,15 +53,6 @@ const Navigation = ({
   const { scroll } = useLocomotiveScroll();
   const location = useLocation();
 
-  // useEffect(() => {
-  //   if (
-  //     location.pathname === "/about" ||
-  //     location.pathname.startsWith("/about/")
-  //   ) {
-  //     setScrollDown(false);
-  //   }
-  // }, [location.pathname, scroll]);
-
   useEffect(() => {
     let currentPosition = 0;
 
@@ -94,6 +85,7 @@ const Navigation = ({
   }, [scroll, location.pathname]);
 
   const togglerOpen = () => {
+    // if (scroll) scroll.stop();
     setToggler(true);
     document.body.style.overflow = "hidden";
   };

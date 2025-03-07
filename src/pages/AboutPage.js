@@ -87,7 +87,7 @@ const postionStyle = [
 ];
 
 const AboutPage = () => {
-  const textColorNav = 0;
+  const textColorNav = 1;
   const darkMode = true;
   const location = useLocation();
   const mainPath = location.pathname.split("/").slice(0, 3).join("/");

@@ -77,6 +77,7 @@ const MainModule = ({ setToggler }) => {
                 <button
                   onClick={() => {
                     setToggler(false);
+                    // if (scroll) scroll.start();
                     document.body.style.overflow = "auto";
                   }}
                   className="rounded-full border border-white hover:cursor-pointer"

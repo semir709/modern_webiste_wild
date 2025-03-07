@@ -27,7 +27,7 @@ const title = [
 ];
 
 const CareersPage = () => {
-  const textColorNav = 0;
+  const textColorNav = 1;
   const darkMode = true;
 
   return (

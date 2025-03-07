@@ -1,5 +1,3 @@
-*BLOG PAGE*
-- console messages
-- navigation is not changing bg when blog page change
-
 STILL ISSUE WITH PHOTOS LOADING
+
+fix behv on the phone navigation srcoll up between two sections
