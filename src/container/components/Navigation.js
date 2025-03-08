@@ -55,7 +55,9 @@ const Navigation = ({
   const currentPositionRef = useRef(0);
 
   useEffect(() => {
-    let currentPosition = 0;
+    if (location.pathname.startsWith("/blog/")) {
+      setToggler(false);
+    }
 
     if (location.pathname.startsWith("/about/")) {
       setScrollDown(false);

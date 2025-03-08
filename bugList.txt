@@ -1,3 +1,0 @@
-STILL ISSUE WITH PHOTOS LOADING
-
-fix chrome mobile navigation get hidden when scroll up

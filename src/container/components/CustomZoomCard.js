@@ -19,7 +19,7 @@ const CustomZoomCard = ({ data, darkMode = false }) => {
                   {type === "img" && (
                     <picture className="h-full">
                       <img
-                        loading="lazy"
+                        // loading="lazy"
                         src={src.img}
                         alt={src.alt}
                         className="h-full object-cover"
